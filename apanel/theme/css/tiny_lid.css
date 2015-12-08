@@ -1,0 +1,35 @@
+/**
+ *
+ * CMS It-Solutions 0.1
+ * Author: Vati Child
+ * E-mail: vatia0@gmail.com
+ * URL: www.it-solutions.ge
+ *
+ */
+@font-face {
+    font-family: 'BPGNinoMtavruliRegular';
+    src: url('fonts/ninomtavruli/regular/bpg_nino_mtavruli_normal.eot');
+    src: url('fonts/ninomtavruli/regular/bpg_nino_mtavruli_normal.eot') format('embedded-opentype'),
+    url('fonts/ninomtavruli/regular/bpg_nino_mtavruli_normal.woff2') format('woff2'),
+    url('fonts/ninomtavruli/regular/bpg_nino_mtavruli_normal.woff') format('woff'),
+    url('fonts/ninomtavruli/regular/bpg_nino_mtavruli_normal.ttf') format('truetype'),
+    url('fonts/ninomtavruli/regular/bpg_nino_mtavruli_normal.svg#BPGNinoMtavruliRegular') format('svg');
+}
+@font-face {
+    font-family: 'BPGIngiri2008Regular';
+    src: url('fonts/ingiri2008/bpg_ingiri_2008.eot');
+    src: url('fonts/ingiri2008/bpg_ingiri_2008.eot') format('embedded-opentype'),
+    url('fonts/ingiri2008/bpg_ingiri_2008.woff2') format('woff2'),
+    url('fonts/ingiri2008/bpg_ingiri_2008.woff') format('woff'),
+    url('fonts/ingiri2008/bpg_ingiri_2008.ttf') format('truetype'),
+    url('fonts/ingiri2008/bpg_ingiri_2008.svg#BPGIngiri2008Regular') format('svg');
+}
+body, td, pre {
+    font-size:14px;
+    line-height:1.4em;
+    font-family: 'BPGIngiri2008Regular';
+    padding:0px;
+    margin:0px;
+}
+
+

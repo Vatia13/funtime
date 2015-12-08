@@ -1,0 +1,33 @@
+#facebook_like_button_holder {
+    position:relative;
+    width:90px;
+    height: 20px;
+    color:#fff;
+    background:black;
+}
+
+#facebook_like_button_holder iframe {
+    position:absolute;
+    top: 0px;
+    left:0px;
+    background-color:#FFF !important;
+}
+
+#fake_facebook_button {
+    pointer-events: none;
+    position:absolute;
+    width: 95px;
+    height: 20px;
+    left:0;
+    top:0;
+    background: url('../images/fb_like.png') 60% no-repeat;
+    background-color:#FFF;
+}
+
+.fb-comments-count-out{
+    display:inline-block;
+    line-height:20px;
+    font-family:'Arial';
+    color:#99999c;
+    font-style:italic;
+}
