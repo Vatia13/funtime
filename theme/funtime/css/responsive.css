@@ -24,28 +24,11 @@
 }
 
 @media screen and (max-width:1600px){
-    body{
-        -moz-transform: scale(1, 1); /* Moz-browsers */
-        zoom: 0.9; /* Other non-webkit browsers */
-        zoom: 90%; /* Webkit browsers */
-    }
     .brand_left{
         top:15.2%;
     }
     .brand_right{
         top:15.2%;
-    }
-
-    .fb-like,.fb-share-button{
-        -moz-transform: scale(1.2, 1.2) !important; /* Moz-browsers */
-        zoom: 1.2 !important; /* Other non-webkit browsers */
-        zoom: 120% !important; /* Webkit browsers */
-    }
-
-    .pp_pic_holder{
-        -moz-transform: scale(1.1, 1.1) !important; /* Moz-browsers */
-        zoom: 1.1 !important; /* Other non-webkit browsers */
-        zoom: 110% !important; /* Webkit browsers */
     }
 
     .header-right .fb-like{
@@ -54,26 +37,7 @@
 }
 
 @media screen and (max-width:1400px){
-    body{
-        -moz-transform: scale(1,1); /* Moz-browsers */
-        zoom: 0.78; /* Other non-webkit browsers */
-        zoom: 78%; /* Webkit browsers */
-    }
-
-
-    .fb-like,.fb-share-button{
-        -moz-transform: scale(1.3, 1.3) !important; /* Moz-browsers */
-        zoom: 1.3 !important;/* Other non-webkit browsers */
-        zoom: 130% !important;  /* Webkit browsers */
-    }
-
     .header-right .fb-like{
         padding:15px 0 15px 0 !important;
-    }
-
-    .pp_pic_holder{
-        -moz-transform: scale(1.22, 1.22) !important; /* Moz-browsers */
-        zoom: 1.22 !important; /* Other non-webkit browsers */
-        zoom: 122% !important; /* Webkit browsers */
     }
 }

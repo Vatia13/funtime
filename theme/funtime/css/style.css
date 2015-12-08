@@ -162,11 +162,12 @@ img{outline:none;border:none;}
 }
 
 .logo{
-    /*background-image:url('../images/logo.png');*/
     background-image:url('../images/logo.png');
+    /* background-image:url('../images/logo_black1.png');*/
     background-repeat:no-repeat;
     background-position:center;
     width:200px;
+    /*width:236px;*/
     height:64px;
     display:inherit;
     margin-left:35px;
@@ -1833,7 +1834,7 @@ img{outline:none;border:none;}
     color:#0b0912;
     position:relative;
     left:25px;
-    margin-top:110px;
+    margin-top:60px;
     font-size:20px;
     display:inherit;
     vertical-align:top;
@@ -2642,6 +2643,7 @@ table.time-like-short tr td:last-child span{
     top:25px;
 
 }
+
 .post-r100 .post-short{
     color:#0b0912;
     position:relative;
@@ -2649,17 +2651,18 @@ table.time-like-short tr td:last-child span{
     font-size:20px;
     display:inherit;
     vertical-align:top;
-    max-width:740px;
+    width:740px;
 }
 .post-r100 .post-short > span{
-    font-weight:400;
-    color:#ed4321;
-    font-size:90px;
+    color:#ED4321;
     float:left;
+    font-size:90px;
+    font-weight:400;
+    margin-right:5px;
+
+    margin-bottom:15px;
     position:relative;
     vertical-align:top;
-    margin-top:5px;
-    margin-right:5px;
 }
 
 .post-slide-message{
@@ -2920,4 +2923,57 @@ table.time-like-short tr td:last-child span{
     background: #ff5704;
     border-radius: 10px;
 
+}
+
+
+.new-articles{
+    position:relative;
+    top:20px;
+    right:5px;
+}
+.new-articles ul{
+    border:3px solid #27bfc4;
+    position:relative;
+    list-style:none;
+    margin:0 0 0 10px;
+    padding:0;
+    width:230px;
+}
+
+.new-articles ul li{
+    text-align:center;
+    padding:5px;
+    line-height:1em;
+}
+.new-articles ul li:first-child h3{
+    color:#ed4321;
+    font-family:'BPGNinoMtavruliRegular';
+}
+
+.new-articles ul li a{
+    text-decoration:none;
+    color:#414141;
+    font-family:'BPGNinoMtavruliRegular';
+    font-size:15px;
+    font-weight:bold;
+}
+
+.new-articles ul li a img{
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+#pp_full_res .banner2 {
+    right: 5px;
+    top: 0;
+}
+
+.pgwSlideshow{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.pgwSlideshow li{
+    text-align:center;
 }

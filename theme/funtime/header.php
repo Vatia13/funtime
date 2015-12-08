@@ -7,8 +7,12 @@
 <link rel="icon" href="/<?=$theme?>images/favicon.ico" type="image/x-icon"/>
 <?get_meta()?>
 <title><?get_title();?></title>
-<link href="/<?=$theme?>css/style21.css?ver=0.21" rel="stylesheet" type="text/css" id="style" />
-<link href="/<?=$theme?>css/responsive.css?ver=0.7" rel="stylesheet" type="text/css"/>
+    <link href="/<?=$theme?>css/style.css?ver=0.1" rel="stylesheet" type="text/css" id="style" />
+    <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == false):?>
+        <link href="/<?=$theme?>css/responsive.css?ver=0.8" rel="stylesheet" type="text/css"/>
+    <?else:?>
+        <link href="/<?=$theme?>css/responsive_zoom.css?ver=0.1" rel="stylesheet" type="text/css"/>
+    <?endif;?>
 <link href="/<?=$theme?>css/fb.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <script src="/<?=$theme?>js/jquery-1.11.0.min.js"></script>
