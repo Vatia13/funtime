@@ -1,12 +1,4 @@
 <?php
-/*
- *
- * CMS osRealty 2.1.x
- * Autor: Roman Chernyshov
- * E-mail: support@osRealty.ru
- * URL: www.osRealty.ru
- *
-*/
 
 class flexibleAccess{
   var $dbName = 'database';
