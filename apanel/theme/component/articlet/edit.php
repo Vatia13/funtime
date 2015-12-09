@@ -765,5 +765,5 @@ if($user->get_property('gid') == 24 or $user->get_property('gid') == 25):
         </script>
     <?endif;?>
 <?endif;?>
-<input type="text" name="image_dirs" id="image_dirs" value="" />
+<input type="hidden" name="image_dirs" id="image_dirs" value="" />
 <script src="<?=$theme_admin;?>js/test2.js?ver=<?=rand(0,999999);?>"></script>

@@ -6,7 +6,7 @@
         </div>
     <?endif;?>
     <script src="<?=$theme_admin?>js/tinymce/tinymce.min.js"></script>
-<script src="<?=$theme_admin?>js/news.ajax.js?ver=0.5"></script>
+<script src="<?=$theme_admin?>js/news.ajax.new.js?ver=<?=rand(0,99999);?>"></script>
     <div id="addnews" style="display:block;">
 <h2>სტატიის დამატება</h2>
 <form method="post" action="" name="formadd" enctype="multipart/form-data"/>
@@ -19,56 +19,56 @@
         <td><input type="checkbox" name="kbd" id="geoKeys" value="0" checked /></td>
     </tr>
     <? if($user->get_property('gid') != 18 && $user->get_property('gid') != 23 && $user->get_property('gid') != 21){?>
-    <tr>
-        <td class="td1">ავტორი</td>
-        <td>
-            <select name="author">
-                <option value="">---</option>
-                <?php foreach($registry['authors'] as $author): ?>
-                    <option value="<?=$author['id'];?>" <?if(($author['id']==$num['user'] and empty($_POST['author'])) or $author['id']==$_POST['author']):?>selected<?endif;?>><?=$author['realname'];?></option>
-                <?php endforeach; ?>
-            </select>
-        </td>
-    </tr>
-     <?}?>
+        <tr>
+            <td class="td1">ავტორი</td>
+            <td>
+                <select name="author">
+                    <option value="">---</option>
+                    <?php foreach($registry['authors'] as $author): ?>
+                        <option value="<?=$author['id'];?>" <?if(($author['id']==$num['user'] and empty($_POST['author'])) or $author['id']==$_POST['author']):?>selected<?endif;?>><?=$author['realname'];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+        </tr>
+    <?}?>
 
     <tr><td class="td1">რუბრიკა</td><td>
             <select name="cat" class="input_100">
                 <option value="">---</option>
                 <?$catnum = array();foreach($category as $cat):?>
-                    <?foreach($cat as $ca):?>
-                        <? if($user->get_property('gid') == 18 or $user->get_property('gid') == 21){?>
-                            <? $authors = unserialize($ca['users']);?>
-                            <?if(in_array($user->get_property('userID'),$authors)):?>
-                                <? $catnum[] = $ca['id']; ?>
-                            <?endif;?>
-                        <?}?>
-                    <?endforeach;?>
-                <?endforeach;?>
-                <?foreach($category as $cat):?>
-                    <?foreach($cat as $ca):?>
-                        <? if($user->get_property('gid') == 18 or $user->get_property('gid') == 21){?>
-                            <? $authors = unserialize($ca['users']);?>
-                            <?if(in_array($user->get_property('userID'),$authors)):?>
-                                <?  if(count($catnum) < 2): ?>
-                                    <option value="<?=$ca['id']?>" selected>- <?=$ca['name']?></option>
-                                <? else:?>
-                                    <?if($ca['podcat']==0):?>
-                                        <option value="<?=$ca['id']?>" <?=($ca['id']==$_POST['cat']) ? 'selected' : (($_GET['cat'] == $ca['id']) ? 'selected' :'');?>>- <?=$ca['name']?></option>
-                                    <?else:?>
-                                        <option value="<?=$ca['id']?>" <?=($ca['id']==$_POST['cat']) ? 'selected' : (($_GET['cat'] == $ca['id']) ? 'selected' :'');?>>--- <?=$ca['name']?></option>
-                                    <?endif;?>
-                                <?endif;?>
-                            <?endif;?>
-                        <?}else{?>
-                            <?if($ca['podcat']==0):?>
-                                <option value="<?=$ca['id']?>" <?=($ca['id']==$_POST['cat']) ? 'selected' : (($_GET['cat'] == $ca['id']) ? 'selected' :'');?>>- <?=$ca['name']?></option>
-                            <?else:?>
-                                <option value="<?=$ca['id']?>" <?=($ca['id']==$_POST['cat']) ? 'selected' : (($_GET['cat'] == $ca['id']) ? 'selected' :'');?>>--- <?=$ca['name']?></option>
-                            <?endif;?>
-                        <?}?>
-                    <?endforeach;?>
-                <?endforeach;?>
+        <?foreach($cat as $ca):?>
+            <? if($user->get_property('gid') == 18 or $user->get_property('gid') == 21){?>
+                <? $authors = unserialize($ca['users']);?>
+                <?if(in_array($user->get_property('userID'),$authors)):?>
+                    <? $catnum[] = $ca['id']; ?>
+                <?endif;?>
+            <?}?>
+        <?endforeach;?>
+    <?endforeach;?>
+    <?foreach($category as $cat):?>
+        <?foreach($cat as $ca):?>
+            <? if($user->get_property('gid') == 18 or $user->get_property('gid') == 21){?>
+                <? $authors = unserialize($ca['users']);?>
+                <?if(in_array($user->get_property('userID'),$authors)):?>
+                    <?  if(count($catnum) < 2): ?>
+                        <option value="<?=$ca['id']?>" selected>- <?=$ca['name']?></option>
+                    <? else:?>
+                        <?if($ca['podcat']==0):?>
+                            <option value="<?=$ca['id']?>" <?=($ca['id']==$_POST['cat']) ? 'selected' : (($_GET['cat'] == $ca['id']) ? 'selected' :'');?>>- <?=$ca['name']?></option>
+                        <?else:?>
+                            <option value="<?=$ca['id']?>" <?=($ca['id']==$_POST['cat']) ? 'selected' : (($_GET['cat'] == $ca['id']) ? 'selected' :'');?>>--- <?=$ca['name']?></option>
+                        <?endif;?>
+                    <?endif;?>
+                <?endif;?>
+            <?}else{?>
+                <?if($ca['podcat']==0):?>
+                    <option value="<?=$ca['id']?>" <?=($ca['id']==$_POST['cat']) ? 'selected' : (($_GET['cat'] == $ca['id']) ? 'selected' :'');?>>- <?=$ca['name']?></option>
+                <?else:?>
+                    <option value="<?=$ca['id']?>" <?=($ca['id']==$_POST['cat']) ? 'selected' : (($_GET['cat'] == $ca['id']) ? 'selected' :'');?>>--- <?=$ca['name']?></option>
+                <?endif;?>
+            <?}?>
+        <?endforeach;?>
+    <?endforeach;?>
             </select>
         </td></tr>
     <?if($user->get_property('gid')==22 or $user->get_property('gid')==23):?>
@@ -99,52 +99,52 @@
     <tr><td class="td1">გამოქვეყნების თარიღი </td><td class="td2">
 	<select name="date_dd">
 	  <?for ($i=1;$i<=31;$i++):?>
-		<?if ($i<10) $dddd='0';else $dddd='';?>
-		<?if ($i==(($_GET['D']) ? $_GET['D']:intval(date('d'))) and empty($_POST['date_dd'])) $sel="selected"; else $sel="";?>
-		<?if ($i==$_POST['date_dd']) $sel="selected";?>
-		<option value="<?=$i?>" <?=$sel?>><?=$dddd.$i?></option>
-	   <?endfor;?>
+        <?if ($i<10) $dddd='0';else $dddd='';?>
+        <?if ($i==(($_GET['D']) ? $_GET['D']:intval(date('d'))) and empty($_POST['date_dd'])) $sel="selected"; else $sel="";?>
+        <?if ($i==$_POST['date_dd']) $sel="selected";?>
+        <option value="<?=$i?>" <?=$sel?>><?=$dddd.$i?></option>
+    <?endfor;?>
 	</select>
 
 	<select name="date_mm">
 	  <?for ($i=1;$i<=12;$i++):?>
-		<?if ($i<10) $dddd='0';else $dddd='';?>
-		<?if ($i==(($_GET['M']) ? $_GET['M']:intval(date('m'))) and empty($_POST['date_mm'])) $sel="selected"; else $sel="";?>
-		<?if ($i==$_POST['date_mm']) $sel="selected";?>
-		<option value="<?=$i?>" <?=$sel?>><?=$dddd.$i?></option>
-	   <?endfor;?>
+        <?if ($i<10) $dddd='0';else $dddd='';?>
+        <?if ($i==(($_GET['M']) ? $_GET['M']:intval(date('m'))) and empty($_POST['date_mm'])) $sel="selected"; else $sel="";?>
+        <?if ($i==$_POST['date_mm']) $sel="selected";?>
+        <option value="<?=$i?>" <?=$sel?>><?=$dddd.$i?></option>
+    <?endfor;?>
 	</select>
 
 	<select name="date_yy">
 	  <?for ($i=2011;$i<=2100;$i++):?>
-		<?if ($i==(($_GET['Y']) ? $_GET['Y']:intval(date('Y'))) and empty($_POST['date_yy'])) $sel="selected"; else $sel="";?>
-		<?if ($i==$_POST['date_yy']) $sel="selected";?>
-		<option value="<?=$i?>" <?=$sel?>><?=$i?></option>
-	  <?endfor;?>
+        <?if ($i==(($_GET['Y']) ? $_GET['Y']:intval(date('Y'))) and empty($_POST['date_yy'])) $sel="selected"; else $sel="";?>
+        <?if ($i==$_POST['date_yy']) $sel="selected";?>
+        <option value="<?=$i?>" <?=$sel?>><?=$i?></option>
+    <?endfor;?>
 	</select>
 	<select name="time_hh">
 	  <?for($t=0;$t<=23;$t++):?>
-		<?if ($t<10) $dddd='0';else $dddd='';?>
-		<?if ($t==(($_GET['H']) ? $_GET['H']:intval(date('H'))) and empty($_POST['time_hh'])) $sel="selected"; else $sel="";?>
-		<?if ($t==$_POST['time_hh']) $sel="selected";?>
-		<option value="<?=$t?>" <?=$sel?>><?=$dddd.$t?></option>
-	  <?endfor;?>
+        <?if ($t<10) $dddd='0';else $dddd='';?>
+        <?if ($t==(($_GET['H']) ? $_GET['H']:intval(date('H'))) and empty($_POST['time_hh'])) $sel="selected"; else $sel="";?>
+        <?if ($t==$_POST['time_hh']) $sel="selected";?>
+        <option value="<?=$t?>" <?=$sel?>><?=$dddd.$t?></option>
+    <?endfor;?>
 	</select>
 	<select name="time_mm">
 	  <?for($t=0;$t<=59;$t++):?>
-		<?if ($t<10) $dddd='0';else $dddd='';?>
-		<?if ($t==(($_GET['I']) ? $_GET['I']:intval(date('i'))-1) and empty($_POST['time_mm'])) $sel="selected"; else $sel="";?>
-		<?if ($t==$_POST['time_mm']) $sel="selected";?>
-		<option value="<?=$t?>" <?=$sel?>><?=$dddd.$t?></option>
-	  <?endfor;?>
+        <?if ($t<10) $dddd='0';else $dddd='';?>
+        <?if ($t==(($_GET['I']) ? $_GET['I']:intval(date('i'))-1) and empty($_POST['time_mm'])) $sel="selected"; else $sel="";?>
+        <?if ($t==$_POST['time_mm']) $sel="selected";?>
+        <option value="<?=$t?>" <?=$sel?>><?=$dddd.$t?></option>
+    <?endfor;?>
 	</select>
 </td></tr>
 
 <tr style="display:none;"><td class="td1">წვდომა</td><td>
 		<input type="checkbox" value="0" name="group[]"> ყველა<br/>
 		<?foreach($groups as $gr):?>
-		<input type="checkbox" value="<?=$gr['id']?>" name="group[]" <?if($gr['id'] == $user->get_property('gid')):?>checked<?endif;?>> <?=$gr['name']?><br/>
-		<?endforeach;?>
+        <input type="checkbox" value="<?=$gr['id']?>" name="group[]" <?if($gr['id'] == $user->get_property('gid')):?>checked<?endif;?>> <?=$gr['name']?><br/>
+    <?endforeach;?>
 </td></tr>
 
     <tr>
@@ -158,6 +158,12 @@
     <tr>
         <td height="20px"></td><td></td>
     </tr>
+                     <tr id="photoSlide1">
+                            <td>ფოტოსლაიდი</td>
+                            <td>
+                                <?include('.slide_html.php');?>
+                            </td>
+                        </tr>
     <tr>
         <td class="td1">ლიდი</td>
         <td>
@@ -184,10 +190,10 @@
                     //toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
                     toolbar1: "Convert | undo redo | bold italic underline | link unlink anchor | boldcolor forecolor backcolor  |  fontselect",
                     <? if($user->get_property('gid')==18 or $user->get_property('gid')==22):?>
-                    content_css : "<?=$theme_admin?>css/tiny_lid_o.css",
-                    <?else:?>
-                    content_css : "<?=$theme_admin?>css/tiny_lid.css",
-                    <?endif;?>
+        content_css : "<?=$theme_admin?>css/tiny_lid_o.css",
+    <?else:?>
+        content_css : "<?=$theme_admin?>css/tiny_lid.css",
+    <?endif;?>
                     font_formats: "Nino Mtavruli = BPGNinoMtavruliRegular;"+
                         "Ingiri = BPGIngiri2008Regular;" +
                         "Open Sans = Open Sans;"+
@@ -212,14 +218,14 @@
     <tr>
                         <td>ფოტოგრაფი</td><td><input type="text" name="phg" value="<?=($_POST['phg']) ? $_POST['phg'] : $num['phg'];?>" placeholder="სახელი, გვარი">
                             <? $photographer = ['ალექსანდრე სხულუხია','ნათია სიჭინავა','ნინი მანდარია','სალვატორე კოსტა'];//$DB->getAll('SELECT name FROM #__phgrapher order by name ASC'); ?>
-                            <?if(count($photographer) > 0):?>
-                                <select name="photographer">
-                                    <option>---</option>
-                                    <?foreach($photographer as $name):?>
-                                        <option <?=($name == $_POST['phg']) ? 'selected' : '';?>><?=$name;?></option>
-                                    <?endforeach;?>
-                                </select>
-                            <?endif;?>
+    <?if(count($photographer) > 0):?>
+        <select name="photographer">
+            <option>---</option>
+            <?foreach($photographer as $name):?>
+                <option <?=($name == $_POST['phg']) ? 'selected' : '';?>><?=$name;?></option>
+            <?endforeach;?>
+        </select>
+    <?endif;?>
                         </td>
     </tr>
     <tr>
@@ -262,14 +268,14 @@
 
     <a onClick="doOp(1,null,document.formadd);" class="btn-green right">
        <?if($user->get_property('gid')==18){?>
-         რედაქტორთან გაგზავნა
-       <?}else if($user->get_property('gid')==22 or $user->get_property('gid')==21){?>
-         სტილისტ-კორექტორთან გაგზავნა
-       <?}else if($user->get_property('gid')==23){?>
-         ადმინისტრატორთან გაგზავნა
-       <?}else{?>
-         გამოქვეყნება
-       <?}?>
+        რედაქტორთან გაგზავნა
+    <?}else if($user->get_property('gid')==22 or $user->get_property('gid')==21){?>
+        სტილისტ-კორექტორთან გაგზავნა
+    <?}else if($user->get_property('gid')==23){?>
+        ადმინისტრატორთან გაგზავნა
+    <?}else{?>
+        გამოქვეყნება
+    <?}?>
     </a>
     <?if($user->get_property('gid')==21):?>
         <a onClick="doOp(4,null,document.formadd);" class="btn-green right" style="margin-right:10px;">რედაქტორთან გაგზავნა</a>
@@ -288,3 +294,5 @@
         });
     });
 </script>
+<input type="hidden" name="image_dirs" id="image_dirs" value="" />
+<script src="<?=$theme_admin;?>js/test2.js?ver=<?=rand(0,99999);?>"></script>

@@ -60,6 +60,49 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
         'website'=>$_POST['website']
     );
     $info = serialize($info);
+    $slider_images = array();
+    foreach(json_decode($_POST['slider_name']) as $item):
+        if(!empty($item)):
+            $slider_images['name'][] = stripslashes($item);
+        endif;
+    endforeach;
+    $i=0;foreach(json_decode(stripslashes($_POST['slider_img'])) as $item):
+        if(!empty($item)):
+            $slider_images['img'][] = $item;
+            if(!isset($slider_images['name'][$i])){
+                $slider_images['name'][$i] = '';
+            }
+            $i++;
+        endif;
+    endforeach;
+    if(count($slider_images['img']) == 1){
+        $slide = array();
+        $slide_dir = first_par_url($slider_images['img'][0]);
+        $slidefiles =glob($_SERVER['DOCUMENT_ROOT'].generate_unknown($slide_dir).'*.{jpeg,gif,png,jpg,JPG,PNG,GIF,JPEG}', GLOB_BRACE);
+
+        $slicount = count($slidefiles);
+        // echo generate_unknown($_SERVER['DOCUMENT_ROOT'].$slide_dir);
+        if($slicount > 0){
+            foreach($slidefiles as $fs){
+                if(str2int(last_par_url($fs)) > 0){
+                    $slide['img'][] = 'http://funtime.ge:80' . $slide_dir . last_par_url($fs);
+                    $slide['name'][] = '';
+                }
+            }
+        }
+//        for($i=0;$i<$slicount; $i++){
+//            if(in_array(get_file_name(last_par_url($slidefiles[$i])),$numbers)){
+//            $slide['img'][] = 'http://funtime.ge:80'.$slide_dir.last_par_url($slidefiles[$i]);
+//            $slide['name'][] = '';
+//            }
+//        }
+
+
+        $slide = base64_encode(serialize(array('img'=>$slide['img'],'name'=>$slide['name'])));
+
+    }else{
+        $slide = base64_encode(serialize($slider_images));
+    }
 
     if($_POST['update'] == 1){
         $id = intval($_POST['id']);
@@ -87,21 +130,7 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
             }
             $text .= '<div class="fix"></div>'.$sakim;
         }
-        $slider_images = array();
-        foreach(json_decode($_POST['slider_name']) as $item):
-            if(!empty($item)):
-                $slider_images['name'][] = stripslashes($item);
-            endif;
-        endforeach;
-        $i=0;foreach(json_decode(stripslashes($_POST['slider_img'])) as $item):
-            if(!empty($item)):
-                $slider_images['img'][] = $item;
-                if(!isset($slider_images['name'][$i])){
-                    $slider_images['name'][$i] = '';
-                }
-                $i++;
-            endif;
-        endforeach;
+
 
         $concurs_images = array();
         $concurs_img = json_decode(stripslashes($_POST['concurs_img']));
@@ -159,34 +188,7 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
             }
         }
 
-        if(count($slider_images['img']) == 1){
-            $slide = array();
-            $slide_dir = first_par_url($slider_images['img'][0]);
-            $slidefiles =glob($_SERVER['DOCUMENT_ROOT'].generate_unknown($slide_dir).'*.{jpeg,gif,png,jpg,JPG,PNG,GIF,JPEG}', GLOB_BRACE);
 
-            $slicount = count($slidefiles);
-            // echo generate_unknown($_SERVER['DOCUMENT_ROOT'].$slide_dir);
-            if($slicount > 0){
-                foreach($slidefiles as $fs){
-                    if(str2int(last_par_url($fs)) > 0){
-                        $slide['img'][] = 'http://funtime.ge:80' . $slide_dir . last_par_url($fs);
-                        $slide['name'][] = '';
-                    }
-                }
-            }
-//        for($i=0;$i<$slicount; $i++){
-//            if(in_array(get_file_name(last_par_url($slidefiles[$i])),$numbers)){
-//            $slide['img'][] = 'http://funtime.ge:80'.$slide_dir.last_par_url($slidefiles[$i]);
-//            $slide['name'][] = '';
-//            }
-//        }
-
-
-            $slide = base64_encode(serialize(array('img'=>$slide['img'],'name'=>$slide['name'])));
-
-        }else{
-            $slide = base64_encode(serialize($slider_images));
-        }
 
         $photop= '';
         if(!empty($_POST['photop']) && $_FILES["photo"]["size"]<=0){
@@ -314,6 +316,7 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
             }
         }
         if($_POST['add'] == 1){
+
             if(!empty($title) && !empty($cat)){
                 $test_chpu = $DB->getOne("SELECT count(#__news.id) FROM `#__news` WHERE `chpu`='$chpu'");
                 if($test_chpu>0)$chpu=rand(100,9999).'_'.$chpu;
@@ -327,6 +330,8 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
                     'info'=>$info,
                     'date'=>$date,
                     'time'=>$tm,
+                    'slide'=>$slide,
+                    'slide_type'=>$slide_type,
                     'text_short'=>$text_short,
                     'text'=>$text,
                     'phg'=>$phg,

@@ -133,7 +133,7 @@ var addFormFields = function() {
     var ajax = new XMLHttpRequest();
     ajax.addEventListener("progress", updateProgress,false);
     ajax.addEventListener("load",request,false);
-    ajax.open("POST","/apanel/index.php?component=article&section=ajax");
+    ajax.open("POST","/apanel/index.php?component=articlet&section=ajax");
     ajax.send(fd);
 };
 

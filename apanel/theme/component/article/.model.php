@@ -119,9 +119,30 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
             }
         }
 
-        if(count($_POST['slide']['img']) == 1){
+
+        $slider_images = array();
+        if(count($_POST['slide']['name']) > 0){
+            foreach($_POST['slide']['name'] as $item):
+                if(!empty($item)):
+                    $slider_images['name'][] = stripslashes($item);
+                endif;
+            endforeach;
+        }
+        if(count($_POST['slide']['img']) > 0) {
+            $i = 0;
+            foreach ($_POST['slide']['img'] as $item):
+                if (!empty($item)):
+                    $slider_images['img'][] = $item;
+                    if (!isset($slider_images['name'][$i])) {
+                        $slider_images['name'][$i] = '';
+                    }
+                    $i++;
+                endif;
+            endforeach;
+        }
+        if(count($slider_images['img']) == 1){
             $slide = array();
-            $slide_dir = first_par_url($_POST['slide']['img'][0]);
+            $slide_dir = first_par_url($slider_images['img'][0]);
             $slidefiles =glob($_SERVER['DOCUMENT_ROOT'].generate_unknown($slide_dir).'*.{jpeg,gif,png,jpg,JPG,PNG,GIF,JPEG}', GLOB_BRACE);
 
             $slicount = count($slidefiles);
@@ -129,16 +150,16 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
             if($slicount > 0){
                 foreach($slidefiles as $fs){
                     if(str2int(last_par_url($fs)) > 0){
-                        $slide[] = 'http://funtime.ge:80' . $slide_dir . last_par_url($fs);
+                        $slide['img'][] = 'http://funtime.ge:80' . $slide_dir . last_par_url($fs);
+                        $slide['name'][] = '';
                     }
                 }
             }
-            sort($slide);
 
-            $slide = serialize(array('img'=>$slide));
+            $slide = base64_encode(serialize(array('img'=>$slide['img'],'name'=>$slide['name'])));
 
         }else{
-            $slide = serialize($_POST['slide']);
+            $slide = base64_encode(serialize($slider_images));
         }
 
         $operation=intval($_POST['op']);
@@ -518,7 +539,7 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
                                 if($test_chpu>0)$chpu=rand(100,9999).'_'.$chpu;
 
                                 $sql="INSERT INTO `osr_news`(`user`, `redactor`, `corrector`, `send_time`, `cat`, `test`, `title`, `title_short`, `text`, `text_short`, `rate`, `chpu`, `time`, `date`, `show_date`, `view`, `tags_ru`, `tags_en`, `original_url`, `thumbs`, `img`, `slide`, `youtube`, `comments`, `moderate`, `group`, `favorit`, `meta_desc`, `meta_key`, `user_block`, `op`, `style`, `color`,`info`,`copy`,`phg`) VALUES
-                                                                         ('$author',0,0,'$send_time','$cat',0,'$title','$title_short','$text','$text_short',0,'$chpu','$date_time','$date','$show_date',1,'$tags_ru','$tags_en','$original_url','$SQL_PHOTO','','','$youtube','$comments','$moderate','$group','$favorit_news','$meta_desc','$meta_key',0,'$operation',0,0,'$info','$copy','$phg')";
+                                                                         ('$author',0,0,'$send_time','$cat',0,'$title','$title_short','$text','$text_short',0,'$chpu','$date_time','$date','$show_date',1,'$tags_ru','$tags_en','$original_url','$SQL_PHOTO','','$slide','$youtube','$comments','$moderate','$group','$favorit_news','$meta_desc','$meta_key',0,'$operation',0,0,'$info','$copy','$phg')";
 
                                 if($DB->execute($sql)){
                                     $t=1;

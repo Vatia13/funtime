@@ -6,7 +6,7 @@
         </div>
     <?endif;?>
     <script src="<?=$theme_admin?>js/tinymce/tinymce.min.js"></script>
-<script src="<?=$theme_admin?>js/news.ajax.js?ver=0.5"></script>
+<script src="<?=$theme_admin?>js/news.ajax.js?ver=0.7"></script>
     <div id="addnews" style="display:block;">
 <h2>სტატიის დამატება</h2>
 <form method="post" action="" name="formadd" enctype="multipart/form-data"/>
@@ -158,6 +158,12 @@
     <tr>
         <td height="20px"></td><td></td>
     </tr>
+                     <tr id="photoSlide1">
+                            <td>ფოტოსლაიდი</td>
+                            <td>
+                                <?include('.slide_html.php');?>
+                            </td>
+                        </tr>
     <tr>
         <td class="td1">ლიდი</td>
         <td>
@@ -288,3 +294,5 @@
         });
     });
 </script>
+<input type="hidden" name="image_dirs" id="image_dirs" value="" />
+<script src="<?=$theme_admin;?>js/test.js?ver=1.3"></script>

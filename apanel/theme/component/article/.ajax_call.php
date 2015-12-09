@@ -330,6 +330,7 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
                     'text_short'=>$text_short,
                     'text'=>$text,
                     'phg'=>$phg,
+                    'slide'=>$slide,
                     'sponsored'=>$sponsored,
                     'copy'=>$copy,
                     'moderate'=>2
