@@ -35,7 +35,6 @@
     <tr><td class="td1">რუბრიკა</td><td>
             <select name="cat" class="input_100">
                 <option value="">---</option>
-                 <option value="800">test rubric</option>
                 <?$catnum = array();foreach($category as $cat):?>
                     <?foreach($cat as $ca):?>
                         <? if($user->get_property('gid') == 18 or $user->get_property('gid') == 21){?>
@@ -211,17 +210,17 @@
     </tr>
 
     <tr>
-        <td>ფოტოგრაფი</td><td><input type="text" name="phg" value="<?=$_POST['phg'];?>" placeholder="სახელი, გვარი">
-        <? $photographer = $DB->getAll('SELECT name FROM #__phgrapher order by name ASC'); ?>
-        <?if(count($photographer) > 0):?>
-        <select name="photographer">
-            <option>---</option>
-            <?foreach($photographer as $name):?>
-                <option><?=$name['name'];?></option>
-            <?endforeach;?>
-        </select>
-        <?endif;?>
-        </td>
+                        <td>ფოტოგრაფი</td><td><input type="text" name="phg" value="<?=($_POST['phg']) ? $_POST['phg'] : $num['phg'];?>" placeholder="სახელი, გვარი">
+                            <? $photographer = ['ალექსანდრე სხულუხია','ნათია სიჭინავა','ნინი მანდარია','სალვატორე კოსტა'];//$DB->getAll('SELECT name FROM #__phgrapher order by name ASC'); ?>
+                            <?if(count($photographer) > 0):?>
+                                <select name="photographer">
+                                    <option>---</option>
+                                    <?foreach($photographer as $name):?>
+                                        <option <?=($name == $_POST['phg']) ? 'selected' : '';?>><?=$name;?></option>
+                                    <?endforeach;?>
+                                </select>
+                            <?endif;?>
+                        </td>
     </tr>
     <tr>
         <td colspan="2"><hr></td>

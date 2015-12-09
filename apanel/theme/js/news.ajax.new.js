@@ -79,14 +79,14 @@ var addFormFields = function() {
     var slider_name = [];
     var slider_img = [];
     for(var i=0;i<sliderName.length;i++){
-            //console.log("editor_"+i);
-            slider_name[i] = (tinymce.get("editor_"+i).getContent()) ? tinymce.get("editor_"+i).getContent() : '';
+        //console.log("editor_"+i);
+        slider_name[i] = (tinymce.get("editor_"+i).getContent()) ? tinymce.get("editor_"+i).getContent() : '';
     }
-
-    for(var i=0;i<slider.length;i++){
-        slider_img[i] = (slider[i].value) ? slider[i].value : '';
+    if(slider.length > 0){
+        for(var i=0;i<slider.length;i++){
+            slider_img[i] = (slider[i].value) ? slider[i].value : '';
+        }
     }
-
 
     fd.append('slider_img',JSON.stringify(slider_img));
     fd.append('slider_name',JSON.stringify(slider_name));
@@ -133,7 +133,7 @@ var addFormFields = function() {
     var ajax = new XMLHttpRequest();
     ajax.addEventListener("progress", updateProgress,false);
     ajax.addEventListener("load",request,false);
-    ajax.open("POST","/apanel/index.php?component=articlet&section=ajax");
+    ajax.open("POST","/apanel/index.php?component=article&section=ajax");
     ajax.send(fd);
 };
 
@@ -169,9 +169,9 @@ function request(event){
                 var slide = JSON.parse(response.slide);
                 if(slide['img']){
                     for(var i=0;i<slide['img'].length;i++){
-                        html += '<img src="'+slide['img'][i]+'" width=98 height="60" class="img'+i+'"/>';
+                       $('#parentId > tbody > tr:eq('+i+') > td:eq(1)').html('<img src="'+slide['img'][i]+'" width="300" class="img'+i+'"/>');
                     }
-                    imagePlace.innerHTML = html;
+                   // imagePlace.innerHTML = html;
                 }
             }
         }

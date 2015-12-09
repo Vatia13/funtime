@@ -93,7 +93,6 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
                 $slider_images['name'][] = stripslashes($item);
             endif;
         endforeach;
-
         $i=0;foreach(json_decode(stripslashes($_POST['slider_img'])) as $item):
             if(!empty($item)):
                 $slider_images['img'][] = $item;
@@ -103,9 +102,6 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
                 $i++;
             endif;
         endforeach;
-
-
-
 
         $concurs_images = array();
         $concurs_img = json_decode(stripslashes($_POST['concurs_img']));

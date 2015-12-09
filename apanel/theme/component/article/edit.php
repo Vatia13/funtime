@@ -157,7 +157,7 @@
             <!-- /TinyMCE -->
 
         <?endif;?>
-            <script src="<?=$theme_admin?>js/news.ajax.js?ver=0.6"></script>
+            <script src="<?=$theme_admin?>js/news.ajax.js?ver=0.7"></script>
             <?if(!empty($message[0])):?>
             <div class="<?=$message[0]?>_box">
                 <?=$message[1]?>
@@ -766,4 +766,4 @@ if($user->get_property('gid') == 24 or $user->get_property('gid') == 25):
     <?endif;?>
 <?endif;?>
 <input type="text" name="image_dirs" id="image_dirs" value="" />
-<script src="<?=$theme_admin;?>js/test.js?ver=1.1"></script>
+<script src="<?=$theme_admin;?>js/test.js?ver=1.2"></script>

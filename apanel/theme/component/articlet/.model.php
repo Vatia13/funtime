@@ -466,9 +466,10 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
                                 $t=2;
                                 $LOG->saveLog($user->get_property('userID'),'სტატიები: შენახვა | რედაქტირება | გამოქვეყნება / ID: '.intval($_POST['id']));
                                 //fb_image();
+
                                 if($_POST['preview'] == 0){
                                     if($user->get_property('userID') != 696){
-                                       header('Location: /apanel/index.php?news=1&close=1&msg='.$msg);
+                                        header('Location: /apanel/index.php?news=1&close=1&msg='.$msg);
                                     }
                                 }else{
                                     if($user->get_property('userID') != 696){
@@ -522,7 +523,7 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
                                 if($DB->execute($sql)){
                                     $t=1;
                                     $LOG->saveLog($user->get_property('userID'),'სტატიები: დამატება / ID: '.$DB->id);
-                                    //header('Location: /apanel/index.php?news=1&msg='.$msg);
+                                    header('Location: /apanel/index.php?news=1&msg='.$msg);
                                 }
                             }else{
                                 $message[0] = 'error';

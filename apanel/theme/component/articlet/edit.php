@@ -157,7 +157,7 @@
             <!-- /TinyMCE -->
 
         <?endif;?>
-            <script src="<?=$theme_admin?>js/news.ajax.new.js?ver=<?=rand(0,9999);?>"></script>
+            <script src="<?=$theme_admin?>js/news.ajax.new.js?ver=<?=rand(0,99999);?>"></script>
             <?if(!empty($message[0])):?>
             <div class="<?=$message[0]?>_box">
                 <?=$message[1]?>
@@ -437,17 +437,16 @@
                                     <input type="hidden" id="pleft" name="pleft" value="0">
                                     <input type="hidden" id="ptop" name="ptop" value="0">
                                 </div>
-
-
                             </td>
                         </tr>
+                           <?endif;?>
                         <tr id="photoSlide1">
                             <td>ფოტოსლაიდი</td>
                             <td>
                                 <?include('.slide_html.php');?>
                             </td>
                         </tr>
-
+                    <?if($user->get_property('gid')!==18 && $user->get_property('gid')!==21 && $user->get_property('gid')!==22 && $user->get_property('gid')!==23):?>
                         <tr id="photoSlide2" style="display:none;">
                             <td class="td1" valign="top"><b>ფოტოკონკურსი</b><input type="hidden" name="phconc" value="<?=$photo_concurs;?>"/></td>
                             <td valign="top">
@@ -502,6 +501,7 @@
                         <tr>
                             <td height="10px"></td><td></td>
                         </tr>
+
                     <?endif;?>
                     <tr style="display:none;"><td class="td1">წვდომა</td><td>
                             <?$group_mass=(array)unserialize($num['group']);?>
@@ -766,4 +766,4 @@ if($user->get_property('gid') == 24 or $user->get_property('gid') == 25):
     <?endif;?>
 <?endif;?>
 <input type="text" name="image_dirs" id="image_dirs" value="" />
-<script src="<?=$theme_admin;?>js/test.js?ver=1.1"></script>
+<script src="<?=$theme_admin;?>js/test2.js?ver=<?=rand(0,999999);?>"></script>

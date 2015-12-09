@@ -169,9 +169,9 @@ function request(event){
                 var slide = JSON.parse(response.slide);
                 if(slide['img']){
                     for(var i=0;i<slide['img'].length;i++){
-                        html += '<img src="'+slide['img'][i]+'" width=98 height="60" class="img'+i+'"/>';
+                        $('#parentId > tbody > tr:eq('+i+') > td:eq(1)').html('<img src="'+slide['img'][i]+'" width="300" class="img'+i+'"/>');
                     }
-                    imagePlace.innerHTML = html;
+                    // imagePlace.innerHTML = html;
                 }
             }
         }
