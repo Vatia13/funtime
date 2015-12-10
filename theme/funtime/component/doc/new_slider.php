@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
 <script src="/<?=$theme?>js/touchwipe.js?ver=0.1"></script>
 <link type="text/css" rel="stylesheet" href="/<?=$theme?>css/new_slider/prettyPhotoOriginal.css?ver=<?=rand(0,99999);?>" />
-<script src="/<?=$theme?>js/new_slider/jquery.prettyPhotoOriginal.js?ver=0.1"></script>
+<script src="/<?=$theme?>js/new_slider/jquery.prettyPhotoOriginal.js?ver=<?=rand(0,99999);?>"></script>
 <?if(function_exists('get_banner')):?>
     <?if(get_banner('SL',$registry['post'][0]['cat_id']) == true):?>
         <? $sl = '<div class="index-banner-place" style="position:relative;top:5px;"><div class="banner-place" style="width:340px;height:200px;">'.get_banner("SL",$registry["post"][0]["cat_id"]).'</div></div>'; ?>
@@ -46,12 +46,14 @@
         });
 
         //$(".pp_pic_holder,.pp_content")
-      var imageNum = $('.gallery li').length;
+        <?if($registry['deviceType'] != 'phone'):?>
+        var imageNum = $('.gallery li').length;
         for(var i = 0; i <= imageNum; i++){
             if($('.gallery li:nth-child('+i+') img').height() > $('.gallery li:nth-child('+i+') img').width()){
                 $('.gallery li:nth-child('+i+')').width((940 / 2) - 5);
                 $('.gallery li:nth-child('+i+') img').width((940 / 2) - 5);
             }
         }
+        <?endif;?>
     });
 </script>

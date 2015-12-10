@@ -81,6 +81,7 @@
                         </li>
                     <?endfor;?>
                 </ul>
+
             <?endif;?>
         <?endif;?>
         <?if(is_array($registry['wyaro']) && !empty($registry['wyaro']['title'])): $wurl = 'http://'.str_replace('http://','',$registry['wyaro']['url']);?>
@@ -121,7 +122,7 @@
 <?}else{
 echo '<div class="content"><div class="warning_box ">სტატია არ მოიძებნა.</div></div>';
 }?>
-<?if(!$_GET['new_slider'] && $registry['post'][0]['slide_type'] == '1'):?>
+<?if(!$_GET['new_slider'] && $registry['post'][0]['slide_type'] == '1' && $registry['deviceType'] != 'phone'):?>
 <script>
     $(document).ready(function() {
         var options = {
@@ -190,7 +191,7 @@ echo '<div class="content"><div class="warning_box ">სტატია არ �
         });
     </script>
 <?else:?>
-    <?if(!$_GET['new_slider'] && $registry['post'][0]['slide_type'] == '1'):?>
+    <?if(!$_GET['new_slider'] && $registry['post'][0]['slide_type'] == '1' && $registry['deviceType'] != 'phone'):?>
 <link type="text/css" rel="stylesheet" href="/<?=$theme?>css/prettyPhotoNew6.css?ver=0.5" />
 <script src="/<?=$theme?>js/jquery.prettyPhoto7.js?ver=0.5"></script>
 

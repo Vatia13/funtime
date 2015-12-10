@@ -35,7 +35,7 @@ var nicesx = $(".rubrics").niceScroll({touchbehavior:false,cursorcolor:"#ff5704"
 </script>-->
     <?if(isset($_GET['pitem']) && isset($_GET['pcat'])):?>
         <link type="text/css" rel="stylesheet" href="/<?=$theme?>css/rainbow.css" />
-    <?if(!$_GET['new_slider'] && $registry['post'][0]['slide_type'] == '1'):?>
+    <?if(!$_GET['new_slider'] && $registry['post'][0]['slide_type'] == '1' && $registry['deviceType'] != 'phone'):?>
     <link type="text/css" rel="stylesheet" href="/<?=$theme?>css/pgwslider.css" />
         <script src="/<?=$theme?>js/pgwslider.js"></script>
     <?endif;?>
