@@ -401,6 +401,14 @@ function last_par_url($string){
     $last = count($par) - 1;
     return $par[$last];
 }
+
+function last_par_url2($string){
+    $par = explode('/',$string);
+    $last = count($par) - 1;
+    $las = $last - 1;
+    return $par[$las].'/'.$par[$last];
+}
+
 function first_par_url($string){
     $par = explode('/',$string);
     $last = count($par) - 1;

@@ -354,10 +354,19 @@ div.facebook #pp_full_res{
 .gallery li{
     float:left;
     margin-right:10px;
-    margin-bottom:10px;
+    margin-bottom:50px;
     max-height:620px;
     height:100%;
     overflow:hidden;
     display:block;
     max-width:940px;
+    text-align:left;
+}
+.gallery li img{
+    object-fit:cover;
+}
+.gallery li span{
+    margin-bottom:5px;
+    font-family:'BPGNinoMtavruliRegular';
+    color:#ff5704;
 }

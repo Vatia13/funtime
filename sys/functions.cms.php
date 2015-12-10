@@ -596,7 +596,7 @@ function resizeCopy($cur_dir, $cur_file, $newwidth, $output_dir,$type)
     $h = 255;
     $dir_name = $cur_dir;
     $olddir = getcwd();
-    $dir = opendir(iconv('utf-8', "ISO-8859-1", $dir_name));
+    //$dir = opendir(iconv('utf-8', "ISO-8859-1", $dir_name));
     $filename = $cur_file;
     $format = '';
 
@@ -654,6 +654,8 @@ function resizeCopy($cur_dir, $cur_file, $newwidth, $output_dir,$type)
     }
 
 }
+
+
 
 function replace_quotes($string){
     $string = str_replace("'", "\\'", $string);
