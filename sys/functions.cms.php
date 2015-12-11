@@ -687,3 +687,8 @@ $output .='<div class="banner-place" style="width:'.$width.'px;height:'.$height.
     $output .='</div></div>';
     return $output;
 }
+
+
+function get_serialize($string){
+	return (unserialize($string)) ? @unserialize($string) : @unserialize(base64_decode($string));
+}

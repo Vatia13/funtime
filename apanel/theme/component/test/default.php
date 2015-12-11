@@ -21,8 +21,8 @@
              <? foreach($registry['tests'] as $item): $csum = 0;?>
                  <tr>
                  <?
-                 $qnum = unserialize($item['question']); $qnum = count($qnum);
-                 $sum = unserialize($item['point']);
+                 $qnum = get_serialize($item['question']); $qnum = count($qnum);
+                 $sum = get_serialize($item['point']);
                  foreach($sum as $su){
                      $csum = $csum + max($su);
                  }

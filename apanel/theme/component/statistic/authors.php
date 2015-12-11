@@ -8,7 +8,7 @@
             <input type="text" name="author" value="<?=$_POST['author'];?>"  placeholder="სახელი გვარი">
             <select name="options">
                 <option value="views" <?if(!$_POST['options'] or $_POST['options'] == 'views'):?>selected<?endif;?>>საერ.ჩვენების მიხედვით</option>
-                <option value="uniquev" <?if($_POST['options'] == 'uniquev'):?>selected<?endif;?>>უნიკ.ჩვენების მიხედვით</option>
+                <option value="unique" <?if($_POST['options'] == 'uniquev'):?>selected<?endif;?>>უნიკ.ჩვენების მიხედვით</option>
                 <option value="news" <?if($_POST['options'] == 'news'):?>selected<?endif;?>>სტატიების რაოდენობის მიხედვით</option>
             </select>
             <select name="sort">
@@ -29,13 +29,13 @@
         </tr>
         </thead>
         <tbody>
-        <?php if(count($registry['authors']) > 0): $i=0; foreach($registry['authors'] as $item): $i++;?>
+        <?php if(count($registry['counts']) > 0): $i=0; foreach($registry['counts'] as $item): $i++;?>
             <tr>
                 <td><?php echo $i;?></td>
-                <td><a href="/apanel/index.php?component=statistic&section=post&author=<?php echo $item['id'];?>"><?php echo $item['realname']?></a></td>
+                <td><a href="/apanel/index.php?component=statistic&section=post&author=<?php echo $item['user'];?>"><?php echo $item['realname']?></a></td>
                 <td><?php echo $item['news']?></td>
                 <td><?php if(empty($item['views'])): echo "---"; else: echo $item['views']; endif;?></td>
-                <td><?php if(empty($item['uniquev'])): echo "---"; else: echo $item['uniquev']; endif;?></td>
+                <td><?php if(empty($item['unique'])): echo "---"; else: echo $item['unique']; endif;?></td>
             </tr>
         <?php endforeach;?>
         <?php endif;?>

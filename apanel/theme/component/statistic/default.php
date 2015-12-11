@@ -9,7 +9,7 @@
         <input type="text" name="to" value="<?=$_POST['to'];?>" placeholder="მდე" class="calendar input_80"/>
         <select name="options">
             <option value="views" <?if(!$_POST['options'] or $_POST['options'] == 'views'):?>selected<?endif;?>>საერ.ჩვენების მიხედვით</option>
-            <option value="uniquev" <?if($_POST['options'] == 'uniquev'):?>selected<?endif;?>>უნიკ.ჩვენების მიხედვით</option>
+            <option value="unique" <?if($_POST['options'] == 'unique'):?>selected<?endif;?>>უნიკ.ჩვენების მიხედვით</option>
             <option value="news" <?if($_POST['options'] == 'news'):?>selected<?endif;?>>სტატიების რაოდენობის მიხედვით</option>
         </select>
         <select name="sort">
@@ -34,13 +34,13 @@
         </tr>
         </thead>
         <tbody>
-        <?php if(count($registry['rubric']) > 0): $i=0; foreach($registry['rubric'] as $item): $i++;?>
+        <?php if(count($registry['counts']) > 0): $i=0; foreach($registry['counts'] as $item): $i++;?>
             <tr>
                 <td><?php echo $i;?></td>
-                <td><a href="/apanel/index.php?component=statistic&section=post&cat=<?php echo $item['id'];?>"><?php echo $item['name']?></a></td>
+                <td><a href="/apanel/index.php?component=statistic&section=post&cat=<?php echo $item['cat'];?>"><?php echo $item['name']?></a></td>
                 <td><?php echo $item['news'];?></td>
                 <td><?php if(empty($item['views'])): echo "---"; else: echo $item['views']; endif;?></td>
-                <td><?php if(empty($item['uniquev'])): echo "---"; else: echo $item['uniquev']; endif;?></td>
+                <td><?php if(empty($item['unique'])): echo "---"; else: echo $item['unique']; endif;?></td>
             </tr>
         <?php endforeach;?>
         <?php endif;?>

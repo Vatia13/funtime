@@ -6,10 +6,10 @@ if($_GET['section'] == 'view'):
         $value = intval($_GET['value']);
         $registry['test'] = $DB->getAll("SELECT #__tests.* FROM #__tests WHERE #__tests.id='{$value}'");
         if(count($registry['test']) > 0):
-        $registry['question'] = unserialize($registry['test'][0]['question']);
-        $registry['answer'] = unserialize($registry['test'][0]['answer']);
-        $registry['point'] = unserialize($registry['test'][0]['point']);
-        $registry['result'] = unserialize($registry['test'][0]['result']);
+        $registry['question'] = get_serialize($registry['test'][0]['question']);
+        $registry['answer'] = get_serialize($registry['test'][0]['answer']);
+        $registry['point'] = get_serialize($registry['test'][0]['point']);
+        $registry['result'] = get_serialize($registry['test'][0]['result']);
         $registry['myres'] = 0;
             if($registry['answer']){
                 $registry['answer_keys'] = array_keys($registry['answer']);
@@ -48,7 +48,7 @@ if($_GET['section'] == 'share'):
 
             $registry['myres']= intval($_GET['value2']);
             $registry['test'] = $DB->getAll("SELECT #__tests.* FROM #__tests WHERE #__tests.id='{$value}' and status='0' and date < {$time}");
-            $registry['result'] = unserialize($registry['test'][0]['result']);
+            $registry['result'] = get_serialize($registry['test'][0]['result']);
             foreach($registry['result'] as $item):
                 if($item['min'] <= $registry['myres'] and $item['max'] >= $registry['myres']){
                     $registry['resultinfo'] = $item['text'];

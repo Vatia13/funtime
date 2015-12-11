@@ -3,14 +3,14 @@
 <script>
 function scrollWin(point, text) {
 	$("#picture").animate(
-    { scrollTop: point},
-    { complete : function(){ }});
+    { scrollTop: point }, 2500
+	);
 	$('#capt').css('top',point+6+'px').html(text);
 	$('#capt').css('display','block'); 
 	}
 </script>
 <style>
-	body{ background-color:#036; z-index:99999; font-family: 'BPGNinoMtavruliRegular';}
+	body{font-family: 'BPGNinoMtavruliRegular';}
 	#tab{ border-left:1px solid #35b2d5; border-right:1px solid #35b2d5; width:100%;}
 	.tab{
 		background-color:#35b2d5; width:70% !important; margin:0px auto; color:#FFF;
@@ -30,7 +30,7 @@ function scrollWin(point, text) {
 		margin:0px auto;
 		z-index:1;
 		}
-	.showr{cursor:pointer;}
+    .showr{cursor:pointer;}
 	@media screen and (max-width: 600px) {
 		.pie{ width:320px; height:320px;} 
 		.column{ width:320px; height:320px;} 
@@ -43,7 +43,7 @@ function scrollWin(point, text) {
 		.tab{ width:100% !important;}
 	} 
     tr{ cursor:pointer;}
-    #sh{ z-index:9999999; display:none; background-color:#FFFFFF; position:fixed; border:10px solid #27bfc4; height:700px; font-family: 'BPGNinoMtavruliRegular';}
+    #sh{ display:none; background-color:#FFFFFF; position:absolute;border:10px solid #27bfc4; height:700px; font-family: 'BPGNinoMtavruliRegular';}
     #sh div{height:700px;  float:left;}
 	#picture{ width:50%;}
     #picture{ overflow-y:scroll; }
@@ -73,8 +73,9 @@ function scrollWin(point, text) {
 		top:-9px;
 		right:-9px;
 		border-radius:25px;	
-	} 
+	}  
 </style>
+<div id="overflow">
 <div class="content">
 <div id="content"> 
 <div id="sh">	 
@@ -116,11 +117,9 @@ else
 </div> 
 <script>
 function view(){
-  $( "#sh" ).slideToggle( "slow" );
-  $( "#sh" ).css('position','absolute');
-  $( "#sh" ).css('position','absolute'); 
+  $( "#sh" ).fadeIn( "slow" ); 
   $('#esc').click(function(e) {
-    $( "#sh" ).hide(1000);
+    $( "#sh" ).fadeOut( "slow" );
 	});
 }; 
 </script>
@@ -942,5 +941,4 @@ else
 </table>
 </div>
 </div> 
-</div>
 </div>

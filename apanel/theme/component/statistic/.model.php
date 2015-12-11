@@ -58,7 +58,7 @@ if($_POST['from'] or $_GET['from']){
 
 
 }else{
-    $from_extra = date('Y-m').'-1';
+    $from_extra = date('Y-m').'-01';
     $to_extra = date('Y-m-d');
 }
 $sql_filter_view = 'and (#__news_view.date >= "'.$from_extra.'" and #__news_view.date <= "'.$to_extra.'")';
@@ -80,12 +80,79 @@ if($_GET['component'] == 'statistic' && !$_GET['section']){
 
     $date = date('d-m-Y');
     if($user->get_property('gid') == 21){$redaqtor2 = ' and #__category.id = 116'; $rcache='-redactor';}
+    $registry['rubric'] = array();
+    /* PLAYGROUND */
+    //print_r($sql_sort);
 
-    $registry['rubric'] = getAllcache('SELECT #__category.*,
-    (SELECT SUM(#__news_view.view) FROM #__news_view WHERE #__news_view.cat = #__category.id '.$sql_filter_view.') as views,
-    (SELECT count(#__unique_visitors.id) FROM #__unique_visitors WHERE #__unique_visitors.cat = #__category.id '.$sql_filter_unique.') as uniquev,
-    (SELECT count(#__news.id) FROM #__news WHERE #__news.cat = #__category.id '.$sql_filter_news.') as news
-     FROM #__category WHERE #__category.section="post" and #__category.stat="'.$stat.'" '.$redaqtor2.' order by '.$sql_order.' '.$sql_sort.'',3600,'statistika/rubrics'.$filter_cache.$rcache,'../');
+    $registry['count_views'] = $DB->getAll('SELECT b.name,#__news_view.cat,SUM(#__news_view.view) as views,(SELECT count(#__news.id) FROM #__news WHERE #__news.cat = #__news_view.cat and moderate=1) as news FROM #__news_view LEFT JOIN #__category as b ON b.id=#__news_view.cat WHERE b.section="post" and b.stat="'.$stat.'" '.$sql_filter_view.' GROUP BY #__news_view.cat ORDER BY views '.$sql_sort.'');
+    if(count($registry['count_views']) > 0){
+        foreach($registry['count_views'] as $v){
+            $registry['view_cats'][] = $v['cat'];
+        }
+    }
+    $uniq_sql = 'SELECT #__unique_visitors.cat,count(#__unique_visitors.id) as uniq FROM #__unique_visitors WHERE #__unique_visitors.cat IN ('.join(',',$registry['view_cats']).') '.$sql_filter_unique.' GROUP BY cat';
+    $registry['unique'] = $DB->getAll($uniq_sql);
+    if(count($registry['unique']) > 0){
+        foreach($registry['unique'] as $u){
+            $registry['uniques'][$u['cat']] = $u['uniq'];
+        }
+    }
+    if(count($registry['count_views'])){
+        foreach($registry['count_views'] as $key=>$v){
+            $registry['counts'][$v['cat']]['cat'] = $v['cat'];
+            $registry['counts'][$v['cat']]['name'] = $v['name'];
+            $registry['counts'][$v['cat']]['views'] = $v['views'];
+            $registry['counts'][$v['cat']]['news'] = $v['news'];
+            $registry['counts'][$v['cat']]['unique'] = $registry['uniques'][$v['cat']];
+        }
+    }
+    function sortByOrder($a, $b) {
+        return $a['unique'] - $b['unique'];
+    }
+
+
+    if($sql_order == 'unique'){
+        if($sql_sort == 'desc'){
+            usort($registry['counts'], function($a, $b) {
+                return  $b['unique'] - $a['unique'];
+            });
+        }else{
+            usort($registry['counts'], function($a, $b) {
+                return  $a['unique'] - $b['unique'];
+            });
+        }
+    }
+
+    if($sql_order == 'views'){
+        if($sql_sort == 'desc'){
+            usort($registry['counts'], function($a, $b) {
+                return  $b['views'] - $a['views'];
+            });
+        }else{
+            usort($registry['counts'], function($a, $b) {
+                return  $a['views'] - $b['views'];
+            });
+        }
+    }
+
+    if($sql_order == 'news'){
+        if($sql_sort == 'desc'){
+            usort($registry['counts'], function($a, $b) {
+                return  $b['news'] - $a['news'];
+            });
+        }else{
+            usort($registry['counts'], function($a, $b) {
+                return  $a['news'] - $b['news'];
+            });
+        }
+    }
+
+    //var_dump($registry['cats']);
+//    $registry['rubric'] = getAllcache('SELECT #__category.*,
+//    (SELECT SUM(#__news_view.view) FROM #__news_view WHERE #__news_view.cat = #__category.id '.$sql_filter_view.') as views,
+//    (SELECT count(#__unique_visitors.id) FROM #__unique_visitors WHERE #__unique_visitors.cat = #__category.id '.$sql_filter_unique.') as uniquev,
+//    (SELECT count(#__news.id) FROM #__news WHERE #__news.cat = #__category.id '.$sql_filter_news.') as news
+//     FROM #__category WHERE #__category.section="post" and #__category.stat="'.$stat.'" '.$redaqtor2.' order by '.$sql_order.' '.$sql_sort.'',3600,'statistika/rubrics'.$filter_cache.$rcache,'../');
 }
 if($_GET['component'] == 'statistic' && $_GET['section'] == 'authors'){
     if($_POST['author']){
@@ -108,11 +175,78 @@ if($_GET['component'] == 'statistic' && $_GET['section'] == 'authors'){
         $redactor_where = " #__category.id=116 and ";
         $redaqtor2 = ' and #__category.id = 116'; $rcache='-redactor';
     }
-    $registry['authors'] = getAllcache("SELECT #__users.*,
-    (SELECT count(id) FROM #__news WHERE #__news.user = #__users.id ".$sql_filter_news.") as news,
-    (SELECT count(#__unique_visitors.id) FROM #__unique_visitors WHERE #__unique_visitors.user = #__users.id ".$sql_filter_unique.") as uniquev,
-    (SELECT SUM(#__news_view.view) FROM #__news_view WHERE #__news_view.user = #__users.id ".$sql_filter_view.") as views
-    FROM #__users $redactor_join WHERE $redactor_where (group_id = 3 or group_id = 2) $sql_author order by $sql_order $sql_sort",3600,'statistika/authors'.$filter_cache.$rcache,'../');
+/* PLAYGROUND */
+
+    $registry['count_views'] = $DB->getAll('SELECT b.realname,#__news_view.user,SUM(#__news_view.view) as views,(SELECT count(#__news.id) FROM #__news WHERE #__news.user = #__news_view.user and moderate=1) as news FROM #__news_view LEFT JOIN #__users as b ON b.id=#__news_view.user WHERE  (b.group_id = 3 or b.group_id = 2) and  b.status=0 '.$sql_author.' '.$sql_filter_view.' GROUP BY #__news_view.user ORDER BY views '.$sql_sort.'');
+
+    if(count($registry['count_views']) > 0){
+        foreach($registry['count_views'] as $v){
+            $registry['view_users'][] = $v['user'];
+        }
+    }
+
+   $uniq_sql = 'SELECT #__unique_visitors.user,count(#__unique_visitors.id) as uniq FROM #__unique_visitors WHERE #__unique_visitors.user IN ('.join(',',$registry['view_users']).') '.$sql_filter_unique.' GROUP BY user';
+   $registry['unique'] = $DB->getAll($uniq_sql);
+
+    if(count($registry['unique']) > 0){
+        foreach($registry['unique'] as $u){
+            $registry['uniques'][$u['user']] = $u['uniq'];
+        }
+    }
+    if(count($registry['count_views'])){
+        foreach($registry['count_views'] as $key=>$v){
+            $registry['counts'][$v['user']]['user'] = $v['user'];
+            $registry['counts'][$v['user']]['realname'] = $v['realname'];
+            $registry['counts'][$v['user']]['views'] = $v['views'];
+            $registry['counts'][$v['user']]['news'] = $v['news'];
+            $registry['counts'][$v['user']]['unique'] = $registry['uniques'][$v['user']];
+        }
+    }
+    function sortByOrder($a, $b) {
+        return $a['unique'] - $b['unique'];
+    }
+
+
+    if($sql_order == 'unique'){
+        if($sql_sort == 'desc'){
+            usort($registry['counts'], function($a, $b) {
+                return  $b['unique'] - $a['unique'];
+            });
+        }else{
+            usort($registry['counts'], function($a, $b) {
+                return  $a['unique'] - $b['unique'];
+            });
+        }
+    }
+
+    if($sql_order == 'views'){
+        if($sql_sort == 'desc'){
+            usort($registry['counts'], function($a, $b) {
+                return  $b['views'] - $a['views'];
+            });
+        }else{
+            usort($registry['counts'], function($a, $b) {
+                return  $a['views'] - $b['views'];
+            });
+        }
+    }
+
+    if($sql_order == 'news'){
+        if($sql_sort == 'desc'){
+            usort($registry['counts'], function($a, $b) {
+                return  $b['news'] - $a['news'];
+            });
+        }else{
+            usort($registry['counts'], function($a, $b) {
+                return  $a['news'] - $b['news'];
+            });
+        }
+    }
+//    $registry['authors'] = getAllcache("SELECT #__users.*,
+//    (SELECT count(id) FROM #__news WHERE #__news.user = #__users.id ".$sql_filter_news.") as news,
+//    (SELECT count(#__unique_visitors.id) FROM #__unique_visitors WHERE #__unique_visitors.user = #__users.id ".$sql_filter_unique.") as uniquev,
+//    (SELECT SUM(#__news_view.view) FROM #__news_view WHERE #__news_view.user = #__users.id ".$sql_filter_view.") as views
+//    FROM #__users $redactor_join WHERE $redactor_where (group_id = 3 or group_id = 2) $sql_author order by $sql_order $sql_sort",3600,'statistika/authors'.$filter_cache.$rcache,'../');
 }
 
 
@@ -153,7 +287,7 @@ if($_GET['component'] == 'statistic' && $_GET['section'] == 'post'){
     // Определяем общее число сообщений в базе данных
     $posts = $DB->getOne("SELECT count(`#__news`.`id`),
     (SELECT count(#__unique_visitors.id) FROM #__unique_visitors WHERE #__unique_visitors.user = #__news.user) as uniquev,
-    (SELECT SUM(#__news_view.view) FROM #__news_view WHERE #__news_view.news_id = #__news.id ".$sql_filter_view.") as views
+    (SELECT SUM(#__news_view.view) FROM #__news_view WHERE #__news_view.news_id = #__news.id) as views
     FROM `#__news` LEFT JOIN #__category ON #__category.id=#__news.cat
     WHERE `#__news`.`id`>'0' $redaqtor2 $sql_author and #__category.section='post' and #__category.stat='".$stat."' ".$sql_filter_news." order by $sql_order $sql_sort");
     //$postsmoder = $DB->getOne("SELECT count(`#__news`.`id`) FROM `#__news` LEFT JOIN #__category ON #__category.id=#__news.cat WHERE `moderate`='1' $sql_author and `#__news`.`id`>'0' and #__category.section='post'");

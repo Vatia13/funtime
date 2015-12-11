@@ -35,10 +35,10 @@ if($_GET['section'] == 'add'){
          $title = PHP_slashes(htmlspecialchars(strip_tags($_POST['title'])));
          $lid = PHP_slashes(htmlspecialchars(strip_tags($_POST['lid'])));
          $img = PHP_slashes(htmlspecialchars(strip_tags($_POST['img'])));
-         $question = serialize(mysql_real_escape_string($_POST['question']));
-         $answer = serialize(mysql_real_escape_string($_POST['answer']));
-         $point = serialize($_POST['point']);
-         $result = serialize($_POST['result']);
+         $question = base64_encode(serialize($_POST['question']));
+         $answer = base64_encode(serialize($_POST['answer']));
+         $point = base64_encode(serialize($_POST['point']));
+         $result = base64_encode(serialize($_POST['result']));
         $date_dd=intval($_POST['date_dd']);
         $date_mm=intval($_POST['date_mm']);
         $date_yy=intval($_POST['date_yy']);
@@ -66,10 +66,11 @@ if($_GET['section'] == 'add'){
 if($_GET['section'] == 'edit' && $_GET['edit'] > 0){
     $value = intval($_GET['edit']);
     $registry['test'] = $DB->getAll("SELECT #__tests.* FROM #__tests WHERE #__tests.id = {$value} order by id desc");
-    $registry['question'] = unserialize($registry['test'][0]['question']);
-    $registry['answer'] = unserialize($registry['test'][0]['answer']);
-    $registry['point'] = unserialize($registry['test'][0]['point']);
-    $registry['result'] = unserialize($registry['test'][0]['result']);
+
+    $registry['question'] = get_serialize($registry['test'][0]['question']);
+    $registry['answer'] = get_serialize($registry['test'][0]['answer']);
+    $registry['point'] = get_serialize($registry['test'][0]['point']);
+    $registry['result'] = get_serialize($registry['test'][0]['result']);
     if($registry['answer']){
         $registry['answer_keys'] = array_keys($registry['answer']);
     }
@@ -80,10 +81,10 @@ if($_GET['section'] == 'edit' && $_GET['edit'] > 0){
         $title = PHP_slashes(htmlspecialchars(strip_tags($_POST['title'])));
         $lid = PHP_slashes(htmlspecialchars(strip_tags($_POST['lid'])));
         $img = PHP_slashes(htmlspecialchars(strip_tags($_POST['img'])));
-        $question = serialize($_POST['question']);
-        $answer = serialize($_POST['answer']);
-        $point = serialize($_POST['point']);
-        $result = serialize($_POST['result']);
+        $question = base64_encode(serialize($_POST['question']));
+        $answer = base64_encode(serialize($_POST['answer']));
+        $point = base64_encode(serialize($_POST['point']));
+        $result = base64_encode(serialize($_POST['result']));
         $date_dd=intval($_POST['date_dd']);
         $date_mm=intval($_POST['date_mm']);
         $date_yy=intval($_POST['date_yy']);
