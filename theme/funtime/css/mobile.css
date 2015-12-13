@@ -565,3 +565,10 @@ font-size:16px;
     -moz-transition:all 0.4s ease;
     -webkit-transition:all 0.4s ease;
 }
+
+.brand_right{
+    display:none;
+}
+.brand_left{
+    display:none;
+}

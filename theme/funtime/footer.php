@@ -75,7 +75,7 @@
     </div>
 </div></div>
 </div>
-<script language="JavaScript" type="text/javascript" src="/<?=$theme?>js/mobile5.js"></script>
+<script language="JavaScript" type="text/javascript" src="/<?=$theme?>js/mobile.js"></script>
 <script>
     $(document).ready(function(){
         $('.bottom-footer').height($('.bottom-rubrics').height() + 50);

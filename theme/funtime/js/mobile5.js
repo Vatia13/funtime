@@ -1,7 +1,7 @@
 $(function(){
     if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         if($(window).width() < 900){
-            $("#style").attr('href','/theme/funtime/css/mobile.css');
+            $("#style").attr('href','/theme/funtime/css/mobile.css?ver=0.1');
             $("#container").css("margin","0px auto");
             var rubricsH = $(window).height();
             $('.rubrics').css('height',rubricsH+'px');
