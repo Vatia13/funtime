@@ -354,7 +354,7 @@ div.facebook #pp_full_res{
 .gallery li{
     float:left;
     margin-right:10px;
-    margin-bottom:50px;
+    margin-bottom:70px;
     max-height:620px;
     height:100%;
     overflow:hidden;
@@ -366,7 +366,12 @@ div.facebook #pp_full_res{
     object-fit:cover;
 }
 .gallery li span{
-    margin-bottom:5px;
+    position:relative;
+    bottom:0;
     font-family:'BPGNinoMtavruliRegular';
     color:#ff5704;
+}
+.gallery li > span p{
+    margin:0;
+    padding:0;
 }

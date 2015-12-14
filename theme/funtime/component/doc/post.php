@@ -73,10 +73,10 @@
                             endif;
                             //print_r();
                             ?>
-                            <span><?=strip_tags($registry['slider']['name'][$i]);?></span>
+                            <span><?=$registry['slider']['name'][$i];?></span>
                         <?endif;?>
-                            <a href="<?=$registry['slider']['img'][$i];?>" data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu']?>/<?=$registry['post'][0]['chpu']?>/&title=<?echo str_replace(' ','+',$registry['post'][0]['title']);?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['post'][0]['time']));?>/<?=$registry['post'][0]['id'].'_'.last_par_url($registry['slider']['img'][$i]);?>&description=<?=strip_tags($registry['post'][0]['text_short'])?>&redirect_uri=https://www.facebook.com/" title="<?=$registry['slider']['name'][$i];?>" rel="prettyPhoto[pp_gal2]" >
-                                <img src="<?=$registry['slider']['img'][$i];?>" style="max-width:940px !important;" title="<?=strip_tags($registry['slider']['name'][$i]);?>" data-description="<?=$registry['slider']['name'][$i];?>">
+                            <a href="<?=$registry['slider']['img'][$i];?>" data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu']?>/<?=$registry['post'][0]['chpu']?>/&title=<?echo str_replace(' ','+',strip_tags($registry['post'][0]['title']));?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['post'][0]['time']));?>/<?=$registry['post'][0]['id'].'_'.last_par_url($registry['slider']['img'][$i]);?>&description=<?=strip_tags($registry['post'][0]['text_short'])?>&redirect_uri=https://www.facebook.com/" title="<?=strip_tags($registry['slider']['name'][$i]);?>" rel="prettyPhoto[pp_gal2]" >
+                                <img src="<?=$registry['slider']['img'][$i];?>" style="max-width:940px !important;" title="<?=strip_tags(addslashes($registry['slider']['name'][$i]));?>" data-description="<?=addslashes($registry['slider']['name'][$i]);?>">
                             </a>
                         </li>
                     <?endfor;?>

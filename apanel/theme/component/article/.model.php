@@ -148,10 +148,11 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
             $slicount = count($slidefiles);
             // echo generate_unknown($_SERVER['DOCUMENT_ROOT'].$slide_dir);
             if($slicount > 0){
-                foreach($slidefiles as $fs){
+               $i=0; foreach($slidefiles as $fs){
                     if(str2int(last_par_url($fs)) > 0){
                         $slide['img'][] = 'http://funtime.ge:80' . $slide_dir . last_par_url($fs);
-                        $slide['name'][] = '';
+                        $slide['name'][] = isset($slider_images['name'][$i]) ? $slider_images['name'][$i] : '';
+                        $i++;
                     }
                 }
             }
