@@ -68,7 +68,7 @@ class ajax{
                     }
                     $content_length = $title_length + $short_length;
                     $short_length = 165 - $title_length;
-                    $reg['slide'] = unserialize($item['slide']);
+                    $reg['slide'] = get_serialize($item['slide']);
 if(count($reg['slide']['img']) > 1):
     $foto = '<h3 style="background-image:url(/theme/funtime/images/main_icon.png);background-repeat:no-repeat;background-position:right 10px center;padding:30px 50px 27px 10px;"></h3>';
 endif;
@@ -155,7 +155,7 @@ endif;
                                          WHERE '.$sql_search .' '.$this->p.'news.moderate=1 and '.$this->p.'news.date <= '.$time.' order by '.$this->p.'news.date DESC LIMIT '.$num.',21');
             if($registry['search'][0]['id'] > 0){
             foreach($registry['search'] as $item):
-                $reg['slide'] = unserialize($item['slide']);
+                $reg['slide'] = get_serialize($item['slide']);
 if(count($reg['slide']['img']) > 1):
     $style = "background-image:url('/theme/funtime/images/main_icon.png');background-repeat:no-repeat;background-size:30px 30px;background-position:right 10px center;padding:10px 50px 7px 10px;";
 else:
@@ -348,7 +348,7 @@ endif;
                 if(count($registry['more_articles']) > 0):
                     $out .='<ul>';
                     foreach($registry['more_articles'] as $item):
-                        $th['slide'] = unserialize($item['slide']);
+                        $th['slide'] = get_serialize($item['slide']);
                         $out .= '<li class="web" data-id="'.$item['id'].'"><div class="five-rubric">';
                         $out .= '<a href="http://'.$_SERVER['SERVER_NAME'].'/'.$item['cat_chpu'].'/">'.$item['name'].'</a><br>';
                         $out .= '<div class="five-time">'.gedate('d.m.Y',$item['date']).'</div><br><br>';

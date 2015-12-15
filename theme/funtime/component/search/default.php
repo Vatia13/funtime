@@ -35,7 +35,7 @@
                 }
                 $content_length = $title_length + $short_length;
                 $short_length = 135 - $title_length;
-                $this['slide'] = unserialize($item['slide']);
+                $this['slide'] = get_serialize($item['slide']);
                 ?>
             <li data-last_id="<?=$item['id'];?>">
                 <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/"><h3 style="<?if(count($this['slide']['img']) > 1):?>background-image:url('/<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-size:30px 30px;background-position:right 10px center;padding:10px 50px 7px 10px;<?elseif($item['style']==12):?>background-image:url('/<?=$theme?>images/vcam.png');background-repeat:no-repeat;background-size:30px 26px;background-position:right 10px center;padding:10px 50px 7px 10px;<?else:?>padding:10px 10px 7px 10px;<?endif;?>"><?=$item['name'];?></h3></a>

@@ -13,7 +13,7 @@
      }
      $content_length = $title_length + $short_length;
      $short_length = 130 - $title_length + 25;
-     $this['slide'] = unserialize($item['slide']);
+     $this['slide'] = get_serialize($item['slide']);
      ?>
 <div class="two-article-content" <?if($registry['deviceType'] == 'computer' or $registry['deviceType'] == 'tablet'):?> style="max-height:220px;overflow:hidden;" <?endif;?>>
 

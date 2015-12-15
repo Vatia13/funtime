@@ -1,8 +1,8 @@
 <?php defined('_JEXEC') or die('Restricted access');?>
 <?php
 
-$color = unserialize($registry['main-article'][0]['color']);
-$slide = unserialize($registry['main-article'][0]['slide']);
+$color = get_serialize($registry['main-article'][0]['color']);
+$slide = get_serialize($registry['main-article'][0]['slide']);
 ?>
 <div class="main-article" style="border:3px solid <?=$color['frame']?>;">
     <ul>

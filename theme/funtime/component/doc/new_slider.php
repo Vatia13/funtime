@@ -48,10 +48,14 @@
         //$(".pp_pic_holder,.pp_content")
         <?if($registry['deviceType'] != 'phone'):?>
         var imageNum = $('.gallery li').length;
-        for(var i = 0; i <= imageNum; i++){
-            if($('.gallery li:nth-child('+i+') img').height() > $('.gallery li:nth-child('+i+') img').width()){
-                $('.gallery li:nth-child('+i+')').width((940 / 2) - 5);
-                $('.gallery li:nth-child('+i+') img').width((940 / 2) - 5);
+        var w = 0;
+        for(var i = 1; i <= imageNum; i++){
+
+
+            if($('.gallery li:nth-child('+i+') .zoom-pic img').height() > $('.gallery li:nth-child('+i+') .zoom-pic img').width()){
+                w = $('.gallery li:nth-child('+i+')').width();
+                $('.gallery li:nth-child('+i+')').width((w / 2) - 5);
+                $('.gallery li:nth-child('+i+') .zoom-pic img').width((w / 2) - 5);
             }
         }
         <?endif;?>

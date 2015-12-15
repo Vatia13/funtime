@@ -41,7 +41,7 @@
         <br><br>
         <iframe id="ytplayer" type="text/html" width="100%"  src="https://www.youtube.com/embed/<?=$registry['post'][0]['youtube'];?>?theme=light" frameborder="0" allowfullscreen></iframe>
     <?endif;?>
-    <?if(!empty($registry['post'][0]['slide'])): $registry['slider'] = (unserialize($registry['post'][0]['slide']) <> "") ? unserialize($registry['post'][0]['slide']) : unserialize(base64_decode($registry['post'][0]['slide']));?>
+    <?if(!empty($registry['post'][0]['slide'])): $registry['slider'] = get_serialize($registry['post'][0]['slide']);?>
         <?if(count($registry['slider']['img']) > 1):?>
 
             <ul class="mobile-slider gallery">

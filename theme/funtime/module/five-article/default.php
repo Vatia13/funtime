@@ -2,7 +2,7 @@
 <div class="five-article">
     <ul>
         <?foreach($registry['five-article'] as $item):
-            $this['slide'] = unserialize($item['slide']);
+            $this['slide'] = get_serialize($item['slide']);
             ?>
         <?if($registry['deviceType'] == 'computer' or $registry['deviceType'] == 'tablet'):?>
         <li class="web">

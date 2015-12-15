@@ -361,10 +361,9 @@ div.facebook #pp_full_res{
     display:block;
     max-width:940px;
     text-align:left;
+    position:relative;
 }
-.gallery li img{
-    object-fit:cover;
-}
+
 .gallery li span{
     position:relative;
     bottom:0;
@@ -374,4 +373,8 @@ div.facebook #pp_full_res{
 .gallery li > span p{
     margin:0;
     padding:0;
+}
+
+.gallery li .zoom-pic{
+cursor:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACUUlEQVRIS61VwXHbMBDcIznJM+4gSgVRKrDVgfSQ5J+cCkJXEKeCyBVE+pn0I+rAdAVRB5Y7kJ/JALgMABIERFBOZoQZPQQCt3d7uwdCZPEYZ3ibLIBkDOYhiM7qYxUYFRKxpjvsYncP9+hwg2fZDcBfvKA9cXiF3/KaNtgfA3IANuvsJ4CLf8nMnGFskYjJsWpagFlWgXDugjMeAV5SKTfNHl9mF1B8BaKFd26LP2LUV4kBMLQQvtqs+AWMnO7lqq+SGmgDonf1nTWV8ip2ngw1b9Inx7niz8eCu2qmGCLJfrmgSnyie2w7TeZ5kgPJ95rTRypF0AOTLeMBzBOfLlt5uvLouqVC5F0An/tokJo+xjcqxY0fgC8xAGdPdo93VMgPEYB033BJhWibbhqKc5BRlf5ZD+hApVw7qmbx+8134nnG7o8P4O13mufxzR4DfoKvA0xTLceByV7L18gWFUjtqVBLV8E83QH0Xv+PA/g9iCjBSfj1HjxTIXVCwaIDD3T0zLqShH4A6trPPOKfqBcoVIKuEyO6E1WglimGhxpn7QNKH5x/IvcMbR09M+/BchQzTWAyPzij4x/XZANgB53O+qPLnLFEIm79QWaqVdkC4Dyctl36AgADYq2v508LYj6w9skW4AFgVBVfPSMmeA/qubQMpmVfQC1bUhs3Zmo3Q8mJT2/nwXHVUJpbF1uN28XP9kWjVSOEVmXNkbCHUYBeGno+sGc2m0cLchoAK9nKvQ8+yP9m29uSGIgejKcC8HrXVsL8clKAVu6pfceVHP8FoLM+sPDRZmgAAAAASUVORK5CYII=),auto
 }
