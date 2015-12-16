@@ -680,7 +680,7 @@ if($user->get_property('gid') == 24 or $user->get_property('gid') == 25):
                 position:fixed;
                 right:0;
                 top:20%;
-                width:540px;
+                width:580px;
                 max-height:900px;
             }
         </style>
@@ -699,13 +699,14 @@ if($user->get_property('gid') == 24 or $user->get_property('gid') == 25):
                         <th scope="col" class="rounded">პოზიცია</th>
                         <th scope="col" class="rounded">ზომა</th>
                         <th scope="col" class="rounded">დასახელება</th>
+                        <th scope="col" class="rounded">ბმული (URL)</th>
                         <th scope="col" class="rounded"></th>
                     </tr>
                     </thead>
                     <tbody class="banner_adds">
                     <?foreach($registry['banners'] as $item): $info = unserialize($item['info']); ?>
                         <tr class="banner_<?=$item['id'];?> <?if($item['added']=='1'):?>table_green<?endif;?>" style="position:relative;">
-                            <td><?=$item['company'];?></td><td><?=$item['title'];?></td><td><?=$item['size'];?></td><td><?=$info['banner'];?></td><td><a onClick="haveAdd(<?=$item['id'];?>)" style="padding:7px 15px;cursor:pointer;font-family:BPGMrgvlovani;background-color:purple;max-width:140px;border-radius:5px;color:#FFF;text-align:center;">დავამატე</a></td>
+                            <td><?=$item['company'];?></td><td><?=$item['title'];?></td><td><?=$item['size'];?></td><td><?=$info['banner'];?></td><td style="overflow:hidden;"><?if(!empty($info['url'])):?><button class="copy-url" style="padding:5px 10px;margin-bottom:2px;">Copy</button><input type="text" style="width:50px;" value="<?=$info['url'];?>" class="text-url"><?else:?>---<?endif;?></td><td><a onClick="haveAdd(<?=$item['id'];?>)" style="padding:7px 15px;cursor:pointer;font-family:BPGMrgvlovani;background-color:purple;max-width:140px;border-radius:5px;color:#FFF;text-align:center;">დავამატე</a></td>
                         </tr>
                     <?endforeach;?>
                     </tbody>
@@ -750,17 +751,41 @@ if($user->get_property('gid') == 24 or $user->get_property('gid') == 25):
                 }
                 <?php endif;?>
                 $('.close_banners').click(function(){
-                    $('.post_banner_list').animate({right:'-480px'},500);
+                    $('.post_banner_list').animate({right:'-520px'},500);
                     $(this).hide();
                     $('.open_banners').show();
                 });
 
                 $('.open_banners').click(function(){
-                    $('.post_banner_list').animate({right:'+=480px'},500);
+                    $('.post_banner_list').animate({right:'+=520px'},500);
                     $(this).hide();
                     $('.close_banners').show();
                 });
 
+            });
+
+            $(document).ready(function(){
+                $('.copy-url').bind('click', function() {
+                    // Select the email link anchor text
+                    var emailLink = document.querySelector('.text-url');
+                    var range = document.createRange();
+                    range.selectNode(emailLink);
+                    window.getSelection().addRange(range);
+
+                    try {
+                        // Now that we've selected the anchor text, execute the copy command
+                        var successful = document.execCommand('copy');
+                        var msg = successful ? 'successful' : 'unsuccessful';
+                        console.log('Copy email command was ' + msg);
+                        $('.text-url').css('color','green');
+                    } catch(err) {
+                        console.log('Oops, unable to copy');
+                    }
+
+                    // Remove the selections - NOTE: Should use
+                    // removeRange(range) when it is supported
+                    window.getSelection().removeAllRanges();
+                });
             });
         </script>
     <?endif;?>

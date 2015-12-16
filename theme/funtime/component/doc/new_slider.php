@@ -1,6 +1,6 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
 <script src="/<?=$theme?>js/touchwipe.js?ver=0.1"></script>
-<link type="text/css" rel="stylesheet" href="/<?=$theme?>css/new_slider/prettyPhotoOriginal.css?ver=0.1" />
+<link type="text/css" rel="stylesheet" href="/<?=$theme?>css/new_slider/prettyPhotoOriginal.css?ver=0.2" />
 <script src="/<?=$theme?>js/new_slider/jquery.prettyPhotoOriginal.js?ver=0.1"></script>
 <?if(function_exists('get_banner')):?>
     <?if(get_banner('SL',$registry['post'][0]['cat_id']) == true):?>

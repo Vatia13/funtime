@@ -53,6 +53,10 @@ if(!empty($registry['banner'][0]['info'])){
         </td></tr>
     <tr>
     <tr>
+        <td>ბმული (URL)</td>
+        <td><input type="text" name="info[url]" value="<?input_value('info|url',$info['url']);?>"></td>
+    </tr>
+    <tr>
         <td>ბანერის დასახელება</td><td><input type="text" name="info[banner]" value="<?input_value('info|banner',$info['banner']);?>"/></td>
     </tr>
     <tr>

@@ -296,6 +296,8 @@ div.facebook .pp_details{
     padding:15px;
     position:relative;
     display:block;
+    font-size:19px !important;
+    font-family:'BPGIngiri2008Regular' !important;
 }
 div.facebook .pp_details .pp_banner{
     clear:both;
