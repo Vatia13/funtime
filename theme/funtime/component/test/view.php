@@ -16,18 +16,18 @@
             </div>
         </div>
         <!-- END BANNER PLACE-->
-
+            <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
             <div class="brand_left">
-                <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
                     <?=get_banner('ბრენდირება L',$registry['post'][0]['cat_id']);?>
-                <?endif;?>
             </div>
+            <?endif;?>
+            <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
             <div class="brand_right">
-                <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
                     <?=get_banner('ბრენდირება R',$registry['post'][0]['cat_id']);?>
-                <?endif;?>
             </div>
-        <div class="test-title">
+            <?endif;?>
+
+            <div class="test-title">
 
         <img src="<?=$registry['test'][0]['img'];?>" align="left" height="130"><h2><?=$registry['test'][0]['title'];?></h2>
         <span><?=$registry['test'][0]['lid'];?></span>

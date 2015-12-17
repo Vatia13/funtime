@@ -3,16 +3,16 @@
 <div class="post-r12">
 
     <div class="content">
-        <div class="brand_left">
-            <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
+        <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
+            <div class="brand_left">
                 <?=get_banner('ბრენდირება L',$registry['post'][0]['cat_id']);?>
-            <?endif;?>
-        </div>
-        <div class="brand_right">
-            <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
+            </div>
+        <?endif;?>
+        <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
+            <div class="brand_right">
                 <?=get_banner('ბრენდირება R',$registry['post'][0]['cat_id']);?>
-            <?endif;?>
-        </div>
+            </div>
+        <?endif;?>
         <!-- BANNER PLACE-->
         <div class="index-banner-place">
             <div class="banner-place" style="width:800px;height:100px;line-height:100px;">

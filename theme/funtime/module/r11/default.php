@@ -1,17 +1,16 @@
 <?defined('_JEXEC') or die('Restricted access');?>
 <div class="post-r11">
 <div class="content">
-    <div class="brand_left">
-        <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
+    <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
+        <div class="brand_left">
             <?=get_banner('ბრენდირება L',$registry['post'][0]['cat_id']);?>
-        <?endif;?>
-    </div>
-    <div class="brand_right">
-        <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
+        </div>
+    <?endif;?>
+    <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
+        <div class="brand_right">
             <?=get_banner('ბრენდირება R',$registry['post'][0]['cat_id']);?>
-        <?endif;?>
-    </div>
-
+        </div>
+    <?endif;?>
     <div class="post-image" style="border:25px solid <?=$registry['color']['frame'];?>">
         <h3 style="background-color:<?=$registry['color']['rubric'];?>; opacity:0.8; <?if(count($registry['slide']['img']) > 1):?>background-image:url('/<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-position:right 10px center;padding:18px 60px 15px 10px;<?else:?>padding:18px 10px 15px 10px;<?endif;?>"><?=$registry['post'][0]['name'];?></h3>
         <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="465" height="600"/>

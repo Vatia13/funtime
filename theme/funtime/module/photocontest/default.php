@@ -370,16 +370,16 @@ endif;
 
     <div class="content">
         <?endif;?>
-        <div class="brand_left">
-            <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
+        <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
+            <div class="brand_left">
                 <?=get_banner('ბრენდირება L',$registry['post'][0]['cat_id']);?>
-            <?endif;?>
-        </div>
-        <div class="brand_right">
-            <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
+            </div>
+        <?endif;?>
+        <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
+            <div class="brand_right">
                 <?=get_banner('ბრენდირება R',$registry['post'][0]['cat_id']);?>
-            <?endif;?>
-        </div>
+            </div>
+        <?endif;?>
     <div class="read_top">
         <div><h2>ფოტოკონკურსი</h2></div>
         <div class="post-title"><h1><?=$registry['post'][0]['title'];?></h1></div>

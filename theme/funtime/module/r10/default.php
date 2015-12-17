@@ -2,16 +2,16 @@
 
 <div class="post-r10">
 <div class="content">
-    <div class="brand_left">
-        <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
+    <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == true):?>
+        <div class="brand_left">
             <?=get_banner('ბრენდირება L',$registry['post'][0]['cat_id']);?>
-        <?endif;?>
-    </div>
-    <div class="brand_right">
-        <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
+        </div>
+    <?endif;?>
+    <?if(get_banner('ბრენდირება R',$registry['post'][0]['cat_id']) == true):?>
+        <div class="brand_right">
             <?=get_banner('ბრენდირება R',$registry['post'][0]['cat_id']);?>
-        <?endif;?>
-    </div>
+        </div>
+    <?endif;?>
     <div class="post-time">
         <span><?=gedate('l',$registry['post'][0]['date']);?></span> <span><?=gedate('H:i',$registry['post'][0]['date']);?></span>  <span><?=gedate('d.m.Y',$registry['post'][0]['date']);?></span>
     </div>
