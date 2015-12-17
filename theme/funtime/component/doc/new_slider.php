@@ -3,8 +3,8 @@
 <link type="text/css" rel="stylesheet" href="/<?=$theme?>css/new_slider/prettyPhotoOriginal.css?ver=0.2" />
 <script src="/<?=$theme?>js/new_slider/jquery.prettyPhotoOriginal.js?ver=0.1"></script>
 <?if(function_exists('get_banner')):?>
-    <?if(get_banner('SL',$registry['post'][0]['cat_id']) == true):?>
-        <? $sl = '<div class="index-banner-place" style="position:relative;top:5px;"><div class="banner-place" style="width:340px;height:200px;">'.get_banner("SL",$registry["post"][0]["cat_id"]).'</div></div>'; ?>
+    <?if(get_banner('SL2',$registry['post'][0]['cat_id']) == true):?>
+        <? $sl = '<div class="index-banner-place" style="position:relative;top:5px;"><div class="banner-place" style="width:340px;height:200px;">'.get_banner("SL2",$registry["post"][0]["cat_id"]).'</div></div>'; ?>
         <?else:?>
         <? $sl = '';?>
     <?endif;?>

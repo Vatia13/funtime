@@ -63,7 +63,7 @@ function shareWindow(name,e){
 
 
 $(function(){
-    var rubricsH = $(window).height() - 150;
+    var rubricsH = $(window).height() - $('#header').height();
     $('.rubrics').css('height',rubricsH+'px');
     $('img').bind('contextmenu', function(e) {
         return false;
@@ -122,7 +122,7 @@ $(function(){
         $('.header-bg').hide();
         $("#content").css('margin','0px 0px');
         $("#header").css("top","0px");
-        $(".rubrics").css("top","0px");
+        $(".rubrics").css("top","64px");
     }else{
         if(!brand || brand == 0){
             showRubrics();

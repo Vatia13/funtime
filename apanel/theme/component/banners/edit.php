@@ -99,7 +99,7 @@ endif;
         <td></td>
         <td align="left">
             <input type="text" name="banner" id="banner" value="<?if($_POST['banner']):?><?=$_POST['banner'];?><?else:?><?=$registry['banner'][0]['banner'];?><?endif;?>"/>
-            <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=2&akey=f511422113d2vedc5c426b7y14cby679&field_id=banner" class="btn-blue iframe-btn" type="button">აირჩიე ბანერი</a>
+            <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=2&akey=f511422113d2vedc5c426b7y14cby679&field_id=banner&fldr=ბანერები&no_cookie=1" class="btn-blue iframe-btn" type="button">აირჩიე ბანერი</a>
             <br><i>HTML5 - ბანერის შემთხვევაში აირჩიეთ ბანერის .js file</i>
         </td>
         <td></td>

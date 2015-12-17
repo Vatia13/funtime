@@ -25,7 +25,7 @@
         brand = 1;
         <?endif;?>
     </script>
-<script language="JavaScript" type="text/javascript" src="/<?=$theme?>js/functions.js?ver=0.2"></script>
+<script language="JavaScript" type="text/javascript" src="/<?=$theme?>js/functions.js?ver=<?=rand(0,9999999);?>"></script>
     <!--
 <script language="JavaScript" type="text/javascript" src="/<?=$theme?>js/rubric.scroll.js"></script>
 <script>
