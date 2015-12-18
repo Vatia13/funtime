@@ -74,13 +74,18 @@
                             //print_r();
                             ?>
                             <span><?=$registry['slider']['name'][$i];?></span>
-                            <a style="position:absolute;right:10px;top:10px; z-index:9;" href="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu']?>/<?=$registry['post'][0]['chpu']?>/&title=<?echo str_replace(' ','+',strip_tags($registry['post'][0]['title']));?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['post'][0]['time']));?>/<?=$registry['post'][0]['id'].'_'.last_par_url($registry['slider']['img'][$i]);?>&description=<?=strip_tags($registry['post'][0]['text_short'])?>&redirect_uri=https://www.facebook.com/" target="_blank">
-                                <img src="/img/sharefb.png" width="100px">
-                            </a>
+
                         <?endif;?>
+                            <div style="position:relative">
+                                <?if($_GET['new_slider'] > 0 or $registry['post'][0]['slide_type'] == '0'):?>
+                                <a style="position:absolute;right:10px;top:10px; z-index:9;" href="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu']?>/<?=$registry['post'][0]['chpu']?>/&title=<?echo str_replace(' ','+',strip_tags($registry['post'][0]['title']));?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['post'][0]['time']));?>/<?=$registry['post'][0]['id'].'_'.last_par_url($registry['slider']['img'][$i]);?>&description=<?=strip_tags($registry['post'][0]['text_short'])?>&redirect_uri=https://www.facebook.com/" target="_blank">
+                                    <img src="/img/sharefb.png" width="100px">
+                                </a>
+                                <?endif;?>
                             <a class="zoom-pic" href="<?=$registry['slider']['img'][$i];?>" data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu']?>/<?=$registry['post'][0]['chpu']?>/&title=<?echo str_replace(' ','+',strip_tags($registry['post'][0]['title']));?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['post'][0]['time']));?>/<?=$registry['post'][0]['id'].'_'.last_par_url($registry['slider']['img'][$i]);?>&description=<?=strip_tags($registry['post'][0]['text_short'])?>&redirect_uri=https://www.facebook.com/" title="<?=strip_tags($registry['slider']['name'][$i]);?>" rel="prettyPhoto[pp_gal2]" >
                                 <img src="<?=$registry['slider']['img'][$i];?>" style="max-width:940px !important;" title="<?=strip_tags(addslashes($registry['slider']['name'][$i]));?>" data-description="<?=addslashes($registry['slider']['name'][$i]);?>">
                             </a>
+                            </div>
                         </li>
                     <?endfor;?>
                 </ul>
