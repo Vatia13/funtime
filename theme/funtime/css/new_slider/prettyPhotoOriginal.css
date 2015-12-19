@@ -368,8 +368,11 @@ div.facebook #pp_full_res{
 
 .gallery li span{
     position:relative;
-    bottom:0;
+    bottom:1px;
     font-family:'BPGIngiri2008Regular';
+}
+.gallery li span strong,.gallery li span b{
+    font-family:'BPGNinoMtavruliRegular';
 }
 .gallery li > span p{
     margin:0;

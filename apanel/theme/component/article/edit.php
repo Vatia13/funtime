@@ -34,7 +34,7 @@
 
             <? //if($user->get_property('userID') == 696):?>
 
-            <script src="<?=$theme_admin?>js/tinymce/tinymce.test.min3.js"></script>
+            <script src="<?=$theme_admin?>js/tinymce/tinymce.test.min3.js?ver=<?=rand(0,9999999);?>"></script>
             <?//else:?>
             <!--<script src="<?//=$theme_admin?>js/tinymce/tinymce.min.js"></script>-->
             <?//endif;?>

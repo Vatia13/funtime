@@ -63,7 +63,11 @@ function shareWindow(name,e){
 
 
 $(function(){
-    var rubricsH = $(window).height() - $('#header').height();
+    if(window.innerWidth < 1900) {
+        var rubricsH = $(window).height() - $('#header').height();
+    }else{
+        var rubricsH = $(window).height() - 150;
+    }
     $('.rubrics').css('height',rubricsH+'px');
     $('img').bind('contextmenu', function(e) {
         return false;

@@ -44,7 +44,7 @@ function scrollWin(point, text) {
 		.tab{ width:100% !important;}
 	} 
     tr{ cursor:pointer;}
-    #sh{ display:none;  position:relative; margin:0px auto; width:1178px; background-color:#FFFFFF; border:10px solid #27bfc4; height:700px; font-family: 'BPGNinoMtavruliRegular';}
+    #sh{ display:none; z-index:10000000;position:fixed; top: 15%; left: 14%;width:1178px; background-color:#FFFFFF; border:10px solid #27bfc4; height:700px; font-family: 'BPGNinoMtavruliRegular';}
     #sh div{height:700px;  float:left;}
 	#picture{ width:50%;}
     #picture{ overflow-y:scroll; }
@@ -84,7 +84,8 @@ function scrollWin(point, text) {
     border: 0;
 	}
 </style>
-<div id="main" onclick="out()">
+
+<div id="main" ondblclick="out()">
 <div id="sh">	 
     <div id="picture">   
         <div style="position:relative">
@@ -101,23 +102,16 @@ function scrollWin(point, text) {
         <td>ზომა</td>
         <td>ფასი</td>
       </tr>
-      <tr><td colspan="3" style="background-color:#FFF;"></td></tr>
-     <? 
- $i = 1;
- foreach($registry['test'] as $item): 
- $array = array("#35b2d5","#5ec0da"); 
- if($i % 2 == 0)
- 	$color = $array[0];
-else
-	$color = $array[1];
-  $i++;
- ?> 
-      <tr onclick="scrollWin(<?=$item['scroll_position']?>, '<?=$item['position']?>')" style="background-color:<?=$color?>; color:#FFF; font-weight:700;">
-        <td align="center"><?=$item['position']?></td>
-        <td align="center"><?=$item['size']?></td>
-        <td align="center"><?=$item['price']?></td> 
+      <tr>
+      	<td colspan="3" style="background-color:#FFF;"></td>
       </tr>
-   <?endforeach;?>   
+      <tr>
+      	<td colspan="3"><table width="570" style="background-color:#35b2d5; color:white" id="resulttr"></table></td>
+      </tr>
+       
+      </table>
+      
+  
     </table>
 </div>
 </div>
@@ -125,11 +119,14 @@ else
 <div class="content">
 <div id="content"> 
 <script>
-function view(){
+function view(stat,rub){ 
+  $.post( "presentation",{action:'get_stat',stat:stat,rub:rub}, function( data ) {
+		$('#resulttr').html(data);
+	});
   $( "#sh" ).fadeIn( "slow" ); 
   $( "#main" ).fadeIn( "slow" ); 
 };
-function out(){
+function out(){ 
 	$( "#sh" ).fadeOut( "slow" );
   	$( "#main" ).fadeOut( "slow" );
 	};
@@ -444,10 +441,8 @@ function out(){
     </div>
     <div class="age">
    	 <div id="containerr_<?=$counter?>" class="column"></div> 
-    </div>
-    <?foreach($registry['fiveth_r'] as $ite):?>
-    <div class="vizuali" onclick="view('<?=$ite['stat']?>','<?=$ite['rubric']?>')" style="position: relative;bottom: 45px;"><? if(!empty($ite['view'])){?><img src="<?=$ite['view']?>" width="50"/><? } ?></div>
-    <?endforeach?>
+    </div> 
+    <div class="vizuali" onclick="view('<?=$item['stat']?>','<?=$item['rubric_id']?>')" style="position: relative;bottom: 45px;"><? if(!empty($item['view'])){?><img src="<?=$item['view']?>" width="50"/><? } ?></div> 
 </div>
 	<? $counter++;?>
 <?endforeach?>

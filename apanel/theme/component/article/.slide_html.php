@@ -29,8 +29,8 @@
             menubar: false,
             plugins: ["autolink lists link image charmap print preview hr anchor pagebreak","searchreplace wordcount visualblocks visualchars code fullscreen","nonbreaking save contextmenu directionality","Convert paste textcolor colorpicker textpattern"],
             //toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-            toolbar1: "Convert | undo redo | bold italic underline | link unlink anchor | boldcolor forecolor backcolor  |  fontselect | code",
-            content_css : "theme/css/custom.css",
+            toolbar1: "Convert | undo redo | bold italic underline | link unlink anchor | boldcolor forecolor backcolor boldcolorall textcolorall |  fontselect | code",
+            content_css : "<?=$theme_admin?>css/custom.css",
             font_formats: "Nino Mtavruli = BPGNinoMtavruliRegular;"+"Ingiri = BPGIngiri2008Regular;" +"Open Sans = Open Sans;"+"Bebas = bebasregular;"
         });
     });

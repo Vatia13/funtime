@@ -529,8 +529,8 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
                 if(!empty($title)){
 
                     if($cat > 0){
-                        if(!empty($text_short)){
-                            if(!empty($text)){
+//                        if(!empty($text_short)){
+//                            if(!empty($text)){
 
                                 $sql="	UPDATE `#__users` SET `karma`=`karma`+1
 					WHERE `id`='".$user->get_property('userID')."'";
@@ -547,14 +547,14 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
                                     $LOG->saveLog($user->get_property('userID'),'სტატიები: დამატება / ID: '.$DB->id);
                                     header('Location: /apanel/index.php?news=1&msg='.$msg);
                                 }
-                            }else{
-                                $message[0] = 'error';
-                                $message[1] = 'ტექსტი ცარიელია';
-                            }
-                        }else{
-                            $message[0] = 'error';
-                            $message[1] = 'ლიდი ცარიელია';
-                        }
+//                            }else{
+//                                $message[0] = 'error';
+//                                $message[1] = 'ტექსტი ცარიელია';
+//                            }
+//                        }else{
+//                            $message[0] = 'error';
+//                            $message[1] = 'ლიდი ცარიელია';
+//                        }
                     }else{
                         $message[0] = 'error';
                         $message[1] = 'გთხოვთ აირჩიოთ რუბრიკა.';
