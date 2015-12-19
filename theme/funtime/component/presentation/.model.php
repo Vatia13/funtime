@@ -1,11 +1,11 @@
 <? defined('_JEXEC') or die('Restricted access');
 
-$test1 = 'SELECT * FROM `osr_presentation` LIMIT 1';
+$test1 = 'SELECT * FROM `osr_presentation` WHERE stat=5 AND scroll_position>0 LIMIT 1';
 $registry['test1'] = getAllcache($test1,3600,'presentation'); 
-
-$test = 'SELECT * FROM `osr_presentation`';
+ 	
+$test = 'SELECT * FROM `osr_presentation` WHERE stat=5 AND rubric=49  AND scroll_position>0';
 $registry['test'] = getAllcache($test,3600,'presentation'); 
-
+ 
 
 $first = 'SELECT * FROM `osr_googleanalytics` WHERE stat=0';
 $registry['first'] = getAllcache($first,3600,'presentation'); 
@@ -25,8 +25,8 @@ $registry['fourth_p'] = getAllcache($fourth_p,3600,'presentation');
 $fiveth = 'SELECT * FROM `osr_diagrams` WHERE stat=5';
 $registry['fiveth'] = getAllcache($fiveth,3600,'presentation');
 
-$fiveth_r = 'SELECT * FROM `osr_presentation` WHERE stat=5';
-$registry['fiveth_r'] = getAllcache($fiveth_r,3600,'presentation'); 
+$fiveth_r = 'SELECT * FROM `osr_presentation` WHERE stat=5 LIMIT 1';
+$registry['fiveth_r'] = getAllcache($fiveth_r,3600,'presentation');
 
 $fiveth_s = 'SELECT comment FROM `osr_presentation` WHERE stat=5 LIMIT 1' ;
 $registry['fiveth_s'] = getAllcache($fiveth_s,3600,'presentation');
@@ -60,3 +60,8 @@ $registry['eightth_s'] = getAllcache($eightth_s,3600,'presentation');
 
 $nine = 'SELECT * FROM `osr_singlearticle`';
 $registry['nine'] = getAllcache($nine,3600,'presentation');
+
+
+
+
+

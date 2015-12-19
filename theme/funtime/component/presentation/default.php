@@ -1,9 +1,10 @@
 <? defined('_JEXEC') or die('Restricted access');?>
+
 <script type="text/javascript" src="/<?=$theme?>js/highcharts.js"></script> 
 <script>
 function scrollWin(point, text) {
 	$("#picture").animate(
-    { scrollTop: point }, 2500
+    { scrollTop: point }, 1200
 	);
 	$('#capt').css('top',point+6+'px').html(text);
 	$('#capt').css('display','block'); 
@@ -21,10 +22,10 @@ function scrollWin(point, text) {
 	.diagramss {border-left:1px solid #35b2d5; border-right:1px solid #35b2d5; border-bottom:1px solid #35b2d5;  width:99.8%; overflow:hidden;}
 	.diagramss div{ display:inline-block; width:30%;}
 	#rub{ position:relative; bottom:90px;}
-	#rub1{ position:relative; bottom:86px;  margin-left:-19%;  font-size: 14px;} 
+	#rub1{ position:relative; bottom:86px;  margin-left:-7%;  font-size: 14px;} 
 	#show_img{
 		background-color:#35b2d5; 
-		position:fixed; 
+		position:fixed; 	
 		left:32%; 
 		top:30%; 
 		margin:0px auto;
@@ -43,7 +44,7 @@ function scrollWin(point, text) {
 		.tab{ width:100% !important;}
 	} 
     tr{ cursor:pointer;}
-    #sh{ display:none; background-color:#FFFFFF; position:absolute;border:10px solid #27bfc4; height:700px; font-family: 'BPGNinoMtavruliRegular';}
+    #sh{ display:none;  position:relative; margin:0px auto; width:1178px; background-color:#FFFFFF; border:10px solid #27bfc4; height:700px; font-family: 'BPGNinoMtavruliRegular';}
     #sh div{height:700px;  float:left;}
 	#picture{ width:50%;}
     #picture{ overflow-y:scroll; }
@@ -66,18 +67,24 @@ function scrollWin(point, text) {
 		height:14px !important;
 		background-color:#ed4321;
 		
-	}
-	#esc{
-		position:absolute;
-		cursor:pointer;
-		top:-9px;
-		right:-9px;
-		border-radius:25px;	
 	}  
+#main{ 
+    cursor: pointer;
+    height: 1715px; 
+    background-color: rgba(47, 42, 42, 0.52);
+	position: absolute;
+    top: -3.52%;
+    left: 0;
+    width: 100%;
+	height:110%;
+    z-index: 10;
+	display:none;
+	margin: 0;
+    padding: 0;
+    border: 0;
+	}
 </style>
-<div id="overflow">
-<div class="content">
-<div id="content"> 
+<div id="main" onclick="out()">
 <div id="sh">	 
     <div id="picture">   
         <div style="position:relative">
@@ -88,7 +95,6 @@ function scrollWin(point, text) {
         </div>
     </div>
 	<div id="results">
-    <div id="esc"><img src="/<?=$theme?>images/esc.png"/></div>
     <table width="589" style="background-color:#35b2d5; color:white">
       <tr align="center">
         <td>პოზიცია</td>
@@ -114,14 +120,19 @@ else
    <?endforeach;?>   
     </table>
 </div>
+</div>
 </div> 
+<div class="content">
+<div id="content"> 
 <script>
 function view(){
   $( "#sh" ).fadeIn( "slow" ); 
-  $('#esc').click(function(e) {
-    $( "#sh" ).fadeOut( "slow" );
-	});
-}; 
+  $( "#main" ).fadeIn( "slow" ); 
+};
+function out(){
+	$( "#sh" ).fadeOut( "slow" );
+  	$( "#main" ).fadeOut( "slow" );
+	};
 </script>
 <table id="tab">  
   <tr>
@@ -148,7 +159,7 @@ function view(){
         <td align="center"><?=$ite['position']?></td>
         <td align="center"><?=$ite['size']?></td>
         <td align="center"><?=$ite['price']?></td>  
-        <td align="center" id="zoom" onclick="view()">
+        <td align="center" id="zoom">
          
         <img class="showr" src="<?=$ite['view']?>" width="50" />
         </td> 
@@ -305,13 +316,27 @@ function view(){
         <tr>
  <td colspan="5" align="center" style="background-color:#27bfc4; color:#FFF; font-size:20px;  padding: 10px;"><strong>რუბრიკები 150 000-დან 200 000-მდე ჩვენებით</strong></td>
         </tr>
-        <tr> 
-            <th align="center" style="color:#F60;">ლოგო/რუბრიკა</th>
-            <th align="center" style="color:#F60;">მომხმარებელთა სქესი</th>
-            <th align="center" style="color:#F60;">ასაკობრივი ზღვარი</th> 
-        </tr> 
 </table>
-      <?foreach($registry['fiveth'] as $item):?>
+<style>
+.full{ border:1px solid #27bfc4; color:#F60; font-size:16px; font-weight:600;}
+.full div{display:inline-block;}
+.logoo{ width:10%; text-align:center;}
+.rubrica{width:20%; text-align:center; } 
+.sex{width:28%; text-align:center; }
+.age{width:30%; text-align:center; }
+.vizuali{width:10%; text-align:center; }
+	@media screen and (max-width: 600px) {
+		.full div{width:100%; }
+		}
+</style>
+<div class="full">
+    <div class="logoo">ლოგო</div>
+    <div class="rubrica">რუბრიკა</div>
+    <div class="sex">მომხმარებელთა სქესი</div>
+    <div class="age">ასაკობრივი ზღვარი</div>
+    <div class="vizuali">ვიზუალი</div>
+</div>
+<?foreach($registry['fiveth'] as $item):?>
     <?
       $male=$item['male'];
       $to25 = $item['to25'];
@@ -362,8 +387,6 @@ function view(){
 			}]
 		});
 	});
-		</script> 
-    <script>
 		$(function () {
 			$('#containerr_<?=$counter?>').highcharts({
 				chart: {
@@ -411,51 +434,25 @@ function view(){
 				}]
 			});
 		});
-		</script>  
-       <div class="diagramss" align="center"> 
-<div id="rub"><font style="font-weight:600;"><? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?>&nbsp;&nbsp;<?=$item['rubric']?></font></div> 
+		</script> 
+<div class="full" > 
+    <div class="logoo" style="position: relative;bottom: 80px;"><? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?></div>
+    <div class="rubrica"><font style="position: relative;bottom: 90px; font-weight:600; color:black;"><?=$item['rubric']?></font></div> 
+    <div class="sex">
         <div id="pie_<?=$counter?>" class="pie"></div>
-         <div id="rub1"><img src="/<?=$theme?>images/blue.png" width="10" />&nbsp;&nbsp;მამრობითი<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/<?=$theme?>images/orange.png" width="10" />&nbsp;&nbsp;მდედრობითი</div>
-        <div id="containerr_<?=$counter?>" class="column"></div>
-     </div>
-	<? $counter++;?>
+        <div id="rub1"><img src="/<?=$theme?>images/blue.png" width="10" />&nbsp;&nbsp;მამრობითი<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/<?=$theme?>images/orange.png" width="10" />&nbsp;&nbsp;მდედრობითი</div>
+    </div>
+    <div class="age">
+   	 <div id="containerr_<?=$counter?>" class="column"></div> 
+    </div>
+    <?foreach($registry['fiveth_r'] as $ite):?>
+    <div class="vizuali" onclick="view('<?=$ite['stat']?>','<?=$ite['rubric']?>')" style="position: relative;bottom: 45px;"><? if(!empty($ite['view'])){?><img src="<?=$ite['view']?>" width="50"/><? } ?></div>
     <?endforeach?>
-<table id="tab">
-      <tr>
-       <?foreach($registry['fiveth_s'] as $item):?> 
-          <td colspan="4" align="center"><?=$item['comment']?></td>
-          <?endforeach?>
-      </tr> 
-</table>
-<table id="tab" class="tab">
-        <tr> 
-            <th style=" padding:5px" align="center">პოზიცია</th>
-            <th align="center">ზომა</th>
-            <th align="center">ფასი</th>
-            <th align="center">ვიზუალი</th> 
-        </tr> 
-        <tr>
-            <th style="background-color: white; line-height: 1px;" colspan="4"> </th>
-    </tr>
-  
- <? 
- $i = 1;
- foreach($registry['fiveth_r'] as $ite):
- $array = array("#35b2d5","#5ec0da"); 
- if($i % 2 == 0)
- 	$color = $array[0];
-else
-	$color = $array[1];
-  $i++;
- ?> 
-      <tr style="background-color:<?=$color?>; color:#FFF; font-weight:700;">
-        <td align="center"><?=$ite['position']?></td>
-        <td align="center"><?=$ite['size']?></td>
-        <td align="center"><?=$ite['price']?></td>
-        <td align="center" id="zoom"><img class="showr" src="<?=$ite['view']?>" width="50" /></td> 
-      </tr>
-   <?endforeach;?>  
-</table> 
+</div>
+	<? $counter++;?>
+<?endforeach?>
+
+
 <table id="tab"> 
         <tr>
             <td colspan="5" align="center" style="background-color:#27bfc4; color:#FFF; font-size:20px;  padding: 10px;"><strong>რუბრიკები 100 000-დან 150 000-მდე  ჩვენებით</strong></td>
@@ -517,9 +514,6 @@ else
 			}]
 		});
 	});
-		</script> 
-                
-              <script>
 		$(function () {
 			$('#containerr_<?=$counter?>').highcharts({
 				chart: {
@@ -940,5 +934,4 @@ else
    <?endforeach;?>  
 </table>
 </div>
-</div> 
 </div>
