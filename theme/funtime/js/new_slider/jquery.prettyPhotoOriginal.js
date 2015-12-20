@@ -443,6 +443,7 @@
 				$("#pp_full_res #fullResImage").attr('src',pp_images[set_position]);
 				$pp_pic_holder.find('.pp_description').html(unescape(pp_descriptions[set_position]));
 				$pp_pic_holder.find('.pp_social').find('.fb_share_contest').attr('href',pp_facebook[set_position]);
+				$pp_pic_holder.find('.currentTextHolder').text((set_position+1) + settings.counter_separator_label + $(pp_images).size());
 			}
 
 		};
