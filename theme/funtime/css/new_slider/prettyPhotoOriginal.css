@@ -267,6 +267,7 @@ div.pp_slide_main{
     top:0 !important;
     position:relative !important;
     z-index: 10000;
+    max-width:1145px;
 }
 
 div.facebook .ppt{
