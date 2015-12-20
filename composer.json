@@ -1,0 +1,5 @@
+{
+    "require": {
+        "elboletaire/watimage": "~2.0"
+    }
+}

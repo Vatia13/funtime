@@ -7,15 +7,18 @@ if(get_access('admin','presentation','view')):
 //$registry['news'] = getAllcache($sql,600,'presentation/all','../'); // array chanawerebis gamotana cshireba
 if (isset($_GET['test'])){
 	foreach($_GET['points'] as $key => $value){
-		$rubric = $value['rubric'];
+		$rubric_id = $value['rubric_id'];
 		$position = $value['position'];
 		$size = $value['size'];
 		$price = $value['price'];
 		$point = $value['point'];
 		$view = $_GET['img_url'];
 		$stat = $_GET['rubstat'];
-		$insert = "INSERT INTO #__presentation(id,position,size,price,view,rubric,scroll_position,stat) VALUES('','$position','$size','$price','$view','$rubric','$point','$stat')";
+		$insert = "INSERT INTO #__presentation(id,position,size,price,view,rubric_id,scroll_position,stat) VALUES('','$position','$size','$price','$view','$rubric_id','$point','$stat')";
 		$DB->execute($insert);
+		
+		$update = "UPDATE #__diagrams SET rubric_id='$rubric_id' and view='$view' WHERE rubric_id=0";
+		$DB->execute($update);
 header('location:/apanel/index.php?component=presentation&sec=10');
 	}
 }
@@ -278,7 +281,7 @@ if (isset($_GET['update_ban_15'])){
 		$DB->execute($update);
 		  header('location:/apanel/index.php?component=presentation&sec=5');
 }
-$show_ban_15 = 'SELECT * FROM `osr_presentation`  WHERE stat=5';
+$show_ban_15 = 'SELECT * FROM osr_diagrams INNER JOIN osr_presentation ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat WHERE osr_diagrams.stat = 5';
 $registry['show_ban_15'] =  $DB->getAll($show_ban_15);
 /*N5 რუბრიკები 150 000-დან 200 000-მდე  ჩვენებით დასასრული*/
 /*N6 რუბრიკები 100 000-დან 150 000-მდე  ჩვენებით*/

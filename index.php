@@ -29,6 +29,7 @@ require_once('lib/class.get.image.php');
 require_once('lib/markhtml.php');
 require_once('lib/osrLogs.php');
 require_once('lib/Mobile_Detect.php');
+require_once 'vendor/autoload.php';
 $detect = new Mobile_Detect;
 if ($component=='rss') require_once 'lib/rss.class.php';
 

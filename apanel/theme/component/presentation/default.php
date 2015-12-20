@@ -74,7 +74,7 @@ if(isset($_GET['sec']) && $_GET['sec']==10){
 		i = 0;
         $('#picture img').click(function(e) {
 			var offset = $(this).offset();
-	$('#results').append('<table class="formadd"><tr><td><select name="points['+i+'][rubric]"><?foreach($registry[rubric] as $item):?><option value="<?=$item['id']?>"><?=$item['name']?></option><?endforeach?></select></td><td><select name="points['+i+'][position]"><option>F1</option><option>F2</option><option>F3</option><option>F4</option><option>F5</option><option>F6</option><option>F7</option><option>F8</option><option>F9</option><option>F10</option><option>F11</option><option>F12</option><option>SL1</option><option>SL2</option><option>FM</option><option>ბრენდირება</option></select></td><td><select name="points['+i+'][size]"><option>800X100</option><option>165x480</option><option>205x355</option><option>230x600</option><option>320x200</option><option>200x700</option><option>600x700</option><option>200x500</option></select></td><td width="50px"><input placeholder="ფასი" type="text" name="points['+i+'][price]"></td><td><input style="display:none;" type="text" name="points['+i+'][point]" value="'+(e.pageY - offset.top)+'"></td></tr></table>'); 
+	$('#results').append('<table class="formadd"><tr><td><select name="points['+i+'][rubric_id]"><?foreach($registry[rubric] as $item):?><option value="<?=$item['id']?>"><?=$item['name']?></option><?endforeach?></select></td><td><select name="points['+i+'][position]"><option>F1</option><option>F2</option><option>F3</option><option>F4</option><option>F5</option><option>F6</option><option>F7</option><option>F8</option><option>F9</option><option>F10</option><option>F11</option><option>F12</option><option>SL1</option><option>SL2</option><option>FM</option><option>ბრენდირება</option></select></td><td><select name="points['+i+'][size]"><option>800X100</option><option>165x480</option><option>205x355</option><option>230x600</option><option>320x200</option><option>200x700</option><option>600x700</option><option>200x500</option></select></td><td width="50px"><input placeholder="ფასი" type="text" name="points['+i+'][price]"></td><td><input style="display:none;" type="text" name="points['+i+'][point]" value="'+(e.pageY - offset.top)+'"></td></tr></table>'); 
 			i++;
         });
     }); 
@@ -1528,6 +1528,7 @@ if(isset($_GET['sec']) && $_GET['sec']==5)
    </table>
 <table  class="formadd" id="tab" width="100%">
         <tr> 
+        	 <th align="center">რუბრიკა</th>
             <th align="center">პოზიცია</th>
             <th align="center">ზომა</th>
             <th align="center">ფასი</th>
@@ -1538,6 +1539,7 @@ if(isset($_GET['sec']) && $_GET['sec']==5)
       <tbody>
  <?foreach($registry['show_ban_15'] as $ite):?> 
       <tr>
+        <td align="center"><?=$ite['rubric']?></td>
         <td align="center"><?=$ite['position']?></td>
         <td align="center"><?=$ite['size']?></td>
         <td align="center"><?=$ite['price']?></td>

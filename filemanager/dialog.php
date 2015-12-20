@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+
 include('config/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/lib/access.class.php');
 $user=new flexibleAccess('',$settings);
