@@ -39,6 +39,7 @@
 			star_rate: false,
             deviceType: false,
             out_of_date: 0,
+			slide_effect: 'fade',
 			markup: '<div class="pp_slide_main"><div class="pp_pic_holder"> \
 		      <a class="pp_close" href="#">Close</a> \
 						<div class="pp_content_container"> \
@@ -79,7 +80,7 @@
 								</div> \
 								<a href="#" class="pp_arrow_next">Next</a> \
 							</div>',
-			image_markup: '<img id="fullResImage" src="{path}" />',
+			image_markup: '<span class="helper"></span><img id="fullResImage" src="{path}" />',
 			flash_markup: '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="{width}" height="{height}"><param name="wmode" value="{wmode}" /><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="{path}" /><embed src="{path}" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="{width}" height="{height}" wmode="{wmode}"></embed></object>',
 			quicktime_markup: '<object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab" height="{height}" width="{width}"><param name="src" value="{path}"><param name="autoplay" value="{autoplay}"><param name="type" value="video/quicktime"><embed src="{path}" height="{height}" width="{width}" autoplay="{autoplay}" type="video/quicktime" pluginspage="http://www.apple.com/quicktime/download/"></embed></object>',
 			iframe_markup: '<iframe src ="{path}" width="{width}" height="{height}" frameborder="no"></iframe>',
@@ -214,7 +215,7 @@
 			if(typeof pp_descriptions[set_position] != 'undefined' && pp_descriptions[set_position] != ""){
 				$pp_pic_holder.find('.pp_description').show().html(unescape(pp_descriptions[set_position]));
 			}else{
-				//$pp_pic_holder.find('.pp_description').hide();
+				$pp_pic_holder.find('.pp_description').show().html("");
 			}
 
 			if(settings.facebook == true){
@@ -433,8 +434,17 @@
 			if(settings.allow_expand) {
 				$('.pp_contract').removeClass('pp_contract').addClass('pp_expand');
 			}
+			if(settings.slide_effect == 'fade'){
+				_hideContent(function(){ $.prettyPhoto.open(); });
+			}else{
 
-			_hideContent(function(){ $.prettyPhoto.open(); });
+				//$pp_pic_holder.find('.pp_hoverContainer,#fullResImage').width(pp_dimensions['width']);
+				//console.log(pp_dimensions['width']);
+				$("#pp_full_res #fullResImage").attr('src',pp_images[set_position]);
+				$pp_pic_holder.find('.pp_description').html(unescape(pp_descriptions[set_position]));
+				$pp_pic_holder.find('.pp_social').find('.fb_share_contest').attr('href',pp_facebook[set_position]);
+			}
+
 		};
 
 
@@ -538,7 +548,7 @@
 
 
 			// Resize picture the holder
-
+            if(settings.slide_effect == 'fade'){
 			$pp_pic_holder.animate({
 				'top': (settings.deviceType == 'phone') ? projectedTop - 100 : projectedTop,
 				'left': ((windowWidth/2) - (pp_dimensions['containerWidth']/2) < 0) ? 0 : (windowWidth/2) - (pp_dimensions['containerWidth']/2),
@@ -662,6 +672,123 @@
 				}
 				pp_open = true;
 			});
+
+			}else{
+				//console.log((windowWidth/2) - (pp_dimensions['containerWidth']/2) );
+				$pp_pic_holder.animate({
+					'top': (settings.deviceType == 'phone') ? projectedTop - 100 : projectedTop,
+					'left': ((windowWidth/2) - (pp_dimensions['containerWidth']/2) < 0) ? 0 : (windowWidth/2) - (pp_dimensions['containerWidth']/2),
+					width:'90%'
+				},settings.animation_speed,function(){
+					if(pp_settings.deviceType != "phone") {
+						$pp_pic_holder.find('.pp_hoverContainer,#fullResImage').height(window.innerHeight - (window.innerHeight / 100 * 15));
+					}else{
+						$pp_pic_holder.find('.pp_hoverContainer,#fullResImage').height(pp_dimensions['height']).width(pp_dimensions['width']);
+					}
+
+					$pp_pic_holder.find('.pp_fade').fadeIn(settings.animation_speed); // Fade the new content
+
+					// Show the nav
+					if(isSet && _getFileType(pp_images[set_position])=="image") { $pp_pic_holder.find('.pp_hoverContainer').show(); }else{ $pp_pic_holder.find('.pp_hoverContainer').hide(); }
+
+					if(settings.allow_expand) {
+						if(pp_dimensions['resized']){ // Fade the resizing link if the image is resized
+							$('a.pp_expand,a.pp_contract').show();
+						}else{
+							$('a.pp_expand').hide();
+						}
+					}
+
+					if(settings.autoplay_slideshow && !pp_slideshow && !pp_open) $.prettyPhoto.startSlideshow();
+
+					settings.changepicturecallback(); // Callback!
+
+					if(pp_settings.deviceType != "phone"){
+
+							var contWidth = '100%';
+							var holderWidth = '80%';
+							var containerWidth = '65%';
+							var contentHeight = $("#fullResImage").height();
+
+						//ფოტოს ჩარჩოს ზომა
+						//$("#pp_full_res").width(containerWidth);
+
+						// Resize the content holder
+						$pp_pic_holder.find('.pp_content')
+							.animate({
+								height: contentHeight,
+								width: contWidth
+							},settings.animation_speed);
+
+						$pp_pic_holder.find('.pp_banner').html(pp_settings.banner);
+
+						$pp_pic_holder.find('.pp_hoverContainer').width('67%');
+						$pp_pic_holder.find('.pp_details').height(contentHeight);
+						$pp_pic_holder.find('#pp_full_res').width('67.5%').height($pp_pic_holder.find('.pp_details').height()).css('padding','15px 0');
+						// END WEB SLIDER
+						//text and banner
+						if(($pp_pic_holder.find('.pp_description').height() + 200 + 70) > contentHeight){
+							$pp_pic_holder.find('.pp_banner').hide();
+							if(($pp_pic_holder.find('.pp_description').height() + 50) > contentHeight){
+								$pp_pic_holder.find('.pp_description').css({'height':(contentHeight-80)+'px','overflow':'scroll'});
+							}
+						}else{
+							$pp_pic_holder.find('.pp_banner').show();
+						}
+					}else{
+						//fix image height if width > height;
+						if($("#fullResImage").width() > window.innerHeight){
+							var imageHeight = window.innerHeight - 50;
+							var imageWidth = $("#fullResImage").width();
+							$("#fullResImage").height(imageHeight);
+							$pp_pic_holder.css('margin','4% auto 0 auto','important');
+							$pp_pic_holder.css('width',$("#fullResImage").width()+'px','important');
+
+						}else{
+							if(window.innerHeight > window.innerWidth){
+								//var imageHeight = window.innerHeight - 50;
+								$("#fullResImage").height(imageHeight);
+								var imageWidth = window.innerWidth - 10;
+								$("#fullResImage").css('width',imageWidth + 'px','important');
+								$("#fullResImage").css('height','auto','important');
+								var imageHeight = $("#fullResImage").height();
+								//$("#fullResImage").width(imageWidth);
+								if($("#fullResImage").width() > $("#fullResImage").height()){
+									$pp_pic_holder.css('margin','50% auto','important');
+								}else{
+									$pp_pic_holder.css('margin','15% auto','important');
+								}
+
+								$pp_pic_holder.css('width',imageWidth+'px','important');
+								console.log($("#fullResImage").width());
+							}else{
+								var imageHeight = window.innerHeight - 50;
+								$("#fullResImage").height(imageHeight);
+								$("#fullResImage").css('width','auto','important');
+								var imageWidth = $("#fullResImage").width();
+								//$("#fullResImage").width(imageWidth);
+								$pp_pic_holder.css('margin','4% auto 0 auto','important');
+								$pp_pic_holder.css('width',imageWidth+'px','important');
+								console.log($("#fullResImage").width());
+							}
+
+						}
+
+
+						$pp_pic_holder.find('.pp_hoverContainer').height(imageHeight);
+						$pp_pic_holder.find('.pp_content_container').width(imageWidth);
+						$pp_pic_holder.find('.pp_details').css('width',(imageWidth - 30)+'px','important');
+						$pp_pic_holder.find('.pp_content')
+							.animate({
+								height: imageHeight,
+								width: imageWidth
+							},settings.animation_speed);
+
+					}
+					pp_open = true;
+				});
+
+			}
 
 			_insert_gallery();
 			pp_settings.ajaxcallback();

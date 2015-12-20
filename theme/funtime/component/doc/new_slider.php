@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
 <script src="/<?=$theme?>js/touchwipe.js?ver=0.1"></script>
-<link type="text/css" rel="stylesheet" href="/<?=$theme?>css/new_slider/prettyPhotoOriginal.css?ver=0.7" />
-<script src="/<?=$theme?>js/new_slider/jquery.prettyPhotoOriginal.js?ver=0.1"></script>
+<link type="text/css" rel="stylesheet" href="/<?=$theme?>css/new_slider/prettyPhotoOriginal.css?ver=<?=rand(0,999999);?>" />
+<script src="/<?=$theme?>js/new_slider/jquery.prettyPhotoOriginal.js?ver=<?=rand(0,999999);?>"></script>
 <?if(function_exists('get_banner')):?>
     <?if(get_banner('SL2',$registry['post'][0]['cat_id']) == true):?>
         <? $sl = '<div class="index-banner-place" style="position:relative;top:5px;"><div class="banner-place" style="width:340px;height:200px;">'.get_banner("SL2",$registry["post"][0]["cat_id"]).'</div></div>'; ?>
@@ -38,6 +38,7 @@
             overlay_gallery: false,
             allow_resize: true,
             out_of_date: '<?=$registry['out_of_date'];?>',
+            slide_effect: '<?=($registry['deviceType'] != 'phone') ? 'other' : 'fade';?>',
             changepicturecallback:function() {
                 setupSwipe();
             },
@@ -50,7 +51,6 @@
         var imageNum = $('.gallery li').length;
         var w = 0;
         for(var i = 1; i <= imageNum; i++){
-
 
             if($('.gallery li:nth-child('+i+') .zoom-pic img').height() > $('.gallery li:nth-child('+i+') .zoom-pic img').width()){
                 w = $('.gallery li:nth-child('+i+')').width();
