@@ -724,7 +724,8 @@
 
 						$pp_pic_holder.find('.pp_hoverContainer').width('67%');
 						$pp_pic_holder.find('.pp_details').height(contentHeight);
-						$pp_pic_holder.find('#pp_full_res').width('67.5%').height($pp_pic_holder.find('.pp_details').height()).css('padding','15px 0');
+						$pp_pic_holder.find('#pp_full_res').width('67.5%').height($pp_pic_holder.find('.pp_details').height() + 30);
+						$("#fullResImage").height($("#fullResImage").height() + 30);
 						// END WEB SLIDER
 						//text and banner
 						if(($pp_pic_holder.find('.pp_description').height() + 200 + 70) > contentHeight){
