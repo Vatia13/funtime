@@ -55,9 +55,9 @@
                             <a style="position:absolute;right:10px;top:10px; z-index:9;" href="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu']?>/<?=$registry['post'][0]['chpu']?>/&title=<?echo str_replace(' ','+',strip_tags($registry['post'][0]['title']));?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['post'][0]['time']));?>/<?=$registry['post'][0]['id'].'_'.last_par_url($registry['slider']['img'][$i]);?>&description=<?=strip_tags($registry['post'][0]['text_short'])?>&redirect_uri=https://www.facebook.com/" target="_blank">
                                 <img src="/img/sharefb.png" style="width:80px !important">
                             </a>
-                            <a href="<?=$registry['slider']['img'][$i];?>"  data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu']?>/<?=$registry['post'][0]['chpu']?>/&title=<?echo str_replace(' ','+',$registry['post'][0]['title']);?>&picture=<?=$registry['slider']['img'][$i];?>&description=<?=strip_tags($registry['post'][0]['text_short'])?>&redirect_uri=https://www.facebook.com/" rel="prettyPhoto[pp_gal2]" >
+                            <!--<a href="<?=$registry['slider']['img'][$i];?>"  data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu']?>/<?=$registry['post'][0]['chpu']?>/&title=<?echo str_replace(' ','+',$registry['post'][0]['title']);?>&picture=<?=$registry['slider']['img'][$i];?>&description=<?=strip_tags($registry['post'][0]['text_short'])?>&redirect_uri=https://www.facebook.com/" rel="prettyPhoto[pp_gal2]" >-->
                                 <img src="<?=$registry['slider']['img'][$i];?>" title="<?=strip_tags($registry['slider']['name'][$i]);?>" data-description="<?=htmlentities(addslashes(trim($registry['slider']['name'][$i])));?>">
-                            </a>
+                            <!--</a>-->
                         </div>
                     </li>
                 <?endfor;?>

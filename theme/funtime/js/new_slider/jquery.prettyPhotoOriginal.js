@@ -705,30 +705,8 @@
 					settings.changepicturecallback(); // Callback!
 
 					if(pp_settings.deviceType != "phone"){
-
-							var contWidth = '100%';
-							var holderWidth = '80%';
-							var containerWidth = '65%';
-							var contentHeight = $("#fullResImage").height();
-
-						//ფოტოს ჩარჩოს ზომა
-						//$("#pp_full_res").width(containerWidth);
-
-						// Resize the content holder
-						$pp_pic_holder.find('.pp_content')
-							.animate({
-								height: contentHeight,
-								width: contWidth
-							},settings.animation_speed);
-
-						$pp_pic_holder.find('.pp_banner').html(pp_settings.banner);
-
-						$pp_pic_holder.find('.pp_hoverContainer').width('67%');
-						$pp_pic_holder.find('.pp_details').height(contentHeight);
-						$pp_pic_holder.find('#pp_full_res').width('67.5%').height($pp_pic_holder.find('.pp_details').height() + 30);
-						$("#fullResImage").height($("#fullResImage").height() + 30);
-						// END WEB SLIDER
-						//text and banner
+						$pp_pic_holder.find('.pp_hoverContainer,#pp_full_res').width($pp_pic_holder.find('.pp_hoverContainer').width() - 370);
+						$pp_pic_holder.find('.pp_details').height($pp_pic_holder.find('.pp_hoverContainer').height() - 30);
 						if(($pp_pic_holder.find('.pp_description').height() + 200 + 70) > contentHeight){
 							$pp_pic_holder.find('.pp_banner').hide();
 							if(($pp_pic_holder.find('.pp_description').height() + 50) > contentHeight){

@@ -32,7 +32,7 @@
                     }
                     $content_length = $title_length + $short_length;
                     $short_length = 165 - $title_length;
-                    $this['slide'] = unserialize($item['slide']);
+                    $this['slide'] = get_serialize($item['slide']);
                     ?>
 
                     <li data-last_id="<?=$item['id'];?>">
