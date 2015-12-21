@@ -62,9 +62,9 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
     $info = serialize($info);
     $slider_images = array();
     foreach(json_decode($_POST['slider_name']) as $item):
-        if(!empty($item)):
+        //if(!empty($item)):
             $slider_images['name'][] = stripslashes($item);
-        endif;
+        //endif;
     endforeach;
     $i=0;foreach(json_decode(stripslashes($_POST['slider_img'])) as $item):
         if(!empty($item)):

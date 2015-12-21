@@ -123,11 +123,12 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
         $slider_images = array();
         if(count($_POST['slide']['name']) > 0){
             foreach($_POST['slide']['name'] as $item):
-                if(!empty($item)):
+                //if(!empty($item)):
                     $slider_images['name'][] = stripslashes($item);
-                endif;
+               // endif;
             endforeach;
         }
+
         if(count($_POST['slide']['img']) > 0) {
             $i = 0;
             foreach ($_POST['slide']['img'] as $item):
@@ -140,6 +141,7 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
                 endif;
             endforeach;
         }
+        //print_r($slider_images);
         if(count($slider_images['img']) == 1){
             $slide = array();
             $slide_dir = first_par_url($slider_images['img'][0]);
