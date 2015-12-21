@@ -65,13 +65,13 @@ table tr td{ border-bottom:1px solid #35b2d5; width:30%;  }
 			
 		$(window).bind('mousewheel', function(event) {
 			if($('#main').css('display') == 'block'){
-                console.log(e);
+            	$('body').css('overflow-y','hidden');
 			
 			if (event.originalEvent.wheelDelta >= 0) {
-				$('#picture').scrollTop($('#picture').scrollTop()-25);
+				$('#picture').stop().animate({ scrollTop: ($('#picture').scrollTop()-70)+"px" },300);
 			}
 			else {
-				$('#picture').scrollTop($('#picture').scrollTop()+25);
+				$('#picture').stop().animate({ scrollTop: ($('#picture').scrollTop()+70)+"px" },300);
 			}
 		
 			}
