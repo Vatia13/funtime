@@ -16,5 +16,8 @@
     <tr>
         <td align="center"><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=<?=$key;?>" class="btn-blue iframe-btn" type="button">ფოტო</a></td>
     </tr>
+    <tr>
+        <td align="center"><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=<?=$key;?>&no_wm=1" class="btn-blue iframe-btn" type="button">ფოტო (ლოგოს გარეშე)</a></td>
+    </tr>
 </table>
 <?endif;?>
