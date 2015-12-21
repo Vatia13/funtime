@@ -707,7 +707,7 @@
 					if(pp_settings.deviceType != "phone"){
 						$pp_pic_holder.find('.pp_hoverContainer,#pp_full_res').width($pp_pic_holder.find('.pp_hoverContainer').width() - 370);
 						$pp_pic_holder.find('.pp_details').height($pp_pic_holder.find('.pp_hoverContainer').height() - 30);
-						if(($pp_pic_holder.find('.pp_description').height() + 200 + 70) > contentHeight){
+						if(($pp_pic_holder.find('.pp_description').height() + 200 + 70) > $pp_pic_holder.find('.pp_hoverContainer').height()){
 							$pp_pic_holder.find('.pp_banner').hide();
 							if(($pp_pic_holder.find('.pp_description').height() + 50) > contentHeight){
 								$pp_pic_holder.find('.pp_description').css({'height':(contentHeight-80)+'px','overflow':'scroll'});

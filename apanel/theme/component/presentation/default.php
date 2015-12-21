@@ -363,75 +363,10 @@ if(isset($_GET['edit_pie_30'])){
         </tbody>
         </table>
 </form>
-<form action="/apanel/index.php" method="get">
-    <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="add_ban_3"  value="1" /> 
-    <table class="formadd" width="50%">
-        <thead>
-        <tr> 
-        
-            <th align="left">პოზიცია</th> 
-            <th align="left">ზომა</th>
-            <th align="left">ფასი</th>
-            <th align="left">ვიზუალი</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>           
-         <td>
-            <select name="position">
-                <option value="">აირჩიეთ პოზიცია</option> 
-               <option value="F1">F1</option> 
-                <option value="F2">F2</option> 
-                 <option value="F3">F3</option> 
-                  <option value="F4">F4</option> 
-                   <option value="F5">F5</option> 
-                    <option value="F6">F6</option> 
-                     <option value="F7">F7</option> 
-                      <option value="F8">F8</option> 
-                       <option value="F9">F9</option> 
-                        <option value="F10">F10</option> 
-                         <option value="F11">F11</option> 
-                          <option value="F12">F12</option>
-                          	<option value="F13">F13</option>
-                           	 <option value="F14">F14</option>
-                              <option value="SL">SL</option>
-                          		<option value="ბრენდირება">ბრენდირება</option> 
-                           		 <option value="FM">FM</option> 
-            </select>
-            </td>
-            <td>
-             <select name="size">
-             <option value="">აირჩიეთ ზომა</option>
-             <option value="800x100">800x100</option>
-             <option value="230x600">230x600</option>
-             <option value="200x700">200x700</option>
-             <option value="600x700">600x700</option>
-             <option value="200x500">200x500</option>
-             <option value="320x200">320x200</option>
-             <option value="205x355">205x355</option>
-             <option value="165x480">165x480</option>
-              <option value="*">*</option>
-             </select>
-            </td>
-            <td>
-                <input type="text" name="price" value="">
-            </td> 
-            <td>
-                <input type="text" name="image" value="" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-            <td width="40%">
-               <input type="submit" class="btn-green right"  value="დამატება">
-            </td>
-        </tr>
-        </tbody>
-    </table>
-   </form>
 <table class="formadd" id="tab" width="100%">
     <thead>
     <tr>
-    	<td colspan="5" align="center" style="background-color:#4690BB; color:#FFF;  padding: 10px;">რუბრიკები 30 000-დან 50 000-მდე  ჩვენებით</td>
+    <td colspan="5" align="center" style="background-color:#4690BB; color:#FFF;  padding: 10px;">რუბრიკები 30 000-დან 50 000-მდე  ჩვენებით</td>
     </tr>
         <tr>  
            <th align="center" style="color:#F60;">ლოგო</th>
@@ -540,6 +475,7 @@ if(isset($_GET['edit_pie_30'])){
    </table>
 <table  class="formadd" id="tab" width="100%">
         <tr>  
+        	 <th align="center">რუბრიკა</th>
             <th align="center">პოზიცია</th>
             <th align="center">ზომა</th>
             <th align="center">ფასი</th>
@@ -550,6 +486,7 @@ if(isset($_GET['edit_pie_30'])){
       <tbody>
  <?foreach($registry['show_ban_3'] as $ite):?> 
       <tr>
+      <td align="center"><?=$ite['rubric']?></td>
         <td align="center"><?=$ite['position']?></td>
         <td align="center"><?=$ite['size']?></td>
         <td align="center"><?=$ite['price']?></td>
@@ -714,71 +651,6 @@ if(isset($_GET['edit_pie_50'])){
         </tbody>
         </table>
 </form>
-<form action="/apanel/index.php" method="get">
-    <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="add_ban_5"  value="1" /> 
-    <table class="formadd" width="50%">
-        <thead>
-        <tr> 
-        
-            <th align="left">პოზიცია</th> 
-            <th align="left">ზომა</th>
-            <th align="left">ფასი</th>
-            <th align="left">ვიზუალი</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>           
-        <td>
-            <select name="position">
-                <option value="">აირჩიეთ პოზიცია</option> 
-               <option value="F1">F1</option> 
-                <option value="F2">F2</option> 
-                 <option value="F3">F3</option> 
-                  <option value="F4">F4</option> 
-                   <option value="F5">F5</option> 
-                    <option value="F6">F6</option> 
-                     <option value="F7">F7</option> 
-                      <option value="F8">F8</option> 
-                       <option value="F9">F9</option> 
-                        <option value="F10">F10</option> 
-                         <option value="F11">F11</option> 
-                          <option value="F12">F12</option>
-                          	<option value="F13">F13</option>
-                           	 <option value="F14">F14</option>
-                              <option value="SL">SL</option>
-                          		<option value="ბრენდირება">ბრენდირება</option> 
-                           		 <option value="FM">FM</option> 
-            </select>
-            </td>
-            <td>
-             <select name="size">
-             <option value="">აირჩიეთ ზომა</option>
-             <option value="800x100">800x100</option>
-             <option value="230x600">230x600</option>
-             <option value="200x700">200x700</option>
-             <option value="600x700">600x700</option>
-             <option value="200x500">200x500</option>
-             <option value="320x200">320x200</option>
-             <option value="205x355">205x355</option>
-             <option value="165x480">165x480</option>
-              <option value="*">*</option>
-             </select>
-            </td>
-            <td>
-                <input type="text" name="price" value="">
-            </td> 
-            <td>
-                <input type="text" name="image" value="" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-            <td width="40%">
-               <input type="submit" class="btn-green right"  value="დამატება">
-            </td>
-        </tr>
-        </tbody>
-    </table>
-   </form>
 <table class="formadd" id="tab" width="100%">
     <thead>
     <tr>
@@ -892,6 +764,7 @@ if(isset($_GET['edit_pie_50'])){
    </table>
  <table  class="formadd" id="tab" width="100%">
         <tr>  
+        	<th align="center">რუბრიკა</th>
             <th align="center">პოზიცია</th>
             <th align="center">ზომა</th>
             <th align="center">ფასი</th>
@@ -902,6 +775,7 @@ if(isset($_GET['edit_pie_50'])){
       <tbody>
  <?foreach($registry['show_ban_5'] as $ite):?> 
       <tr>
+     	 <td align="center"><?=$ite['rubric']?></td>
         <td align="center"><?=$ite['position']?></td>
         <td align="center"><?=$ite['size']?></td>
         <td align="center"><?=$ite['price']?></td>
@@ -1066,71 +940,6 @@ if(isset($_GET['edit_pie_10'])){
         </tbody>
         </table>
 </form>
-<form action="/apanel/index.php" method="get">
-    <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="add_ban_10"  value="1" /> 
-    <table class="formadd" width="50%">
-        <thead>
-        <tr> 
-        
-            <th align="left">პოზიცია</th> 
-            <th align="left">ზომა</th>
-            <th align="left">ფასი</th>
-            <th align="left">ვიზუალი</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>           
-         <td>
-            <select name="position">
-                <option value="">აირჩიეთ პოზიცია</option> 
-               <option value="F1">F1</option> 
-                <option value="F2">F2</option> 
-                 <option value="F3">F3</option> 
-                  <option value="F4">F4</option> 
-                   <option value="F5">F5</option> 
-                    <option value="F6">F6</option> 
-                     <option value="F7">F7</option> 
-                      <option value="F8">F8</option> 
-                       <option value="F9">F9</option> 
-                        <option value="F10">F10</option> 
-                         <option value="F11">F11</option> 
-                          <option value="F12">F12</option>
-                          	<option value="F13">F13</option>
-                           	 <option value="F14">F14</option>
-                              <option value="SL">SL</option>
-                          		<option value="ბრენდირება">ბრენდირება</option> 
-                           		 <option value="FM">FM</option> 
-            </select>
-            </td>
-            <td>
-             <select name="size">
-             <option value="">აირჩიეთ ზომა</option>
-             <option value="800x100">800x100</option>
-             <option value="230x600">230x600</option>
-             <option value="200x700">200x700</option>
-             <option value="600x700">600x700</option>
-             <option value="200x500">200x500</option>
-             <option value="320x200">320x200</option>
-             <option value="205x355">205x355</option>
-             <option value="165x480">165x480</option>
-              <option value="*">*</option>
-             </select>
-            </td>
-            <td>
-                <input type="text" name="price" value="">
-            </td> 
-            <td>
-                <input type="text" name="image" value="" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-            <td width="40%">
-               <input type="submit" class="btn-green right"  value="დამატება">
-            </td>
-        </tr>
-        </tbody>
-    </table>
-   </form>
 <table class="formadd" id="tab" width="100%">
     <thead>
     <tr>
@@ -1242,7 +1051,8 @@ if(isset($_GET['edit_pie_10'])){
   	 </thead>
    </table>
 <table  class="formadd" id="tab" width="100%">
-        <tr>  
+        <tr> 
+        	<th align="center">რუბრიკა</th> 
             <th align="center">პოზიცია</th>
             <th align="center">ზომა</th>
             <th align="center">ფასი</th>
@@ -1253,6 +1063,7 @@ if(isset($_GET['edit_pie_10'])){
       <tbody>
  <?foreach($registry['show_ban_10'] as $ite):?> 
       <tr>
+      	<td align="center"><?=$ite['rubric']?></td>
         <td align="center"><?=$ite['position']?></td>
         <td align="center"><?=$ite['size']?></td>
         <td align="center"><?=$ite['price']?></td>

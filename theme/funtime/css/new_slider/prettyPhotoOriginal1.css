@@ -293,6 +293,7 @@ div.pp_slide_main{
     position:relative;
     bottom:1px;
     font-family:'BPGIngiri2008Regular';
+    font-size:19px;
 }
 .gallery li span strong,.gallery li span b{
     font-family:'BPGNinoMtavruliRegular';
@@ -314,7 +315,7 @@ div.pp_slide_main{
 #pp_full_res{
     display:block;
     position:relative;
-    background-color:#0b0912;
+    background-color:#000;
     float:left;
 }
 
@@ -342,4 +343,13 @@ div.pp_slide_main{
     position:relative;
     top:15px !important;
     right:15px !important;
+}
+
+.pp_description{
+    position:relative !important;
+    top:30px !important;
+    display:block !important;
+    margin:0 !important;
+    padding:0 !important;
+    clear:both !important;
 }

@@ -4,7 +4,7 @@ include('config/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/lib/access.class.php');
 $user=new flexibleAccess('',$settings);
 if (USE_ACCESS_KEYS == TRUE){
-	if (!isset($_GET['akey'], $access_keys) || empty($access_keys) || !$user->is_loaded()){
+	if (!in_array($_GET['akey'], $access_keys) || empty($access_keys) || !$user->is_loaded()){
 		die('Access Denied!');
 	}
 

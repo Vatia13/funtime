@@ -17,7 +17,9 @@ if (isset($_GET['test'])){
 		$insert = "INSERT INTO #__presentation(id,position,size,price,view,rubric_id,scroll_position,stat) VALUES('','$position','$size','$price','$view','$rubric_id','$point','$stat')";
 		$DB->execute($insert);
 		
-		$update = "UPDATE #__diagrams SET rubric_id='$rubric_id' and view='$view' WHERE rubric_id=0";
+		$update = "UPDATE #__diagrams SET view_img='$view' WHERE rubric_id=0";
+		$DB->execute($update);
+		$update = "UPDATE #__diagrams SET rubric_id='$rubric_id' WHERE rubric_id=0";
 		$DB->execute($update);
 header('location:/apanel/index.php?component=presentation&sec=10');
 	}
@@ -337,7 +339,7 @@ if (isset($_GET['update_ban_10'])){
 		$DB->execute($update);
 		  header('location:/apanel/index.php?component=presentation&sec=6');
 }
-$show_ban_10 = 'SELECT * FROM `osr_presentation`  WHERE stat=6';
+$show_ban_10 = 'SELECT * FROM osr_diagrams INNER JOIN osr_presentation ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat WHERE osr_diagrams.stat = 6';
 $registry['show_ban_10'] =  $DB->getAll($show_ban_10);
 /*N6 რუბრიკები 100 000-დან 150 000-მდე  ჩვენებით დასასრული*/
 /*N7 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით*/
@@ -393,7 +395,7 @@ if (isset($_GET['update_ban_5'])){
 		$DB->execute($update);
 		  header('location:/apanel/index.php?component=presentation&sec=7');
 }
-$show_ban_5 = 'SELECT * FROM `osr_presentation`  WHERE stat=7';
+$show_ban_5 = 'SELECT * FROM osr_diagrams INNER JOIN osr_presentation ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat WHERE osr_diagrams.stat = 7';
 $registry['show_ban_5'] =  $DB->getAll($show_ban_5);
 /*N7 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით დასასრული*/
 /*N8 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით*/
@@ -449,7 +451,7 @@ if (isset($_GET['update_ban_3'])){
 		$DB->execute($update);
 		  header('location:/apanel/index.php?component=presentation&sec=8');
 }
-$show_ban_3 = 'SELECT * FROM `osr_presentation`  WHERE stat=8';
+$show_ban_3 = 'SELECT * FROM osr_diagrams INNER JOIN osr_presentation ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat WHERE osr_diagrams.stat =8';
 $registry['show_ban_3'] =  $DB->getAll($show_ban_3);
 /*N8 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით დასასრული*/
 /*N9 singlearticle*/
