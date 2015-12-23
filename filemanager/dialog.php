@@ -351,7 +351,7 @@ $get_params = http_build_query(array(
 		    dictResponseError: "SERVER ERROR",
 		    paramName: "file", // The name that will be used to transfer the file
 		    maxFilesize: <?php echo $MaxSizeUpload; ?>, // MB
-		    url: "upload.php?akey=<?php echo $_GET['akey'];?>",
+		    url: "upload.php?akey=<?php echo $_GET['akey'];?><?php echo ($_GET['no_wm'] > 0) ? '&no_wm=1' : '&no_wm=0';?>",
 		    accept: function(file, done) {
 			    var extension=file.name.split('.').pop();
 			    extension=extension.toLowerCase();
