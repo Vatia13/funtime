@@ -15,11 +15,11 @@ body{font-family: 'BPGNinoMtavruliRegular';}
 #tab{ border-left:1px solid #35b2d5; border-right:1px solid #35b2d5; width:100%;}
 .tab{background-color:#35b2d5; width:70% !important; margin:0px auto; color:#FFF;} 
 table tr td{ border-bottom:1px solid #35b2d5; width:30%;  } 
-.pie{ width:200px; height:200px;}
-.column{ width:300px !important; height:180px;} 
+.pie{ width:170px; height:150px;}
+.column{ width:240px !important; height:140px;} 
 .diagramss {border-left:1px solid #35b2d5; border-right:1px solid #35b2d5; border-bottom:1px solid #35b2d5;  width:99.8%; overflow:hidden;}
 .diagramss div{ display:inline-block; width:30%;}
-#rub1{ position:relative; bottom:86px;  margin-left:-7%;  font-size: 14px;} 
+#rub1{ position:relative; bottom:62px;  margin-left:-7%;  font-size: 14px;} 
 #sh{ display:none; z-index:10000000; width:1178px; background-color:#FFFFFF; border:10px solid #27bfc4; height:700px; font-family: 'BPGNinoMtavruliRegular';}
 #sh div{height:700px;  float:left;}
 #picture{ width:50%;}
@@ -42,7 +42,9 @@ table tr td{ border-bottom:1px solid #35b2d5; width:30%;  }
 #sh {
 	margin-top:150px;	
 }
-
+.table_headers{
+	display:none !important;	
+}
 
 @media screen and (max-width: 600px) {
 		.pie{ width:320px; height:320px;} 
@@ -53,8 +55,21 @@ table tr td{ border-bottom:1px solid #35b2d5; width:30%;  }
 		#rub1 img{ width:10px;}
 		.tab{ width:100% !important;}
 		.full div{width:100%; }
+		
+.table_headers{
+	display:block !important;	
 }
-#results table tr td{ border:1px solid #FFF !important;}
+.hide_xs{
+	display:none;	
+}
+.rubrica font, .logoo, .vizuali{
+	bottom:0 !important;	
+}
+.vizuali{
+	display:none !important;
+	}
+}
+#results td{ border:1px solid #FFF !important;}
 </style>
 <script>
 	$(document).ready(function(e) {
@@ -65,13 +80,12 @@ table tr td{ border-bottom:1px solid #35b2d5; width:30%;  }
 			
 		$(window).bind('mousewheel', function(event) {
 			if($('#main').css('display') == 'block'){
-            	$('body').css('overflow-y','hidden');
 			
 			if (event.originalEvent.wheelDelta >= 0) {
-				$('#picture').stop().animate({ scrollTop: ($('#picture').scrollTop()-70)+"px" },300);
+				$('#picture').stop().animate({ scrollTop: ($('#picture').scrollTop()-150)+"px" },300);
 			}
 			else {
-				$('#picture').stop().animate({ scrollTop: ($('#picture').scrollTop()+70)+"px" },300);
+				$('#picture').stop().animate({ scrollTop: ($('#picture').scrollTop()+150)+"px" },300);
 			}
 		
 			}
@@ -79,9 +93,9 @@ table tr td{ border-bottom:1px solid #35b2d5; width:30%;  }
 		
     });
 </script>
-<div id="main" ondblclick="out()">
-<div align="center">
-<div id="sh">	 
+<div id="main">
+<div align="center"> 
+<div id="sh">
     <div id="picture">   
         <div style="position:relative">
             <?foreach($registry['test1'] as $item):?> 
@@ -90,21 +104,29 @@ table tr td{ border-bottom:1px solid #35b2d5; width:30%;  }
             <div id="capt" style="display:none;"> </div>
         </div>
     </div>
-	<div id="results">
-        <table  width="589" style="background-color:#27bfc4; color:white;">
+	<div id="results">  
+
+        <table  width="589" style="background-color:#27bfc4; color:white;"> 
+        
           <tr align="center">
             <td>პოზიცია</td>
             <td>ზომა</td>
             <td>ფასი</td>
+            <td>მდგომარეობა<img src="/<?=$theme?>images/esc.png" align="right" onclick="out();" /></td>
           </tr>
           <tr>
-            <td colspan="3" style="background-color:#FFF;"></td>
+            <td colspan="4" style="background-color:#FFF;"></td>
           </tr>
           <tr>
-            <td colspan="3"><table width="580" style="background-color:#27bfc4; color:white" id="resulttr"></table></td>
+            <td colspan="4">
+           		 <table width="580" style="background-color:#27bfc4; color:white" id="resulttr"></table>
+            </td> 
           </tr>
+          <tr>
+          <td colspan="4"><p style="color:white;"><strong>ფასები მოცემულია ეროვნულ ვალუტაში...</strong></p></td>
+          </tr>
+          
         </table> 
-        <p style="position:absolute; bottom:0px; padding:5px;" ><strong>ფასები მოცემულია ეროვნულ ვალუტაში...</strong></p>
 	</div>
 </div>
 </div>
@@ -118,10 +140,17 @@ function view(stat,rub){
 	});
   $( "#sh" ).fadeIn( "slow" ); 
   $( "#main" ).fadeIn( "slow" ); 
+	$('body').css('overflow-y','hidden');
 };
+
 function out(){ 
 	$( "#sh" ).fadeOut( "slow" );
-  	$( "#main" ).fadeOut( "slow" );
+  	$( "#main" ).fadeOut( "slow" ) 
+	$('body').css('overflow-y','scroll');
+	$('#picture').scrollTop(0);
+	$('#capt').hide();
+	
+	
 	};
 </script>
 <table id="tab">  
@@ -199,7 +228,7 @@ function out(){
 			plotOptions: {
 				pie: { 
 					dataLabels: {
-						distance: -40,
+						distance: -30,
 						enabled: true,
 						format: ' {point.percentage:.1f} %', 
 						style: { 
@@ -305,7 +334,7 @@ function out(){
  <td colspan="5" align="center" style="background-color:#27bfc4; color:#FFF; font-size:20px;  padding: 10px;"><strong>რუბრიკები 150 000-დან 200 000-მდე ჩვენებით</strong></td>
         </tr>
 </table>
-<div class="full">
+<div class="full hide_xs">
     <div class="logoo">ლოგო</div>
     <div class="rubrica">რუბრიკა</div>
     <div class="sex">მომხმარებელთა სქესი</div>
@@ -334,7 +363,7 @@ function out(){
 			plotOptions: {
 				pie: { 
 					dataLabels: {
-						distance: -40,
+						distance: -35,
 						enabled: true,
 						format: '{point.percentage:.1f} %', 
 						style: {
@@ -412,17 +441,24 @@ function out(){
 		});
 		</script> 
 <div class="full" > 
-    <div class="logoo" style="position: relative;bottom: 80px;"><? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?></div>
-    <div class="rubrica"><font style="position: relative;bottom: 90px; font-weight:600; color:black;"><?=$item['rubric']?></font></div> 
+<div class="table_headers" style="margin:10px;"></div>
+    <div class="logoo" style="position: relative;bottom: 55px;">
+	<div class="table_headers"> ლოგო </div>
+	<? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?></div>
+<div class="table_headers" style="margin:10px;"></div>
+    <div class="rubrica"> <div class="table_headers"> რუბრიკა </div> <font style="position: relative;bottom: 66px; font-weight:600; color:black;"><?=$item['rubric']?></font></div> 
     <div class="sex">
+    	<div align="center" class="table_headers">მომხმარებელთა სქესი</div>
         <div id="pie_<?=$counter?>" class="pie"></div>
+        
         <div id="rub1"><img src="/<?=$theme?>images/blue.png" width="10" />&nbsp;&nbsp;მამრობითი<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/<?=$theme?>images/orange.png" width="10" />&nbsp;&nbsp;მდედრობითი</div>
     </div>
     <div class="age">
+    	<div align="center" class="table_headers">ასაკობრივი ზღვარი</div>
    	 <div id="containerr_<?=$counter?>" class="column"></div> 
     </div> 
-    <div class="vizuali" onclick="view('<?=$item['stat']?>','<?=$item['rubric_id']?>')" style="position: relative;bottom: 45px;"><? if(!empty($item['view'])){?><img src="<?=$item['view']?>" width="50"/><? } ?></div> 
-</div>
+    <div class="vizuali" onclick="view('<?=$item['stat']?>','<?=$item['rubric_id']?>')" style="position: relative;bottom: 25px; height:105px;"><? if(!empty($item['view'])){?><img src="<?=$item['view']?>" width="50"/><? } ?></div> 
+	</div>
 	<? $counter++;?>
 <?endforeach?>
 <table id="tab">
@@ -439,7 +475,7 @@ function out(){
             <td colspan="5" align="center" style="background-color:#27bfc4; color:#FFF; font-size:20px;  padding: 10px;"><strong>რუბრიკები 100 000-დან 150 000-მდე  ჩვენებით</strong></td>
         </tr>
 </table>
-<div class="full">
+<div class="full hide_xs">
     <div class="logoo">ლოგო</div>
     <div class="rubrica">რუბრიკა</div>
     <div class="sex">მომხმარებელთა სქესი</div>
@@ -468,7 +504,7 @@ function out(){
 			plotOptions: {
 				pie: { 
 					dataLabels: {
-						distance: -40,
+						distance: -30,
 						enabled: true,
 						format: '{point.percentage:.1f} %', 
 						style: {
@@ -546,17 +582,24 @@ function out(){
 		});
 		</script> 
 <div class="full" > 
-    <div class="logoo" style="position: relative;bottom: 80px;"><? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?></div>
-    <div class="rubrica"><font style="position: relative;bottom: 90px; font-weight:600; color:black;"><?=$item['rubric']?></font></div> 
+<div class="table_headers" style="margin:10px;"></div>
+    <div class="logoo" style="position: relative;bottom: 55px;">
+	<div class="table_headers"> ლოგო </div>
+	<? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?></div>
+<div class="table_headers" style="margin:10px;"></div>
+    <div class="rubrica"> <div class="table_headers"> რუბრიკა </div> <font style="position: relative;bottom: 66px; font-weight:600; color:black;"><?=$item['rubric']?></font></div> 
     <div class="sex">
+    	<div align="center" class="table_headers">მომხმარებელთა სქესი</div>
         <div id="pie_<?=$counter?>" class="pie"></div>
+        
         <div id="rub1"><img src="/<?=$theme?>images/blue.png" width="10" />&nbsp;&nbsp;მამრობითი<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/<?=$theme?>images/orange.png" width="10" />&nbsp;&nbsp;მდედრობითი</div>
     </div>
     <div class="age">
+    	<div align="center" class="table_headers">ასაკობრივი ზღვარი</div>
    	 <div id="containerr_<?=$counter?>" class="column"></div> 
     </div> 
-    <div class="vizuali" onclick="view('<?=$item['stat']?>','<?=$item['rubric_id']?>')" style="position: relative;bottom: 45px;"><? if(!empty($item['view'])){?><img src="<?=$item['view']?>" width="50"/><? } ?></div> 
-</div>
+    <div class="vizuali" onclick="view('<?=$item['stat']?>','<?=$item['rubric_id']?>')" style="position: relative;bottom: 25px; height:105px;"><? if(!empty($item['view'])){?><img src="<?=$item['view']?>" width="50"/><? } ?></div> 
+	</div>
 	<? $counter++;?>
 <?endforeach?>
 <table id="tab">
@@ -574,7 +617,7 @@ function out(){
             <td colspan="5" align="center" style="background-color:#27bfc4; color:#FFF; font-size:20px;  padding: 10px;"><strong>რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით</strong></td>
         </tr> 
 </table>
-<div class="full">
+<div class="full hide_xs">
     <div class="logoo">ლოგო</div>
     <div class="rubrica">რუბრიკა</div>
     <div class="sex">მომხმარებელთა სქესი</div>
@@ -603,7 +646,7 @@ function out(){
 			plotOptions: {
 				pie: { 
 					dataLabels: {
-						distance: -40,
+						distance: -30,
 						enabled: true,
 						format: '{point.percentage:.1f} %', 
 						style: {
@@ -681,17 +724,24 @@ function out(){
 		});
 		</script> 
 <div class="full" > 
-    <div class="logoo" style="position: relative;bottom: 80px;"><? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?></div>
-    <div class="rubrica"><font style="position: relative;bottom: 90px; font-weight:600; color:black;"><?=$item['rubric']?></font></div> 
+<div class="table_headers" style="margin:10px;"></div>
+    <div class="logoo" style="position: relative;bottom: 55px;">
+	<div class="table_headers"> ლოგო </div>
+	<? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?></div>
+<div class="table_headers" style="margin:10px;"></div>
+    <div class="rubrica"> <div class="table_headers"> რუბრიკა </div> <font style="position: relative;bottom: 66px; font-weight:600; color:black;"><?=$item['rubric']?></font></div> 
     <div class="sex">
+    	<div align="center" class="table_headers">მომხმარებელთა სქესი</div>
         <div id="pie_<?=$counter?>" class="pie"></div>
+        
         <div id="rub1"><img src="/<?=$theme?>images/blue.png" width="10" />&nbsp;&nbsp;მამრობითი<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/<?=$theme?>images/orange.png" width="10" />&nbsp;&nbsp;მდედრობითი</div>
     </div>
     <div class="age">
+    	<div align="center" class="table_headers">ასაკობრივი ზღვარი</div>
    	 <div id="containerr_<?=$counter?>" class="column"></div> 
     </div> 
-    <div class="vizuali" onclick="view('<?=$item['stat']?>','<?=$item['rubric_id']?>')" style="position: relative;bottom: 45px;"><? if(!empty($item['view'])){?><img src="<?=$item['view']?>" width="50"/><? } ?></div> 
-</div>
+    <div class="vizuali" onclick="view('<?=$item['stat']?>','<?=$item['rubric_id']?>')" style="position: relative;bottom: 25px; height:105px;"><? if(!empty($item['view'])){?><img src="<?=$item['view']?>" width="50"/><? } ?></div> 
+	</div>
 	<? $counter++;?>
 <?endforeach?>
 <table id="tab">
@@ -709,7 +759,7 @@ function out(){
             <td colspan="5" align="center" style="background-color:#27bfc4; color:#FFF; font-size:20px;  padding: 10px;"><strong>რუბრიკები 30 000-დან 50 000-მდე  ჩვენებით</strong></td>
         </tr>
  </table>
- <div class="full">
+ <div class="full hide_xs">
     <div class="logoo">ლოგო</div>
     <div class="rubrica">რუბრიკა</div>
     <div class="sex">მომხმარებელთა სქესი</div>
@@ -816,17 +866,24 @@ function out(){
 		});
 		</script> 
 <div class="full" > 
-    <div class="logoo" style="position: relative;bottom: 80px;"><? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?></div>
-    <div class="rubrica"><font style="position: relative;bottom: 90px; font-weight:600; color:black;"><?=$item['rubric']?></font></div> 
+<div class="table_headers" style="margin:10px;"></div>
+    <div class="logoo" style="position: relative;bottom: 55px;">
+	<div class="table_headers"> ლოგო </div>
+	<? if(!empty($item['logo_url'])){?><img src="<?=$item['logo_url']?>" width="50"/><? } ?></div>
+<div class="table_headers" style="margin:10px;"></div>
+    <div class="rubrica"> <div class="table_headers"> რუბრიკა </div> <font style="position: relative;bottom: 66px; font-weight:600; color:black;"><?=$item['rubric']?></font></div> 
     <div class="sex">
+    	<div align="center" class="table_headers">მომხმარებელთა სქესი</div>
         <div id="pie_<?=$counter?>" class="pie"></div>
+        
         <div id="rub1"><img src="/<?=$theme?>images/blue.png" width="10" />&nbsp;&nbsp;მამრობითი<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/<?=$theme?>images/orange.png" width="10" />&nbsp;&nbsp;მდედრობითი</div>
     </div>
     <div class="age">
+    	<div align="center" class="table_headers">ასაკობრივი ზღვარი</div>
    	 <div id="containerr_<?=$counter?>" class="column"></div> 
     </div> 
-    <div class="vizuali" onclick="view('<?=$item['stat']?>','<?=$item['rubric_id']?>')" style="position: relative;bottom: 45px;"><? if(!empty($item['view'])){?><img src="<?=$item['view']?>" width="50"/><? } ?></div> 
-</div>
+    <div class="vizuali" onclick="view('<?=$item['stat']?>','<?=$item['rubric_id']?>')" style="position: relative;bottom: 25px; height:105px;"><? if(!empty($item['view'])){?><img src="<?=$item['view']?>" width="50"/><? } ?></div> 
+	</div>
 	<? $counter++;?>
 <?endforeach?>
 <table id="tab">

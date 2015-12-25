@@ -1,30 +1,69 @@
 <? defined('_JEXEC') or die('Restricted access');
 if(isset($_POST['action']) == 'get_stat'){
     if($_POST['stat'] > 0){
-		$co = 'SELECT COUNT(ID) as counta FROM osr_presentation WHERE stat ='.intval($_POST['stat']).' and rubric_id = '.intval($_POST['rub']).'';
+		
+		$co = 'SELECT COUNT(ID) as counta FROM osr_presentation WHERE stat ='.intval($_POST['stat']).' and rubric_id = '.intval($_POST['rub']);
 		$counta = getAllcache($co,3600,'presentation'); 
-		$count = $counta[0]['counta'];
-		if($count<=7){
+		 $count = $counta[0]['counta'];
+		if($count<=9){
+			$size = 'height: 150px; font-size: 20px; color: #F60; background-color:<?=$color?>; font-weight:700;';
+			}
+		if($count<=9){
 			$size = 'height: 100px; font-size: 20px; color: #F60; background-color:<?=$color?>; font-weight:700;';
-			}elseif($count<=15){ 
-				$size = 'height: 20px; font-size: 20px; color: #F60; background-color:<?=$color?>; font-weight:700;'; 
-				}
- $test = 'SELECT * FROM `osr_presentation` WHERE stat='.intval($_POST['stat']).' AND rubric_id='.intval($_POST['rub']).'  AND scroll_position>0';
-     $registry['test'] = getAllcache($test,3600,'presentation');
+			}
+				
+						
+     $test ='SELECT a.size,a.price,a.rubric_id,a.stat,a.scroll_position,a.position FROM
+               #__presentation as a
+               WHERE a.stat='.intval($_POST['stat']).' AND a.rubric_id='.intval($_POST['rub']).'  AND a.scroll_position>0';
+     $registry['test'] = $DB->getAll($test);
+		if(count($registry['test']) > 0){
+			foreach($registry['test'] as $key=>$t):
+				$registry['pres_banner'][$t['position']]['size'] = $t['size'];
+			    $registry['pres_banner'][$t['position']]['price'] = $t['price'];
+				$registry['pres_banner'][$t['position']]['rubric_id'] = $t['rubric_id'];
+				$registry['pres_banner'][$t['position']]['stat'] = $t['stat'];
+				$registry['pres_banner'][$t['position']]['scroll_position'] = $t['scroll_position'];
+				$registry['pres_banner'][$t['position']]['position'] = $t['position'];
+				$registry['pres_banner'][$t['position']]['status'] = 0;
+				$registry['pres_banner'][$t['position']]['finished_at'] = 0;
+			    $registry['pres_positions'][] = $t['position'];
+			endforeach;
+		}
+
+		$registry['banner_list'] = $DB->getAll('SELECT status,finished_at,cat_id,title FROM #__banner_list WHERE type != 0 and cat_id = "'.intval($_POST['rub']).'" group by title');
+        if(count($registry['banner_list']) > 0){
+			foreach($registry['banner_list'] as $b):
+				$registry['pres_banner'][$b['title']]['status'] = $b['status'];
+				$registry['pres_banner'][$b['title']]['finished_at'] = $b['finished_at']; 
+			endforeach;
+		}
+
+		print_r($registry['pres_banner']);
+
 		 $i = 1;
 		$arr =array();
-		 foreach($registry['test'] as $item): 
+		 foreach($registry['pres_banner'] as $item):
 		 $array = array("#baeaec","#27bfc4"); 
 		 if($i % 2 == 0)
 			$color = $array[0];
 		else
 			$color = $array[1];
 		$i++; 
+		if($item['status']==2){
+		 	$saled ='<img src="../../../../apanel/images/saled.png"/>'; 
+		 }elseif($item['status']==1){
+			$saled ="უფასოდ გაიცემა";
+		}else{
+			$saled ="თავისუფალია";
+			}
 		 ?> 
+         
             <tr onclick="scrollWin(<?=$item['scroll_position']?>, '<?=$item['position']?>')" style="background-color:<?=$color?>; <?=$size?> "> 
             <td align="center"><?=$item['position']?></td>
             <td align="center"><?=$item['size']?></td>
-            <td align="center"><?=$item['price']?></td> 
+            <td align="center"><?=$item['price']?></td>
+			<td align="center"><?=$saled?></td>
             </tr>
 		   <?endforeach;?> 
 	 <?	 

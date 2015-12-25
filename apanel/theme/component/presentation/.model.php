@@ -6,14 +6,14 @@ if(get_access('admin','presentation','view')):
 //$registry['news'] = $DB->getAll($sql); // array chanawerebis gamotana
 //$registry['news'] = getAllcache($sql,600,'presentation/all','../'); // array chanawerebis gamotana cshireba
 if (isset($_GET['test'])){
-	foreach($_GET['points'] as $key => $value){
-		$rubric_id = $value['rubric_id'];
+	$rubric_id = $_GET['rubric_id'];
+	$stat = $_GET['rubstat'];
+	foreach($_GET['points'] as $key => $value){ 
 		$position = $value['position'];
 		$size = $value['size'];
 		$price = $value['price'];
 		$point = $value['point'];
-		$view = $_GET['img_url'];
-		$stat = $_GET['rubstat'];
+		$view = $_GET['img_url']; 
 		$insert = "INSERT INTO #__presentation(id,position,size,price,view,rubric_id,scroll_position,stat) VALUES('','$position','$size','$price','$view','$rubric_id','$point','$stat')";
 		$DB->execute($insert);
 		
