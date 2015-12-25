@@ -242,7 +242,8 @@ $get_params = http_build_query(array(
     'crossdomain' => $crossdomain,
     'field_id'  => $field_id,
     'akey' 		=> (isset($_GET['akey']) && $_GET['akey'] != '' ? $_GET['akey'] : 'key'),
-    'fldr'      => ''
+	'no_wm'     => (isset($_GET['no_wm'])) ? 1 : 0,
+    'fldr'      => '',
 ));
 ?>
 
@@ -351,7 +352,7 @@ $get_params = http_build_query(array(
 		    dictResponseError: "SERVER ERROR",
 		    paramName: "file", // The name that will be used to transfer the file
 		    maxFilesize: <?php echo $MaxSizeUpload; ?>, // MB
-		    url: "upload.php?akey=<?php echo $_GET['akey'];?><?=(isset($_GET['no_wm']) > 0) ? '&no_wm=1' : '';?>",
+		    url: "upload.php?akey=<?php echo $_GET['akey'];?><?php echo ($_GET['no_wm'] > 0) ? '&no_wm=1' : '&no_wm=0';?>",
 		    accept: function(file, done) {
 			    var extension=file.name.split('.').pop();
 			    extension=extension.toLowerCase();
@@ -470,6 +471,7 @@ $get_params = http_build_query(array(
 				    <div class="fallback">
 					<?php echo  lang_Upload_file?>:<br/>
 					<input name="file" type="file" />
+					<input type="hidden" name="no_wm" value="<?php (isset($_GET['no_wm']) ? 1 : 0); ?>"/>
 					<input type="hidden" name="fldr" value="<?php echo $subdir; ?>"/>
 					<input type="hidden" name="view" value="<?php echo $view; ?>"/>
 					<input type="hidden" name="type" value="<?php echo $type_param; ?>"/>
