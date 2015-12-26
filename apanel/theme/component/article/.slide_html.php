@@ -6,6 +6,11 @@
     .sitems a,label{
         display:inline-block;
     }
+    <?php if($user->get_property('gid') == 18):?>
+     .sitems .btn-blue,.sitems label{
+         display:none;
+     }
+    <?php endif;?>
 </style>
 <script>
     $(document).ready(function(){
