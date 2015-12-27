@@ -405,22 +405,40 @@ endif;
 
     function addStar($args=array()){
         $ip = ip2long(getIP());
-        if($ip > 0 && $args['star'] > 0 && $args['user'] > 0 && $args['id'] > 0){
-             $expire = time() + (3600 * 24 * 10);
-             $check = $this->DB->getOne("SELECT id FROM osr_news_gallery_votes WHERE news_id='".$args['id']."' and uid='".$args['user']."' and (ip='".ip2long(getIP())."' or cookie='".bigintval($_COOKIE["guestv_".$args["id"]."_".$args['user']])."')");
-             if(!$check && $check <=0){
-                 setcookie("guestv_".$args["id"]."_".$args['user'],'1'.$ip.$args['user'].$args['star'],$expire,'/');
-             if($this->DB->execute("INSERT INTO osr_news_gallery_votes (news_id,uid,star,ip,cookie) VALUES ('".intval($args["id"])."','".intval($args["user"])."','".intval($args["star"])."','".$ip."','1".$ip.$args['user'].$args['star']."')")){
-                 echo $args['star'];
-             }else{
-                 echo 0;
-             }
-             }else{
-                 echo 0;
-             }
-            //echo $ip.",".$args['star'].",".$args['user'].",".$args['id'].",".$args['cid'];
-        }
+        if($this->get_country_code() == 'GE'):
+            if($ip > 0 && $args['star'] > 0 && $args['user'] > 0 && $args['id'] > 0){
+                $expire = time() + (3600 * 24 * 10);
+                $check = $this->DB->getOne("SELECT id FROM osr_news_gallery_votes WHERE news_id='".$args['id']."' and uid='".$args['user']."' and (ip='".ip2long(getIP())."' or cookie='".bigintval($_COOKIE["guestv_".$args["id"]."_".$args['user']])."')");
+                if(!$check && $check <=0){
+                    setcookie("guestv_".$args["id"]."_".$args['user'],'1'.$ip.$args['user'].$args['star'],$expire,'/');
+                    if($this->DB->execute("INSERT INTO osr_news_gallery_votes (news_id,uid,star,ip,cookie) VALUES ('".intval($args["id"])."','".intval($args["user"])."','".intval($args["star"])."','".$ip."','1".$ip.$args['user'].$args['star']."')")){
+                        echo $args['star'];
+                    }else{
+                        echo 0;
+                    }
+                }else{
+                    echo 0;
+                }
+                //echo $ip.",".$args['star'].",".$args['user'].",".$args['id'].",".$args['cid'];
+            }
+        endif;
         die();
+    }
+
+    function get_country_code(){
+        include_once('../geoip/geoip.php');
+        $ip = getIP();
+        if((strpos($ip, ":") === false)) {
+            //ipv4
+            $gi = geoip_open("../geoip/GeoIP.dat",GEOIP_STANDARD);
+            $country = geoip_country_code_by_addr($gi, $ip);
+        }
+        else {
+            //ipv6
+            $gi = geoip_open("../geoip/GeoIPv6.dat",GEOIP_STANDARD);
+            $country = geoip_country_code_by_addr_v6($gi, $ip);
+        }
+        return $country;
     }
 
 

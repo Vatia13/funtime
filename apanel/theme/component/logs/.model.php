@@ -48,3 +48,10 @@ if($_GET['section']=='view' and get_access('admin','tools','view', false) and in
             WHERE `#__logs`.`id` = '$id' LIMIT 1";
         $registry['logs']=$DB->getAll($sql);
 }
+
+if($_GET['section'] == 'photocontest'){
+	if(intval($_GET['uid']) > 0 && intval($_GET['news_id']) > 0){
+		$registry['contest'] = $DB->getAll("SELECT ip,star FROM #__news_gallery_votes WHERE
+                                           news_id='".intval($_GET['news_id'])."' and uid='".intval($_GET['uid'])."' group by ip");
+	}
+}

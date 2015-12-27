@@ -492,6 +492,7 @@ endif;
                 $contest_out .="<div class='no_star'>ვარსკვლავის მიცემა შესაძლებელია მხოლოდ საქართველოდან.</div>";
             endif;
             echo $contest_out;
+            $contest_out = '';
             ?>
         </div>
         <div class="fix"></div>
