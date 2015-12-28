@@ -45,19 +45,5 @@
             deviceType:'<?=$registry['deviceType']?>',
             social_tools:'<a target="_blank" class="fb_share_contest" href="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu'];?>/<?=$registry['post'][0]['chpu'];?>/&title=<?php echo str_replace(' ','+',$registry['post'][0]['title']);?>&redirect_uri=https://www.facebook.com/&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['post'][0]['updated_at']));?>/{pic}&description={name}"> </a>'
         });
-
-        //$(".pp_pic_holder,.pp_content")
-        <?if($registry['deviceType'] != 'phone'):?>
-        var imageNum = $('.gallery li').length;
-        var w = 0;
-        for(var i = 1; i <= imageNum; i++){
-
-            if($('.gallery li:nth-child('+i+') .zoom-pic img').height() > $('.gallery li:nth-child('+i+') .zoom-pic img').width()){
-                //w = $('.gallery li:nth-child('+i+')').width();
-                $('.gallery li:nth-child('+i+')').css({'max-width':'465px','width':'48%'});
-                $('.gallery li:nth-child('+i+') .zoom-pic img').css('width','100%');
-            }
-        }
-        <?endif;?>
     });
 </script>

@@ -546,7 +546,7 @@
                             <? $photographer = ['ალექსანდრე სხულუხია','ნათია სიჭინავა','ნინი მანდარია','სალვატორე კოსტა'];//$DB->getAll('SELECT name FROM #__phgrapher order by name ASC'); ?>
                             <?if(count($photographer) > 0):?>
                                 <select name="photographer">
-                                    <option>---</option>
+                                    <option value="">---</option>
                                     <?foreach($photographer as $name):?>
                                         <option <?=($name == $num['phg']) ? 'selected' : '';?>><?=$name;?></option>
                                     <?endforeach;?>
@@ -657,7 +657,6 @@
         });
 
         var news_id = '<?=$num['id'];?>';
-
         if(jQuery('.banner_adds tr').length <= 0){
             jQuery.ajax({
                 url:'/apanel/index.php?component=banner&section=ajax',

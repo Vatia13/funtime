@@ -58,9 +58,20 @@
                     <?$image_url = array(); for($i=0;$i<count($registry['slider']['img']);$i++):
 
                         $image_url[$i] = str_replace('http://funtime.ge:80/','',$registry['slider']['img'][$i]);
-                        //http://funtime.ge/funtime.php?image=<?=$image_url[$i];
+
+                        if($registry['deviceType'] != 'phone') {
+                            $sinfo = @getimagesize($_SERVER['DOCUMENT_ROOT'].str_replace('http://funtime.ge:80','',generate_unknown($registry['slider']['img'][$i])));
+
+                            if ($sinfo[0] > $sinfo[1]) {
+                                $style = '';
+                            } else {
+                                $style = 'style="max-width:465px;width:48%;"';
+                            }
+                        }else{
+                            $style = '';
+                        }
                         ?>
-                        <li>
+                        <li <?=$style;?>>
                         <?if($_GET['new_slider'] > 0 or $registry['post'][0]['slide_type'] == '0'):
                             if(!file_exists($_SERVER['DOCUMENT_ROOT']."/img/uploads/news/fb/".date('Y-m',strtotime($registry['post'][0]['time']))."/".$registry['post'][0]['id'].'_'.get_ext($registry['slider']['img'][$i],'/'))):
                                 $image_info = getimagesize($_SERVER['DOCUMENT_ROOT'].str_replace('http://funtime.ge:80','',generate_unknown($registry['slider']['img'][$i])));
@@ -83,7 +94,7 @@
                                 </a>
                                 <?endif;?>
                             <a class="zoom-pic" href="<?=$registry['slider']['img'][$i];?>" data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu']?>/<?=$registry['post'][0]['chpu']?>/&title=<?echo str_replace(' ','+',strip_tags($registry['post'][0]['title']));?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['post'][0]['time']));?>/<?=$registry['post'][0]['id'].'_'.last_par_url($registry['slider']['img'][$i]);?>&description=<?=strip_tags($registry['post'][0]['text_short'])?>&redirect_uri=https://www.facebook.com/" title="<?=strip_tags($registry['slider']['name'][$i]);?>" rel="prettyPhoto[pp_gal2]" >
-                                <img src="<?=$registry['slider']['img'][$i];?>" style="max-width:940px !important;" title="<?=strip_tags(addslashes($registry['slider']['name'][$i]));?>" data-description="<?=addslashes($registry['slider']['name'][$i]);?>">
+                                <img src="<?=$registry['slider']['img'][$i];?>" style="max-width:940px !important;width:100%;" title="<?=strip_tags(addslashes($registry['slider']['name'][$i]));?>" data-description="<?=addslashes($registry['slider']['name'][$i]);?>">
                             </a>
                             </div>
                         </li>
