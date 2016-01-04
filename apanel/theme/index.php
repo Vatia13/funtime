@@ -99,9 +99,9 @@
 
 <script type="text/javascript" src="<?=$theme_admin;?>js/keyboards.js"></script>
 <?if(!$_GET['component']):?>
-    <script type="text/javascript" src="<?=$theme_admin;?>js/cal.js?ver=0.1"></script>
+    <script type="text/javascript" src="<?=$theme_admin;?>js/cal.js?ver=0.2"></script>
 <?else:?>
-<script type="text/javascript" src="<?=$theme_admin;?>js/cal1.js"></script>
+<script type="text/javascript" src="<?=$theme_admin;?>js/cal1.js?ver=0.2"></script>
 <?endif;?>
 <?if($_GET['component'] == "article" && $_GET['section'] == "edit"){?>
     <link rel="stylesheet" media="screen" type="text/css" href="<?=$theme_admin;?>css/jquery.guillotine.css" />
