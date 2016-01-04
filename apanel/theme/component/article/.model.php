@@ -97,6 +97,7 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
         $sponsored = intval($_POST['sponsored']);
         $phg=PHP_slashes(htmlspecialchars(strip_tags($_POST['phg'])));
         $slide_type = (isset($_POST['slide_type']) > 0) ? '1' : '0';
+        $contest_rate = intval($_POST['contest_rate']);
         if($chpu == $num['chpu']){
             $chpu=generate_ge($title);
         }
@@ -482,7 +483,8 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
 				`info` = '$info',
 				`copy` = '$copy',
 				`sponsored` = '$sponsored',
-				`phg` = '$phg'
+				`phg` = '$phg',
+				`contest_rate` = '$contest_rate'
 
 				WHERE `#__news`.`id`='".intval($_POST['id'])."' LIMIT 1; ";
                                 $DB->execute($sql);

@@ -157,7 +157,7 @@
             <!-- /TinyMCE -->
 
         <?endif;?>
-            <script src="<?=$theme_admin?>js/news.ajax.js?ver=0.7"></script>
+            <script src="<?=$theme_admin?>js/news.ajax.js?ver=0.9"></script>
             <?if(!empty($message[0])):?>
             <div class="<?=$message[0]?>_box">
                 <?=$message[1]?>
@@ -450,6 +450,7 @@
                         <tr id="photoSlide2" style="display:none;">
                             <td class="td1" valign="top"><b>ფოტოკონკურსი</b><input type="hidden" name="phconc" value="<?=$photo_concurs;?>"/></td>
                             <td valign="top">
+                                <label for="contest_rate">ფარული რეიტინგი</label> <input type="checkbox" id="contest_rate" name="contest_rate" value="1" <?php if($num['contest_rate'] > 0):?>checked<?endif;?>/>
                                 კონკურსანტების რაოდენობა <input type="text" value="" name="concursant_number" class="inputbox" style="width:60px;padding:5px 5px 7px 5px;"/>
                                 ფოტოების რაოდენობა
                                 <select name="concursant_image_number" style="width:60px;padding:5px 5px 7px 5px;">

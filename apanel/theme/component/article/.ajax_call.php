@@ -49,6 +49,7 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
     $copy = array('title'=>$ctitle,'url'=>$curl);
     $copy = serialize($copy);
     $response = array();
+    $contest_rate = intval($_POST['contest_rate']);
 
     $info = array(
         'address'=>$_POST['address'],
@@ -306,7 +307,8 @@ if($_POST['update'] == 1 or $_POST['add'] == 1){
                 'slide_type'=>$slide_type,
                 'thumbs'=>$totalpath,
                 'img'=>$read_sql,
-                'fb'=>$fb_sql
+                'fb'=>$fb_sql,
+                'contest_rate'=>$contest_rate
             ],$id)){
                 $response['photop'] = (!empty($totalpath)) ? $totalpath : '';
                 $response['desimg']= (!empty($read_sql)) ? $read_sql : '';

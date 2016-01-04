@@ -483,10 +483,12 @@ endif;
                 endif;
                 $contest_out .="</div>
     <div class='contest_stars_num user_".$i."'>";
-
+      if($registry['post'][0]['contest_rate'] <= 0):
                 $sum = $DB->getOne("SELECT SUM(star) FROM #__news_gallery_votes WHERE uid='".$i."' and news_id='".$registry['post'][0]['id']."'");
         $contest_out .= ($sum) ? $sum : 0;
-
+     else:
+          $contest_out .= 'ხმის მიცემა ფარულია';
+     endif;
         $contest_out .="</div></div>";
             else:
                 $contest_out .="<div class='no_star'>ვარსკვლავის მიცემა შესაძლებელია მხოლოდ საქართველოდან.</div>";

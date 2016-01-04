@@ -32,6 +32,7 @@ var addFormFields = function() {
         imgsz:$('input[name="imgsz"]').val(),
         top:$('input[name="top"]').val(),
         left:$('input[name="left"]').val(),
+        contest_rate:($('input[name="contest_rate"]:checked').val() > 0) ? 1 : 0,
         slide_type:($('input[name="slide_type"]:checked').val() > 0) ? 1 : 0,
         copy: {ctitle:$('input[name="copy[title]"]').val(),curl:$('input[name="copy[url]"]').val()},
         info: {
