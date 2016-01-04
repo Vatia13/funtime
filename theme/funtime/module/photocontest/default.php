@@ -345,6 +345,8 @@ endif;
             height:24px;
         }
 
+
+
     }
 
 </style>
@@ -494,7 +496,6 @@ endif;
                 $contest_out .="<div class='no_star'>ვარსკვლავის მიცემა შესაძლებელია მხოლოდ საქართველოდან.</div>";
             endif;
             echo $contest_out;
-            $contest_out = '';
             ?>
         </div>
         <div class="fix"></div>
@@ -505,7 +506,7 @@ endif;
                     <li class="contest_img_small contest_person_<?=$i;?>">
                         <a target="_blank" class="fb_share_contest"   href="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu'];?>/<?=$registry['post'][0]['chpu'];?>/&title=<?php echo str_replace(' ','+',$registry['post'][0]['title']);?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['contest'][0]['updated_at']));?>/<?=last_par_url($item['img'][$a]);?>&description=<?=$item['name'];?>&redirect_uri=https://www.facebook.com/">
                         </a>
-                        <a rel="prettyPhoto[contest_gallery]" data-star="<?=$contest_out;?>" data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu'];?>/<?=$registry['post'][0]['chpu'];?>/&title=<?php echo str_replace(' ','+',$registry['post'][0]['title']);?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['contest'][0]['updated_at']));?>/<?=last_par_url($item['img'][$a]);?>&description=<?=$item['name'];?>&redirect_uri=https://www.facebook.com/" class="contest_img_small" href="<?php echo $item['img'][$a];?>"><img src="<?php echo $item['img'][$a];?>" width="100%" height="500" alt="<?=$i;?>. <?php echo $item['name'];//$item['img_name'][$a];?>"/></a>
+                        <a rel="prettyPhoto[contest_gallery]" data-star="<?=str_replace('ხმის მიცემა ფარულია','?',$contest_out);?>" data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu'];?>/<?=$registry['post'][0]['chpu'];?>/&title=<?php echo str_replace(' ','+',$registry['post'][0]['title']);?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['contest'][0]['updated_at']));?>/<?=last_par_url($item['img'][$a]);?>&description=<?=$item['name'];?>&redirect_uri=https://www.facebook.com/" class="contest_img_small" href="<?php echo $item['img'][$a];?>"><img src="<?php echo $item['img'][$a];?>" width="100%" height="500" alt="<?=$i;?>. <?php echo $item['name'];//$item['img_name'][$a];?>"/></a>
                     </li>
                 <?php endfor;?>
                 <?elseif(count($item['img']) == 2):?>
@@ -513,7 +514,7 @@ endif;
                     <li class="contest_img_medium">
                         <a target="_blank" class="fb_share_contest" href="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu'];?>/<?=$registry['post'][0]['chpu'];?>/&title=<?php echo str_replace(' ','+',$registry['post'][0]['title']);?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['contest'][0]['updated_at']));?>/<?=last_par_url($item['img'][$a]);?>&description=<?=$item['name'];?>&redirect_uri=https://www.facebook.com/">
                         </a>
-                        <a rel="prettyPhoto[contest_gallery]" data-star="<?=$contest_out;?>" data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu'];?>/<?=$registry['post'][0]['chpu'];?>/&title=<?php echo str_replace(' ','+',$registry['post'][0]['title']);?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['contest'][0]['updated_at']));?>/<?=last_par_url($item['img'][$a]);?>&description=<?=$item['name'];?>&redirect_uri=https://www.facebook.com/" class="contest_img_medium"  href="<?php echo $item['img'][$a];?>"><img src="<?php echo $item['img'][$a];?>" width="100%" alt="<?=$i;?>. <?php echo $item['name'];//$item['img_name'][$a];?>"/></a>
+                        <a rel="prettyPhoto[contest_gallery]" data-star="<?=str_replace('ხმის მიცემა ფარულია','',$contest_out);?>" data-facebook="https://www.facebook.com/dialog/feed?app_id=1391061841189461&link=http://www.funtime.ge/<?=$registry['post'][0]['cat_chpu'];?>/<?=$registry['post'][0]['chpu'];?>/&title=<?php echo str_replace(' ','+',$registry['post'][0]['title']);?>&picture=http://www.funtime.ge/img/uploads/news/fb/<?=date('Y-m',strtotime($registry['contest'][0]['updated_at']));?>/<?=last_par_url($item['img'][$a]);?>&description=<?=$item['name'];?>&redirect_uri=https://www.facebook.com/" class="contest_img_medium"  href="<?php echo $item['img'][$a];?>"><img src="<?php echo $item['img'][$a];?>" width="100%" alt="<?=$i;?>. <?php echo $item['name'];//$item['img_name'][$a];?>"/></a>
                     </li>
                     <?php endfor; ?>
                 <?else:?>
@@ -527,7 +528,8 @@ endif;
             </ul>
 
         </div>
-      <?php endforeach;?>
+      <?php $contest_out = '';
+      endforeach;?>
     </div>
 </div>
 <div class="fix"></div>
@@ -561,15 +563,18 @@ endif;
                 type:'POST',
                 data:{star:star,user:user,id:id,action:'addStar'},
                 success:function(request){
-                    if(hidden <= 0){
+
                         var sumNum = document.getElementsByClassName('user_'+user);
                         num = sumNum[0].innerText;
                         var sum = parseInt(request) + parseInt(num);
+                    if(hidden <= 0){
                         $('.user_'+user).html(sum);
+                    }
+                        var user_html = (hidden <= 0) ? $('.contest_id_'+user+'').html() : $('.contest_id_'+user+'').html().replace('ხმის მიცემა ფარულია','?');
 
                         for(var i = 1; i<=request; i++){
                             $('.contest_id_'+user+' a:nth-child('+i+')').replaceWith('<img src="/img/icons/star.png" width="24" />');
-                            var d = "<div class='contest_rate contest_id_"+user+"'>"+$('.contest_id_'+user+'').html()+"</div>";
+                            var d = "<div class='contest_rate contest_id_"+user+"'>"+user_html+"</div>";
                             $('.read_block .contest_person_'+user+'').find('a:nth-child(2)').attr('data-star',d);
                         }
                         if(request < 3){
@@ -577,7 +582,6 @@ endif;
                                 $('.contest_id_'+user+' a:nth-child('+i+')').replaceWith('<img src="/img/icons/star1.png" width="24" />');
                             }
                         }
-                    }
                 }
             });
         }
