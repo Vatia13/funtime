@@ -483,7 +483,7 @@ endif;
                 endif;
                 $contest_out .="</div>
     <div class='contest_stars_num user_".$i."'>";
-      if($registry['post'][0]['contest_rate'] <= 0):
+      if($registry['post'][0]['contest_rate'] <= 0 || abs($days / (3600 * 24)) > 7):
                 $sum = $DB->getOne("SELECT SUM(star) FROM #__news_gallery_votes WHERE uid='".$i."' and news_id='".$registry['post'][0]['id']."'");
         $contest_out .= ($sum) ? $sum : 0;
      else:
@@ -553,6 +553,7 @@ endif;
         var star = $(event).data("star");
         var user = $(event).data("user");
         var id = $(event).data("id");
+        var hidden = '<?php echo $registry['post'][0]['contest_rate'];?>';
         var num = 0;
         if(star > 0 && user > 0 && id > 0){
             $.ajax({
@@ -560,19 +561,21 @@ endif;
                 type:'POST',
                 data:{star:star,user:user,id:id,action:'addStar'},
                 success:function(request){
-                    var sumNum = document.getElementsByClassName('user_'+user);
-                    num = sumNum[0].innerText;
-                    var sum = parseInt(request) + parseInt(num);
-                    $('.user_'+user).html(sum);
+                    if(hidden <= 0){
+                        var sumNum = document.getElementsByClassName('user_'+user);
+                        num = sumNum[0].innerText;
+                        var sum = parseInt(request) + parseInt(num);
+                        $('.user_'+user).html(sum);
 
-                    for(var i = 1; i<=request; i++){
-                        $('.contest_id_'+user+' a:nth-child('+i+')').replaceWith('<img src="/img/icons/star.png" width="24" />');
-                        var d = "<div class='contest_rate contest_id_"+user+"'>"+$('.contest_id_'+user+'').html()+"</div>";
-                        $('.read_block .contest_person_'+user+'').find('a:nth-child(2)').attr('data-star',d);
-                    }
-                    if(request < 3){
-                        for(var i = request; i<=3; i++){
-                            $('.contest_id_'+user+' a:nth-child('+i+')').replaceWith('<img src="/img/icons/star1.png" width="24" />');
+                        for(var i = 1; i<=request; i++){
+                            $('.contest_id_'+user+' a:nth-child('+i+')').replaceWith('<img src="/img/icons/star.png" width="24" />');
+                            var d = "<div class='contest_rate contest_id_"+user+"'>"+$('.contest_id_'+user+'').html()+"</div>";
+                            $('.read_block .contest_person_'+user+'').find('a:nth-child(2)').attr('data-star',d);
+                        }
+                        if(request < 3){
+                            for(var i = request; i<=3; i++){
+                                $('.contest_id_'+user+' a:nth-child('+i+')').replaceWith('<img src="/img/icons/star1.png" width="24" />');
+                            }
                         }
                     }
                 }
