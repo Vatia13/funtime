@@ -162,7 +162,7 @@ img{outline:none;border:none;}
 }
 
 .logo{
-    background-image:url('../images/logo.png');
+    background-image:url('../images/christmas_logo.png');
     /* background-image:url('../images/logo_black1.png');*/
     background-repeat:no-repeat;
     background-position:center;
@@ -172,6 +172,7 @@ img{outline:none;border:none;}
     display:inherit;
     margin-left:35px;
 }
+
 .menu-btn{
     width:27px;
     height:64px;

@@ -7,7 +7,7 @@
 <link rel="icon" href="/<?=$theme?>images/favicon.ico" type="image/x-icon"/>
 <?get_meta()?>
 <title><?get_title();?></title>
-    <link href="/<?=$theme?>css/style.css?ver=0.1" rel="stylesheet" type="text/css" id="style" />
+    <link href="/<?=$theme?>css/style.css?ver=0.2" rel="stylesheet" type="text/css" id="style" />
     <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == false):?>
         <link href="/<?=$theme?>css/responsive.css?ver=0.8" rel="stylesheet" type="text/css"/>
     <?else:?>
