@@ -559,7 +559,7 @@ function clear_cache(){
 function get_banners_f(){ global $registry;?>
 <?if(function_exists('get_banner')):?>
     <?if(get_banner('F6',$registry['post'][0]['cat_id']) == true):?>
-        <div style="float:right;position:relative;top:0;width:200px;<?if(get_banner('F9',$registry['post'][0]['cat_id']) == false):?>position:fixed;right:0;top:20%;z-index:999;<?endif;?>">
+        <div style="float:right;position:relative;width:200px;<?if(get_banner('F9',$registry['post'][0]['cat_id']) == false):?>position:fixed;right:10px;top:25%;z-index:999;<?endif;?>">
             <div class="saknatuno-banner-place">
                 <?=get_banner('F6',$registry['post'][0]['cat_id']);?>
             </div>
