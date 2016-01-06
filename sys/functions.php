@@ -439,7 +439,7 @@ function get_banner($id,$cat_id=0,$class = ''){
     $banner_ext = get_ext($registry['banner'][0]['banner'],'.');
     if($registry['banner'][0]['date'] >= time()){
         if(!empty($registry['banner'][0]['url']))
-            if($banner_ext == 'gif' or $banner_ext == 'jpg'):
+            if($banner_ext == 'gif' or $banner_ext == 'jpg' or $banner_ext == 'png'):
                 return '<a href="'.$registry['banner'][0]['url'].'" class="'.$class.'" target="_blank" style="position:absolute;display:block;width:'.$registry['banner'][0]['width'].'px;height:'.$registry['banner'][0]['height'].'px;"></a><img src="'.$registry['banner'][0]['banner'].'" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"/>';
             elseif($banner_ext=='html'):
                 return '<iframe src="'.$registry['banner'][0]['banner'].'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'" frameBorder="0"></iframe>';
@@ -447,7 +447,7 @@ function get_banner($id,$cat_id=0,$class = ''){
                 return '<a href="'.$registry['banner'][0]['url'].'" class="'.$class.'" target="_blank" style="position:absolute;display:block;width:'.$registry['banner'][0]['width'].'px;height:'.$registry['banner'][0]['height'].'px;"></a><object data="'.$registry['banner'][0]['banner'].'"  data-url="'.$banner_ext.'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"><param name="wmode" value="opaque" /></object>';
             endif;
         else
-            if($banner_ext == 'gif' or $banner_ext == 'jpg'):
+            if($banner_ext == 'gif' or $banner_ext == 'jpg' or $banner_ext == 'png'):
                 return '<img src="'.$registry['banner'][0]['banner'].'" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"/>';
             elseif($banner_ext == 'js'):
                 return '<script src="'.$registry['banner'][0]['banner'].'"></script>'.base64_decode($registry['banner'][0]['script']);

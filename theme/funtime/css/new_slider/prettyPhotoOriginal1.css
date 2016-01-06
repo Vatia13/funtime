@@ -277,17 +277,15 @@ div.pp_slide_main{
 
 
 .gallery li{
-    float:left;
-    margin-right:10px;
-    margin-bottom:70px;
-    max-height:620px;
-    height:100%;
-    overflow:hidden;
-    display:block;
-    max-width:940px;
-    text-align:left;
-    position:relative;
-    vertical-align:top;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 70px;
+    height: 100%;
+    overflow: hidden;
+    max-width: 940px;
+    text-align: left;
+    position: relative;
+    vertical-align: bottom;
 }
 
 .gallery li span{

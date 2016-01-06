@@ -84,9 +84,9 @@
 </script>
 <?if(function_exists('get_banner')):?>
     <?if(get_banner('FM',1) == true):?>
-        <?if($registry['deviceType'] == 'phone' && !isset($registry['post'][0]['id'])):?>
+        <?if($registry['deviceType'] == 'phone' && !isset($registry['post'][0]['id']) && $_GET['banner'] == 1):?>
             <div id="banner_bg" style="position:fixed;left:0;top:0;background-color:#FFF;width:100%;height:100%;z-index:999;">
-                <div class="banner-place" id="mobile-banner" style="position:relative;width:90%;margin:5px auto;text-align:center;">
+                <div class="banner-place" id="mobile-banner" style="position:relative;width:90%;margin:5px auto;text-align:center;display:block;">
                     <?=get_banner('FM',1);?>
                 </div>
                 <div id="bannerTime" style="font-size:22px;color:red;position:absolute;bottom:5%;text-align:center;width:100%;font-family:'BPGNinoMediumCapsRegular'">

@@ -9,9 +9,9 @@
 <title><?get_title();?></title>
     <link href="/<?=$theme?>css/style.css?ver=0.2" rel="stylesheet" type="text/css" id="style" />
     <?if(get_banner('ბრენდირება L',$registry['post'][0]['cat_id']) == false):?>
-        <link href="/<?=$theme?>css/responsive.css?ver=0.8" rel="stylesheet" type="text/css"/>
+        <link href="/<?=$theme?>css/responsive.css?ver=1.4" rel="stylesheet" type="text/css"/>
     <?else:?>
-        <link href="/<?=$theme?>css/responsive_zoom.css?ver=0.1" rel="stylesheet" type="text/css"/>
+        <link href="/<?=$theme?>css/responsive_zoom.css?ver=0.5" rel="stylesheet" type="text/css"/>
     <?endif;?>
 <link href="/<?=$theme?>css/fb.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
