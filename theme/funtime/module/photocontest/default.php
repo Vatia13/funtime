@@ -561,7 +561,7 @@ endif;
             $.ajax({
                 url:'/lib/ajax-admin.php',
                 type:'POST',
-                data:{star:star,user:user,id:id,action:'addStar'},
+                data:{star:star,user:user,id:id,action:'addStar',ref:'<?=$_SERVER['HTTP_REFERER'];?>'},
                 success:function(request){
 
                         var sumNum = document.getElementsByClassName('user_'+user);

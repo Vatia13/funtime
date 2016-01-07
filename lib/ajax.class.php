@@ -406,7 +406,7 @@ endif;
     function addStar($args=array()){
         $ip = ip2long(getIP());
         $br = get_browser(null,true);
-        $br['http_referer'] = $_SERVER['HTTP_REFERER'];
+        $br['http_referer'] = PHP_slashes(htmlspecialchars(strip_tags($args['ref'])));
         $browser = base64_encode(serialize($br));
         if($this->get_country_code() == 'GE'):
             if($ip > 0 && $args['star'] > 0 && $args['user'] > 0 && $args['id'] > 0){
