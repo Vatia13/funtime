@@ -51,7 +51,12 @@ if($_GET['section']=='view' and get_access('admin','tools','view', false) and in
 
 if($_GET['section'] == 'photocontest'){
 	if(intval($_GET['uid']) > 0 && intval($_GET['news_id']) > 0){
-		$registry['contest'] = $DB->getAll("SELECT ip,star FROM #__news_gallery_votes WHERE
-                                           news_id='".intval($_GET['news_id'])."' and uid='".intval($_GET['uid'])."' group by ip");
+		if(isset($_GET['show'])){
+			$browser = ' AND browser != ""';
+		}else{
+			$browser = '';
+		}
+		$registry['contest'] = $DB->getAll("SELECT ip,star,browser FROM #__news_gallery_votes WHERE
+                                           news_id='".intval($_GET['news_id'])."' and uid='".intval($_GET['uid'])."' {$browser} group by ip");
 	}
 }
