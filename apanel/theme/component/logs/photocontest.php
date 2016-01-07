@@ -14,17 +14,18 @@
             <td>
                <?php $browser = unserialize(base64_decode($item['browser'])); //print_r($browser)?>
                 <?php if($browser['browser_name_regex']):?>
-                <b>ბრაუზერი</b> - <?php echo $browser['browser'];?><br>
-                <b>ბრაუზერის ტიპი</b> - <?php echo $browser['browser_type'];?><br>
-                <b>ბრაუზერის მარკა</b> - <?php echo $browser['browser_maker'];?><br>
-                <b>მშობელი</b> - <?php echo $browser['parent'];?><br>
-                <b>მოწყობილობის სახელი</b> - <?php echo $browser['device_name'];?><br>
-                <b>მოწყობილობის ტიპი</b> - <?php echo $browser['device_type'];?><br>
-                <b>მოწყობილობის კოდური სახელი</b> - <?php echo $browser['device_code_name'];?><br>
-                <b>კომენტარი</b> - <?php echo $browser['comment'];?><br>
-                <b>პლატფორმა</b> - <?php echo $browser['platform'];?><br>
-                <b>პლატფორმის აღწერა</b> - <?php echo $browser['platform_description'];?><br>
-                <b>პლატფორმის ბიტები</b> - <?php echo $browser['platform_bits'];?><br>
+                    <b>ბრაუზერი</b> - <?php echo $browser['browser'];?><br>
+                    <b>ბრაუზერის ტიპი</b> - <?php echo $browser['browser_type'];?><br>
+                    <b>ბრაუზერის მარკა</b> - <?php echo $browser['browser_maker'];?><br>
+                    <b>მშობელი</b> - <?php echo $browser['parent'];?><br>
+                    <b>მოწყობილობის სახელი</b> - <?php echo $browser['device_name'];?><br>
+                    <b>მოწყობილობის ტიპი</b> - <?php echo $browser['device_type'];?><br>
+                    <b>მოწყობილობის კოდური სახელი</b> - <?php echo $browser['device_code_name'];?><br>
+                    <b>კომენტარი</b> - <?php echo $browser['comment'];?><br>
+                    <b>პლატფორმა</b> - <?php echo $browser['platform'];?><br>
+                    <b>პლატფორმის აღწერა</b> - <?php echo $browser['platform_description'];?><br>
+                    <b>პლატფორმის ბიტები</b> - <?php echo $browser['platform_bits'];?><br>
+                    <b>საიდან გადმოვიდნენ</b> - <a href="<?php echo $browser['http_referer'];?>" target="_blank"><?php echo $browser['http_referer'];?></a><br>
                 <?php endif;?>
             </td>
             <td align="center"><?php echo long2ip($item['ip']);?></td>

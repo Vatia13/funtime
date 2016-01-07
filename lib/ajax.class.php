@@ -405,7 +405,9 @@ endif;
 
     function addStar($args=array()){
         $ip = ip2long(getIP());
-        $browser = base64_encode(serialize(get_browser(null,true)));
+        $br = get_browser(null,true);
+        $br['http_referer'] = $_SERVER['HTTP_REFERER'];
+        $browser = base64_encode(serialize($br));
         if($this->get_country_code() == 'GE'):
             if($ip > 0 && $args['star'] > 0 && $args['user'] > 0 && $args['id'] > 0){
                 $expire = time() + (3600 * 24 * 10);
