@@ -1,12 +1,21 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
-
+<script>
+	function ban_onchange(){
+		document.getElementById("btn").click(); 
+		}
+	function ref(vl){
+		var element = document.getElementById('slctbox');
+		element.value = vl;
+		ban_onchange();
+		}
+</script>
 <h3 class="left">ბანერები</h3>
 <a href="/apanel/index.php?component=banners&section=add" class="btn-green right" >+ ბანერის დამატება რუბრიკაზე</a>
 <?if(get_access('admin','banners','view')):?>
     <br><br><br><br>
-    <form action="" method="post">
-        <select name="banner_cat">
-            <option value="0">ყველა</option>
+    <form action="" method="post" id="ban_onch">
+        <select name="banner_cat" onChange="ban_onchange()" id="slctbox">
+            <option value="0" id="active">ყველა</option>
             <option value="1" <?if($_SESSION['banner_cat'] == 1):?>selected<?endif;?>>მთავარი გვერდი</option>
             <option value="2" <?if($_SESSION['banner_cat'] == 2):?>selected<?endif;?>>ტესტები</option>
             <option value="3" <?if($_SESSION['banner_cat'] == 3):?>selected<?endif;?>>ვიქტორინა</option>
@@ -21,7 +30,8 @@
                 <?endforeach;?>
             <?endforeach;?>
         </select>
-        <input type="submit" name="submit" value="გაფილტვრა" class="btn"/>
+        <input style="display:none;"  type="submit" name="submit" value="გაფილტვრა" class="btn" id="btn"/>
+        <input type="button" name="button" value="გასუფთავება" class="btn" onClick="ref(0)"/>
     </form>
     <br>
     <table id="rounded-corner">

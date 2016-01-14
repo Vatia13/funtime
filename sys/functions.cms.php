@@ -286,7 +286,7 @@ function get_footer( $name = null ) {
 	global $theme,$registry;
 	if ( isset($name) )
 		$templates = "footer-{$name}.php"; else
-		$templates = "footer.php";
+		$templates = "footer.php";		
 	@require_once($theme.$templates);
 }
 function get_license () {
@@ -309,7 +309,8 @@ function get_module( $name, $section = null ) {
 
 
 function get_component() {
-	global $contents_view,$theme,$user,$DB,$registry,$message,$all_comments,$news,$othernews,$settings;
+	global $contents_view,$theme,$user,$DB,$registry,$message,$all_comments,$news,$othernews,$settings;	
+	//echo $contents_view;
 	require_once($contents_view);
 }
 

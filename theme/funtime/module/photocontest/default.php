@@ -1,12 +1,11 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-$registry['contest'] = getAllcache("SELECT id,gallery,date,updated_at FROM #__news_gallery_com WHERE news_id='".$registry['post'][0]['id']."'",300,'contest/'.$registry['post'][0]['id']);
+$registry['contest'] = getAllcache("SELECT id,gallery,date,updated_at FROM #__news_gallery_com WHERE news_id='".$registry['post'][0]['id']."'",300,'contest/'.$registry['post'][0]['id']); 
 $registry['out_of_date'] = 0;
 if(count($registry['contest']) > 0):
 $registry['contest_gallery'] = unserialize($registry['contest'][0]['gallery']);
-    $cookies = array();
-
+    $cookies = array(); 
     if(count($registry['contest_gallery']) > 0){
         for($i=1;$i<=count($registry['contest_gallery']);$i++){
             if(!empty($_COOKIE['guestv_'.$registry['post'][0]['id'].'_'.$i])){
@@ -15,8 +14,7 @@ $registry['contest_gallery'] = unserialize($registry['contest'][0]['gallery']);
         }
     }
 
-$registry['votes_i'] = $DB->getAll("SELECT uid,star FROM #__news_gallery_votes WHERE news_id='".$registry['post'][0]['id']."' and ip='".ip2long(getIP())."'");
-
+$registry['votes_i'] = $DB->getAll("SELECT uid,star FROM #__news_gallery_votes WHERE news_id='".$registry['post'][0]['id']."' and ip='".ip2long(getIP())."'"); 
     //if(count($registry['votes']) <= 0) {
         if(count($cookies) > 0){
         $registry['votes_c'] = $DB->getAll("SELECT uid,star FROM #__news_gallery_votes WHERE news_id='".$registry['post'][0]['id']."' and cookie IN (".join(',',$cookies).") ");
@@ -470,24 +468,29 @@ endif;
                         $contest_out .= "<div style='padding:5px;'>მიმდინარე კვირის კონკურსი დასრულებულია</div>";
                         $registry['out_of_date'] = 1;
                 else:
-                    $contest_out .= "<span><span class='momeci'>მომეცი</span> სამი ვარსკვლავი</span>
-        <div>
-            <a ".$addStar." class='star' data-star='1' data-user='".$i."' data-id='".$registry['post'][0]['id']."'>
-            <img src='/img/icons/".$vote_star1."' width='24' />
-            </a>
-            <a ".$addStar." class='star' data-star='2' data-user='".$i."' data-id='".$registry['post'][0]['id']."'>
-            <img src='/img/icons/".$vote_star2."' width='24' />
-            </a>
-            <a ".$addStar." class='star' data-star='3' data-user='".$i."' data-id='".$registry['post'][0]['id']."'>
-            <img src='/img/icons/".$vote_star3."' width='24' />
-            </a>
-        </div>";
+						$contest_out .= "<span><span class='momeci'>მომეცი</span> სამი ვარსკვლავი</span>
+			<div>
+				<a ".$addStar." class='star' data-star='1' data-user='".$i."' data-id='".$registry['post'][0]['id']."'>
+				<img src='/img/icons/".$vote_star1."' width='24' />
+				</a>
+				<a ".$addStar." class='star' data-star='2' data-user='".$i."' data-id='".$registry['post'][0]['id']."'>
+				<img src='/img/icons/".$vote_star2."' width='24' />
+				</a>
+				<a ".$addStar." class='star' data-star='3' data-user='".$i."' data-id='".$registry['post'][0]['id']."'>
+				<img src='/img/icons/".$vote_star3."' width='24' />
+				</a>
+			</div>";
                 endif;
                 $contest_out .="</div>
     <div class='contest_stars_num user_".$i."'>";
       if($registry['post'][0]['contest_rate'] <= 0 || abs($days / (3600 * 24)) > 7):
                 $sum = $DB->getOne("SELECT SUM(star) FROM #__news_gallery_votes WHERE uid='".$i."' and news_id='".$registry['post'][0]['id']."'");
-        $contest_out .= ($sum) ? $sum : 0;
+				if($i==11){
+					$contest_out .='მოხსნილია კონკურსიდან';
+					}else{
+						 $contest_out .= ($sum) ? $sum : 0;
+						}
+       
      else:
           $contest_out .= 'ხმის მიცემა ფარულია';
      endif;

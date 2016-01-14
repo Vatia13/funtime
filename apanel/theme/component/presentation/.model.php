@@ -177,56 +177,18 @@ $registry['show'] =  $DB->getAll($show);
 /*N2 ბანერები დასასრული*/
 /*N4 რუბრიკა  „საკნატუნო ამბები“*/
 if (isset($_GET['add_pie']) && $_GET['add_pie']==1){
+		$rubrica=$_GET['rubrica'];
 		$male=$_GET['male'];
 		$to25=$_GET['to25'];
-		$bet2544 = $_GET['bet2544']; 
-		$insert = "INSERT INTO #__diagrams(id,male,to25,bet2544,stat)  
-				VALUES ('','$male','$to25','$bet2544','4')"; 
+		$bet2544 = $_GET['bet2544'];
+		$logo_url = $_GET['image'];   
+		$insert = "INSERT INTO #__diagrams(id,male,to25,bet2544,stat,rubric,logo_url)  
+				VALUES ('','$male','$to25','$bet2544','4','$rubrica','$logo_url')";
 		$DB->execute($insert);
-		  header('location:/apanel/index.php?component=presentation&sec=4');
-}
-
-if (isset($_GET['add_rub']) && $_GET['add_rub']==1){
-	
-		  $position = $_GET['position'];
-		  $size = $_GET['size'];
-		  $price = $_GET['price']; 
-		  $view = $_GET['image']; 
-		 $sql = "INSERT INTO #__presentation(id,position,size,price,view,stat)  
-				VALUES ('','$position','$size','$price','$view','1')"; 
-		$DB->execute($sql);
-		  header('location:/apanel/index.php?component=presentation&sec=4');
+		 header('location:/apanel/index.php?component=presentation&sec=4');
 
 }
-if (isset($_GET['edit_pie4'])){
-	$select = 'SELECT * FROM `osr_diagrams`  WHERE id='.$_GET['edit_pie4'].' ';
-	$registry['select_pie4'] =  $DB->getAll($select);
 
-}
-if (isset($_GET['update_pie4'])){
-		$male=$_GET['male'];
-		$to25=$_GET['to25'];
-		$bet2544 = $_GET['bet2544']; 
-		$update = "UPDATE #__diagrams SET male='$male',to25='$to25',bet2544='$bet2544' WHERE id=".$_GET['update_pie4'].""; 
-		$DB->execute($update);
-		  header('location:/apanel/index.php?component=presentation&sec=4');
-}
-if (isset($_GET['edit_rub'])){
-	$select = 'SELECT * FROM `#__presentation`  WHERE id='.$_GET['edit_rub'].' ';
-	$registry['select_rub'] =  $DB->getAll($select);
-
-}
-if (isset($_GET['update_rub4'])){
-		  $position = $_GET['position'];
-		  $size = $_GET['size'];
-		  $price = $_GET['price']; 
-		  $view = $_GET['image']; 
-		$update = "UPDATE #__presentation SET position='$position',size='$size',price='$price',view='$view' WHERE id=".$_GET['update_rub4'].""; 
-		$DB->execute($update);
-		  header('location:/apanel/index.php?component=presentation&sec=4');
-}	
-$showsaknatuno = 'SELECT * FROM `osr_presentation`  WHERE stat=1';
-$registry['showsaknatuno'] =  $DB->getAll($showsaknatuno);
 /*N4 რუბრიკა  „საკნატუნო ამბები“ დასასრული*/
 /*N5 რუბრიკები 150 000-დან 200 000-მდე  ჩვენებით*/
 $rubric =   'SELECT * FROM `osr_category`';
@@ -242,49 +204,7 @@ if (isset($_GET['add_pie_15']) && $_GET['add_pie_15']==1){
 		$DB->execute($insert);
 		 header('location:/apanel/index.php?component=presentation&sec=5');
 
-}
-if (isset($_GET['edit_pie_15'])){
-	$select = 'SELECT * FROM `osr_diagrams`  WHERE id='.$_GET['edit_pie_15'].' ';
-	$registry['select'] =  $DB->getAll($select);
-
-}
-if (isset($_GET['update_pie_15'])){
-	$rubrica=$_GET['rubrica'];
-	$male=$_GET['male'];
-	$to25=$_GET['to25'];
-	$bet2544 = $_GET['bet2544']; 
-	$logo_url = $_GET['image']; 
-	$update ="UPDATE #__diagrams SET male='$male',to25='$to25',bet2544='$bet2544',rubric='$rubrica',logo_url='$logo_url' WHERE id=".$_GET['update_pie_15']."";
-	$DB->execute($update);
-		header('location:/apanel/index.php?component=presentation&sec=5');
-
-}
-if (isset($_GET['add_ban_15']) && $_GET['add_ban_15']==1){
-		  $position = $_GET['position'];
-		  $size = $_GET['size'];
-		  $price = $_GET['price']; 
-		  $view = $_GET['image']; 
-		  $sql = "INSERT INTO #__presentation(id,position,size,price,view,stat)  
-				VALUES ('','$position','$size','$price','$view','5')"; 
-		  $DB->execute($sql);
-		  header('location:/apanel/index.php?component=presentation&sec=5');
-}
-if (isset($_GET['edit_ban_15'])){
-	$select = 'SELECT * FROM `#__presentation`  WHERE id='.$_GET['edit_ban_15'].' ';
-	$registry['select_rub'] =  $DB->getAll($select);
-
-}
-if (isset($_GET['update_ban_15'])){
-	    $position = $_GET['position'];
-		$size = $_GET['size'];
-		$price = $_GET['price']; 
-		$view = $_GET['image']; 
-		$update = "UPDATE #__presentation SET position='$position',size='$size',price='$price',view='$view' WHERE id=".$_GET['update_ban_15'].""; 
-		$DB->execute($update);
-		  header('location:/apanel/index.php?component=presentation&sec=5');
-}
-$show_ban_15 = 'SELECT * FROM osr_diagrams INNER JOIN osr_presentation ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat WHERE osr_diagrams.stat = 5';
-$registry['show_ban_15'] =  $DB->getAll($show_ban_15);
+} 
 /*N5 რუბრიკები 150 000-დან 200 000-მდე  ჩვენებით დასასრული*/
 /*N6 რუბრიკები 100 000-დან 150 000-მდე  ჩვენებით*/
 if (isset($_GET['add_pie_10']) && $_GET['add_pie_10']==1){
@@ -299,48 +219,6 @@ if (isset($_GET['add_pie_10']) && $_GET['add_pie_10']==1){
 		 header('location:/apanel/index.php?component=presentation&sec=6');
 
 }
-if (isset($_GET['edit_pie_10'])){
-	$select = 'SELECT * FROM `osr_diagrams`  WHERE id='.$_GET['edit_pie_10'].' ';
-	$registry['select'] =  $DB->getAll($select);
-
-}
-if (isset($_GET['update_pie_10'])){
-	$rubrica=$_GET['rubrica'];
-	$male=$_GET['male'];
-	$to25=$_GET['to25'];
-	$bet2544 = $_GET['bet2544'];
-	$logo_url = $_GET['image'];   
-	$update ="UPDATE #__diagrams SET male='$male',to25='$to25',bet2544='$bet2544',rubric='$rubrica',logo_url='$logo_url' WHERE id=".$_GET['update_pie_10']."";
-	$DB->execute($update);
-		header('location:/apanel/index.php?component=presentation&sec=6');
-
-}
-if (isset($_GET['add_ban_10']) && $_GET['add_ban_10']==1){
-		  $position = $_GET['position'];
-		  $size = $_GET['size'];
-		  $price = $_GET['price']; 
-		  $view = $_GET['image']; 
-		  $sql = "INSERT INTO #__presentation(id,position,size,price,view,stat)  
-				VALUES ('','$position','$size','$price','$view','6')"; 
-		  $DB->execute($sql);
-		  header('location:/apanel/index.php?component=presentation&sec=6');
-}
-if (isset($_GET['edit_ban_10'])){
-	$select = 'SELECT * FROM `#__presentation`  WHERE id='.$_GET['edit_ban_10'].' ';
-	$registry['select_rub'] =  $DB->getAll($select);
-
-}
-if (isset($_GET['update_ban_10'])){
-	    $position = $_GET['position'];
-		$size = $_GET['size'];
-		$price = $_GET['price']; 
-		$view = $_GET['image']; 
-		$update = "UPDATE #__presentation SET position='$position',size='$size',price='$price',view='$view' WHERE id=".$_GET['update_ban_10'].""; 
-		$DB->execute($update);
-		  header('location:/apanel/index.php?component=presentation&sec=6');
-}
-$show_ban_10 = 'SELECT * FROM osr_diagrams INNER JOIN osr_presentation ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat WHERE osr_diagrams.stat = 6';
-$registry['show_ban_10'] =  $DB->getAll($show_ban_10);
 /*N6 რუბრიკები 100 000-დან 150 000-მდე  ჩვენებით დასასრული*/
 /*N7 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით*/
 if (isset($_GET['add_pie_50']) && $_GET['add_pie_50']==1){
@@ -355,48 +233,6 @@ if (isset($_GET['add_pie_50']) && $_GET['add_pie_50']==1){
 		 header('location:/apanel/index.php?component=presentation&sec=7');
 
 }
-if (isset($_GET['edit_pie_50'])){
-	$select = 'SELECT * FROM `osr_diagrams`  WHERE id='.$_GET['edit_pie_50'].' ';
-	$registry['select'] =  $DB->getAll($select);
-
-}
-if (isset($_GET['update_pie_50'])){
-	$rubrica=$_GET['rubrica'];
-	$male=$_GET['male'];
-	$to25=$_GET['to25'];
-	$bet2544 = $_GET['bet2544']; 
-	$logo_url = $_GET['image'];  
-	$update ="UPDATE #__diagrams SET male='$male',to25='$to25',bet2544='$bet2544',rubric='$rubrica',logo_url='$logo_url' WHERE id=".$_GET['update_pie_50']."";
-	$DB->execute($update);
-		header('location:/apanel/index.php?component=presentation&sec=7');
-
-}
-if (isset($_GET['add_ban_5']) && $_GET['add_ban_5']==1){
-		  $position = $_GET['position'];
-		  $size = $_GET['size'];
-		  $price = $_GET['price']; 
-		  $view = $_GET['image']; 
-		  $sql = "INSERT INTO #__presentation(id,position,size,price,view,stat)  
-				VALUES ('','$position','$size','$price','$view','7')"; 
-		  $DB->execute($sql);
-		  header('location:/apanel/index.php?component=presentation&sec=7');
-}
-if (isset($_GET['edit_ban_5'])){
-	$select = 'SELECT * FROM `#__presentation`  WHERE id='.$_GET['edit_ban_5'].' ';
-	$registry['select_rub'] =  $DB->getAll($select);
-
-}
-if (isset($_GET['update_ban_5'])){
-	    $position = $_GET['position'];
-		$size = $_GET['size'];
-		$price = $_GET['price']; 
-		$view = $_GET['image']; 
-		$update = "UPDATE #__presentation SET position='$position',size='$size',price='$price',view='$view' WHERE id=".$_GET['update_ban_5'].""; 
-		$DB->execute($update);
-		  header('location:/apanel/index.php?component=presentation&sec=7');
-}
-$show_ban_5 = 'SELECT * FROM osr_diagrams INNER JOIN osr_presentation ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat WHERE osr_diagrams.stat = 7';
-$registry['show_ban_5'] =  $DB->getAll($show_ban_5);
 /*N7 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით დასასრული*/
 /*N8 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით*/
 if (isset($_GET['add_pie_30']) && $_GET['add_pie_30']==1){
@@ -411,48 +247,6 @@ if (isset($_GET['add_pie_30']) && $_GET['add_pie_30']==1){
 		 header('location:/apanel/index.php?component=presentation&sec=8');
 
 }
-if (isset($_GET['edit_pie_30'])){
-	$select = 'SELECT * FROM `osr_diagrams`  WHERE id='.$_GET['edit_pie_30'].' ';
-	$registry['select'] =  $DB->getAll($select);
-
-}
-if (isset($_GET['update_pie_30'])){
-	$rubrica=$_GET['rubrica'];
-	$male=$_GET['male'];
-	$to25=$_GET['to25'];
-	$bet2544 = $_GET['bet2544'];
-	$logo_url = $_GET['image'];   
-	$update ="UPDATE #__diagrams SET male='$male',to25='$to25',bet2544='$bet2544',rubric='$rubrica',logo_url='$logo_url' WHERE id=".$_GET['update_pie_30']."";
-	$DB->execute($update);
-		header('location:/apanel/index.php?component=presentation&sec=8');
-
-}
-if (isset($_GET['add_ban_3']) && $_GET['add_ban_3']==1){
-		  $position = $_GET['position'];
-		  $size = $_GET['size'];
-		  $price = $_GET['price']; 
-		  $view = $_GET['image']; 
-		  $sql = "INSERT INTO #__presentation(id,position,size,price,view,stat)  
-				VALUES ('','$position','$size','$price','$view','8')"; 
-		  $DB->execute($sql);
-		  header('location:/apanel/index.php?component=presentation&sec=8');
-}
-if (isset($_GET['edit_ban_3'])){
-	$select = 'SELECT * FROM `#__presentation`  WHERE id='.$_GET['edit_ban_3'].' ';
-	$registry['select_rub'] =  $DB->getAll($select);
-
-}
-if (isset($_GET['update_ban_3'])){
-	    $position = $_GET['position'];
-		$size = $_GET['size'];
-		$price = $_GET['price']; 
-		$view = $_GET['image']; 
-		$update = "UPDATE #__presentation SET position='$position',size='$size',price='$price',view='$view' WHERE id=".$_GET['update_ban_3'].""; 
-		$DB->execute($update);
-		  header('location:/apanel/index.php?component=presentation&sec=8');
-}
-$show_ban_3 = 'SELECT * FROM osr_diagrams INNER JOIN osr_presentation ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat WHERE osr_diagrams.stat =8';
-$registry['show_ban_3'] =  $DB->getAll($show_ban_3);
 /*N8 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით დასასრული*/
 /*N9 singlearticle*/
 if (isset($_GET['single_article']) && $_GET['single_article']==1){
@@ -486,3 +280,38 @@ $article = 'SELECT * FROM `osr_singlearticle`';
 $registry['article'] =  $DB->getAll($article);
 /*N9 singlearticle end*/ 
 endif;
+
+/*edit and update*/
+
+if (isset($_GET['edit_pie'])){
+	$select = 'SELECT * FROM `osr_diagrams`  WHERE id='.$_GET['edit_pie'].' ';
+	$registry['select'] =  $DB->getAll($select);
+
+}
+if (isset($_GET['update_pie'])){
+	$rubrica=$_GET['rubrica'];
+	$male=$_GET['male'];
+	$to25=$_GET['to25'];
+	$bet2544 = $_GET['bet2544']; 
+	$logo_url = $_GET['image']; 
+	$update ="UPDATE #__diagrams SET male='$male',to25='$to25',bet2544='$bet2544',rubric='$rubrica',logo_url='$logo_url' WHERE id=".$_GET['update_pie']."";
+	$DB->execute($update);
+		header('location:/apanel/index.php?component=presentation&sec='.$_GET['sec'].'');
+
+}
+if (isset($_GET['edit_ban'])){
+	$select = 'SELECT * FROM `#__presentation`  WHERE id='.$_GET['edit_ban'].' ';
+	$registry['select_rub'] =  $DB->getAll($select);
+
+}
+if (isset($_GET['update_ban'])){
+	    $position = $_GET['position'];
+		$size = $_GET['size'];
+		$price = $_GET['price']; 
+		$view = $_GET['image']; 
+		$update = "UPDATE #__presentation SET position='$position',size='$size',price='$price',view='$view' WHERE id=".$_GET['update_ban'].""; 
+		$DB->execute($update);
+		  header('location:/apanel/index.php?component=presentation&sec='.$_GET['sec'].'');
+}
+$shows = 'SELECT * FROM osr_diagrams INNER JOIN osr_presentation ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat WHERE osr_diagrams.stat = '.$_GET['sec'].'';
+$registry['shows'] =  $DB->getAll($shows);

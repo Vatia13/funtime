@@ -13,8 +13,12 @@
                 <div class="fb-like" data-href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
             </div>
             <div class="five-title">
-                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><?=$item['title'];?></a><br>
-                <br><?=strip_tags($item['text_short']);?>
+                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/">
+				
+					<?=$item['title'];?>
+                
+                </a><br>
+                <br><?=mb_substr(strip_tags($item['text_short']),0,160,"utf-8")." <strong>...</strong>";?>
                 <div class="fix"></div>
 
             </div>

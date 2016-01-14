@@ -60,11 +60,17 @@ if(isset($_POST['action']) == 'get_stat'){
 		 ?> 
          
             <tr onclick="scrollWin(<?=$item['scroll_position']?>, '<?=$item['position']?>')" style="background-color:<?=$color?>; <?=$size?> "> 
-            <td align="center"><?=$item['position']?></td>
-            <td align="center"><?=$item['size']?></td>
-            <td align="center"><?=$item['price']?></td>
-			<td align="center"><?=$saled?></td>
-            </tr>
+            	<td colspan="4">
+                	<table width="100%">
+                        <tr>
+                            <td align="center"><?=$item['position']?></td>
+                            <td align="center"><?=$item['size']?></td>
+                            <td align="center"><?=$item['price']?></td>
+                            <td align="center"><?=$saled?></td>
+                        </tr>
+                    </table>
+                </td> 
+            </tr> 
 		   <?endforeach;?> 
 	 <?	 
         die();
@@ -82,13 +88,18 @@ $registry['second'] = getAllcache($second,3600,'presentation');
 $therd = 'SELECT * FROM `osr_googleanalytics` WHERE stat=1';
 $registry['therd'] = getAllcache($therd,3600,'presentation'); 
 
-$fourth = 'SELECT * FROM `osr_diagrams` WHERE stat=4';
-$registry['fourth'] = getAllcache($fourth,3600,'presentation');  
 
-$fourth_p = 'SELECT * FROM `osr_presentation` WHERE stat=1';
-$registry['fourth_p'] = getAllcache($fourth_p,3600,'presentation'); 
-
-
+$fourth = 'SELECT *
+FROM osr_diagrams
+INNER JOIN osr_presentation
+ON osr_diagrams.rubric_id=osr_presentation.rubric_id and osr_diagrams.stat = osr_presentation.stat
+WHERE osr_diagrams.stat = 4
+GROUP by osr_presentation.rubric_id';
+$registry['fourth'] = getAllcache($fourth,3600,'presentation');
+ 
+$coment4 = 'SELECT comment FROM `osr_presentation` WHERE stat=4 LIMIT 1';
+$registry['coment4'] = getAllcache($coment4,3600,'presentation'); 
+ 
 $fiveth = 'SELECT *
 FROM osr_diagrams
 INNER JOIN osr_presentation

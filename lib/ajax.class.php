@@ -404,9 +404,15 @@ endif;
 
 
     function addStar($args=array()){
+        if($args['user'] == 11 && $args['id'] == 4863){
+            die();
+        }
         $ip = ip2long(getIP());
         $br = get_browser(null,true);
         $br['http_referer'] = PHP_slashes(htmlspecialchars(strip_tags($args['ref'])));
+        if(empty($br['http_referer'])){
+            die();
+        }
         $browser = base64_encode(serialize($br));
         if($this->get_country_code() == 'GE'):
             if($ip > 0 && $args['star'] > 0 && $args['user'] > 0 && $args['id'] > 0){

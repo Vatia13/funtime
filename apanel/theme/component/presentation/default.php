@@ -91,6 +91,7 @@ if(isset($_GET['sec']) && $_GET['sec']==10){
                 <td>
                 <select name="rubstat">
                 <option>აირჩიეთ რუბრიკა</option>
+                 <option value="4">საკნატუნო ამბები</option>
                 <option value="5">150/200</option>
                 <option value="6">100/150</option>
                 <option value="7">50/100</option>
@@ -215,118 +216,7 @@ if(isset($_GET['sec']) && $_GET['sec']==9)
 </table>
 <? }}
 if(isset($_GET['sec']) && $_GET['sec']==8){
-if(isset($_GET['edit_pie_30'])){
 ?>
-<h3>N8 რუბრიკები 30 000-დან 50 000-მდე  ჩვენებით</h3>
-<form action="/apanel/index.php" method="get">
-<input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="update_pie_30"  value="<?=$_GET['edit_pie_30']?>" /> 
-  <table class="formadd">
-        <thead>
-        <tr> 
-            <th align="left">რუბრიკა</th> 
-            <th align="left">მამრობითი</th>  
-            <th align="left">25-მდე</th>
-            <th align="left">25-44</th> 
-             <th align="left"></th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>   
-           		 <td><select name="rubrica">
-                  <?foreach($registry['select'] as $item):?> 
-                 <option value="<?=$item['rubric']?>">მონიშნულია:<?=$item['rubric']?></option>
-                 <?endforeach;?> 
-                  <?foreach($registry['rubric'] as $item):?> 
-                   <option value="<?=$item['name']?>"><?=$item['name']?></option>
-   					<?endforeach;?> 
-                 <option></option>
-                 </select></td> 
-                    <?foreach($registry['select'] as $item):?> 
-                <td><input type="text" name="male" value="<?=$item['male']?>" />  </td> 
-                <td><input type="text" name="to25" value="<?=$item['to25']?>" /> </td>
-                <td><input type="text" name="bet2544" value="<?=$item['bet2544']?>" /> </td> 
-                 <td>
-                <input type="text" name="image" value="<?=$item['logo_url']?>" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-                  <?endforeach;?>
-                <td><input type="submit" class="btn-green right"  value="დარედაქტირება"></td>
-            </tr>
-            
-        </tbody>
-        </table>
-</form>
-<? }elseif(isset($_GET['edit_ban_3'])){?>
-<form action="/apanel/index.php" method="get">
-   <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="edit_rub"  value="1" />  
-    <input type="hidden"  name="update_ban_3" value="<?=$_GET['edit_ban_3']?>"/>
-  <table class="formadd" width="50%">
-        <thead>
-        <tr> 
-            <th align="left">პოზიცია</th> 
-            <th align="left">ზომა</th>
-            <th align="left">ფასი</th>
-            <th align="left">ვიზუალი</th>
-        </tr>
-        </thead>
-       <?foreach($registry['select_rub'] as $item):?>
-        <tbody>
-        <tr>           
-         <td>
-            <select name="position">
-              <option value="<?=$item['position']?>">მონიშნულია:<?=$item['position']?></option> 
-               <option value="F1">F1</option> 
-                <option value="F2">F2</option> 
-                 <option value="F3">F3</option> 
-                  <option value="F4">F4</option> 
-                   <option value="F5">F5</option> 
-                    <option value="F6">F6</option> 
-                     <option value="F7">F7</option> 
-                      <option value="F8">F8</option> 
-                       <option value="F9">F9</option> 
-                        <option value="F10">F10</option> 
-                         <option value="F11">F11</option> 
-                          <option value="F12">F12</option> 
-                           <option value="F13">F13</option>
-                           	 <option value="F14">F14</option>
-                              <option value="SL">SL</option>
-                          		<option value="ბრენდირება">ბრენდირება</option> 
-                           		 <option value="FM">FM</option> 
-            </select>
-            </td>
-            <td>
-             <select name="size">
-             <option value="<?=$item['size']?>">მონიშნულია:<?=$item['size']?></option> 
-             <option value="800x100">800x100</option>
-             <option value="230x600">230x600</option>
-             <option value="200x700">200x700</option>
-             <option value="600x700">600x700</option>
-             <option value="320x200">320x200</option>
-             <option value="205x355">205x355</option>
-             <option value="165x480">165x480</option>
-             <option value="200x500">200x500</option>
-             <option value="*">*</option>
-             </select>
-            </td>
-            <td>
-                <input type="text" name="price" value="<?=$item['price']?>">
-            </td> 
-            <td>
-                <input type="text" name="image" value="<?=$item['view']?>" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-            <td width="40%">
-               <input type="submit" class="btn-green right"  value="რედაქტირება">
-            </td>
-        </tr>
-        </tbody>
-         <?endforeach?>
-    </table> 
- </form>
-<? }else{?>
-
 <h3>N8 რუბრიკები 30 000-დან 50 000-მდე  ჩვენებით</h3>	
 <form action="/apanel/index.php" method="get">
 <input type="hidden" value="presentation" name="component"/> 
@@ -448,7 +338,7 @@ if(isset($_GET['edit_pie_30'])){
           </td>
           <td  align="center" width="20px">
        <span onclick="delete_row('diagrams_<?=$item['id']?>')"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=8&edit_pie_30=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_pie=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
       </tr> 
       <? $counter++; ?>
@@ -484,7 +374,7 @@ if(isset($_GET['edit_pie_30'])){
         </tr>
      </thead>
       <tbody>
- <?foreach($registry['show_ban_3'] as $ite):?> 
+ <?foreach($registry['shows'] as $ite):?> 
       <tr>
       <td align="center"><?=$ite['rubric']?></td>
         <td align="center"><?=$ite['position']?></td>
@@ -493,127 +383,16 @@ if(isset($_GET['edit_pie_30'])){
         <td align="center"><img src="<?=$ite['view']?>" width="50" /></td> 
         <td  align="center" width="20px">
        <span onclick="delete_row(<?=$ite['ID']?>)"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=8&edit_ban_3=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_ban=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
       </tr>
    <?endforeach;?> 
   	 </thead>
 </table>
-<?
-}}
+<? }
 
 if(isset($_GET['sec']) && $_GET['sec']==7){
-if(isset($_GET['edit_pie_50'])){
-?>
-	<h3>N7 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით</h3>
-<form action="/apanel/index.php" method="get">
-<input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="update_pie_50"  value="<?=$_GET['edit_pie_50']?>" /> 
-  <table class="formadd">
-        <thead>
-        <tr> 
-            <th align="left">რუბრიკა</th> 
-            <th align="left">მამრობითი</th>  
-            <th align="left">25-მდე</th>
-            <th align="left">25-44</th> 
-             <th align="left">ლოგო</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>   
-           		 <td><select name="rubrica">
-                  <?foreach($registry['select'] as $item):?> 
-                 <option value="<?=$item['rubric']?>">მონიშნულია:<?=$item['rubric']?></option>
-                 <?endforeach;?> 
-                  <?foreach($registry['rubric'] as $item):?> 
-                   <option value="<?=$item['name']?>"><?=$item['name']?></option>
-   					<?endforeach;?> 
-                 <option></option>
-                 </select></td> 
-                    <?foreach($registry['select'] as $item):?> 
-                <td><input type="text" name="male" value="<?=$item['male']?>" />  </td> 
-                <td><input type="text" name="to25" value="<?=$item['to25']?>" /> </td>
-                <td><input type="text" name="bet2544" value="<?=$item['bet2544']?>" /> </td>
-                 <td>
-                <input type="text" name="image" value="<?=$item['logo_url']?>" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td>  
-                  <?endforeach;?>
-                <td><input type="submit" class="btn-green right"  value="დარედაქტირება"></td>
-            </tr>
-            
-        </tbody>
-        </table>
-</form>
-<? }elseif(isset($_GET['edit_ban_5'])){?>
-<form action="/apanel/index.php" method="get">
-   <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="edit_rub"  value="1" />  
-    <input type="hidden"  name="update_ban_5" value="<?=$_GET['edit_ban_5']?>"/>
-  <table class="formadd" width="50%">
-        <thead>
-        <tr> 
-            <th align="left">პოზიცია</th> 
-            <th align="left">ზომა</th>
-            <th align="left">ფასი</th>
-            <th align="left">ვიზუალი</th>
-        </tr>
-        </thead>
-       <?foreach($registry['select_rub'] as $item):?>
-        <tbody>
-        <tr>           
-         <td>
-            <select name="position">
-              <option value="<?=$item['position']?>">მონიშნულია:<?=$item['position']?></option> 
-               <option value="F1">F1</option> 
-                <option value="F2">F2</option> 
-                 <option value="F3">F3</option> 
-                  <option value="F4">F4</option> 
-                   <option value="F5">F5</option> 
-                    <option value="F6">F6</option> 
-                     <option value="F7">F7</option> 
-                      <option value="F8">F8</option> 
-                       <option value="F9">F9</option> 
-                        <option value="F10">F10</option> 
-                         <option value="F11">F11</option> 
-                          <option value="F12">F12</option> 
-                           <option value="F13">F13</option>
-                           	 <option value="F14">F14</option>
-                              <option value="SL">SL</option>
-                          		<option value="ბრენდირება">ბრენდირება</option> 
-                           		 <option value="FM">FM</option> 
-            </select>
-            </td>
-            <td>
-             <select name="size">
-             <option value="<?=$item['size']?>">მონიშნულია:<?=$item['size']?></option> 
-             <option value="800x100">800x100</option>
-             <option value="230x600">230x600</option>
-             <option value="200x700">200x700</option>
-             <option value="600x700">600x700</option>
-             <option value="200x500">200x500</option>
-             <option value="320x200">320x200</option>
-             <option value="205x355">205x355</option>
-             <option value="165x480">165x480</option>
-             <option value="*">*</option>
-             </select>
-            </td>
-            <td>
-                <input type="text" name="price" value="<?=$item['price']?>">
-            </td> 
-            <td>
-                <input type="text" name="image" value="<?=$item['view']?>" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-            <td width="40%">
-               <input type="submit" class="btn-green right"  value="რედაქტირება">
-            </td>
-        </tr>
-        </tbody>
-         <?endforeach?>
-    </table> 
- </form>
-<? }else{?>
+	?>
 
 <h3>N7 რუბრიკები 50 000-დან 100 000-მდე  ჩვენებით</h3>	
 <form action="/apanel/index.php" method="get">
@@ -736,7 +515,7 @@ if(isset($_GET['edit_pie_50'])){
           </td>
           <td  align="center" width="20px">
        <span onclick="delete_row('diagrams_<?=$item['id']?>')"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=7&edit_pie_50=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_pie=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
       </tr> 
       
@@ -773,7 +552,7 @@ if(isset($_GET['edit_pie_50'])){
         </tr>
      </thead>
       <tbody>
- <?foreach($registry['show_ban_5'] as $ite):?> 
+ <?foreach($registry['shows'] as $ite):?> 
       <tr>
      	 <td align="center"><?=$ite['rubric']?></td>
         <td align="center"><?=$ite['position']?></td>
@@ -782,127 +561,15 @@ if(isset($_GET['edit_pie_50'])){
         <td align="center"><img src="<?=$ite['view']?>" width="50" /></td> 
         <td  align="center" width="20px">
        <span onclick="delete_row(<?=$ite['ID']?>)"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=7&edit_ban_5=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_ban=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
       </tr>
    <?endforeach;?> 
   	 </thead>
 </table>
 
-<?
-}}
-if(isset($_GET['sec']) && $_GET['sec']==6){
-if(isset($_GET['edit_pie_10'])){
-?>
-	<h3>N5 რუბრიკები 100 000-დან 150 000-მდე  ჩვენებით</h3>
-<form action="/apanel/index.php" method="get">
-<input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="update_pie_10"  value="<?=$_GET['edit_pie_10']?>" /> 
-  <table class="formadd">
-        <thead>
-        <tr> 
-            <th align="left">რუბრიკა</th> 
-            <th align="left">მამრობითი</th>  
-            <th align="left">25-მდე</th>
-            <th align="left">25-44</th> 
-             <th align="left">ლოგო</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>   
-           		 <td><select name="rubrica">
-                  <?foreach($registry['select'] as $item):?> 
-                 <option value="<?=$item['rubric']?>">მონიშნულია:<?=$item['rubric']?></option>
-                 <?endforeach;?> 
-                  <?foreach($registry['rubric'] as $item):?> 
-                   <option value="<?=$item['name']?>"><?=$item['name']?></option>
-   					<?endforeach;?> 
-                 <option></option>
-                 </select></td> 
-                    <?foreach($registry['select'] as $item):?> 
-                <td><input type="text" name="male" value="<?=$item['male']?>" />  </td> 
-                <td><input type="text" name="to25" value="<?=$item['to25']?>" /> </td>
-                <td><input type="text" name="bet2544" value="<?=$item['bet2544']?>" /> </td>
-                <td>
-                <input type="text" name="image" value="<?=$item['logo_url']?>" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td>  
-                  <?endforeach;?>
-                <td><input type="submit" class="btn-green right"  value="დარედაქტირება"></td>
-            </tr>
-            
-        </tbody>
-        </table>
-</form>
-<? }elseif(isset($_GET['edit_ban_10'])){?>
-<form action="/apanel/index.php" method="get">
-   <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="edit_rub"  value="1" />  
-    <input type="hidden"  name="update_ban_10" value="<?=$_GET['edit_ban_10']?>"/>
-  <table class="formadd" width="50%">
-        <thead>
-        <tr> 
-            <th align="left">პოზიცია</th> 
-            <th align="left">ზომა</th>
-            <th align="left">ფასი</th>
-            <th align="left">ვიზუალი</th>
-        </tr>
-        </thead>
-       <?foreach($registry['select_rub'] as $item):?>
-        <tbody>
-        <tr>           
-         <td>
-            <select name="position">
-              <option value="<?=$item['position']?>">მონიშნულია:<?=$item['position']?></option> 
-               <option value="F1">F1</option> 
-                <option value="F2">F2</option> 
-                 <option value="F3">F3</option> 
-                  <option value="F4">F4</option> 
-                   <option value="F5">F5</option> 
-                    <option value="F6">F6</option> 
-                     <option value="F7">F7</option> 
-                      <option value="F8">F8</option> 
-                       <option value="F9">F9</option> 
-                        <option value="F10">F10</option> 
-                         <option value="F11">F11</option> 
-                          <option value="F12">F12</option> 
-                           <option value="F13">F13</option>
-                           	 <option value="F14">F14</option>
-                              <option value="SL">SL</option>
-                          		<option value="ბრენდირება">ბრენდირება</option> 
-                           		 <option value="FM">FM</option> 
-            </select>
-            </td>
-            <td>
-             <select name="size">
-             <option value="<?=$item['size']?>">მონიშნულია:<?=$item['size']?></option> 
-             <option value="800x100">800x100</option>
-             <option value="230x600">230x600</option>
-             <option value="200x700">200x700</option>
-             <option value="600x700">600x700</option>
-             <option value="200x500">200x500</option>
-             <option value="320x200">320x200</option>
-             <option value="205x355">205x355</option>
-             <option value="165x480">165x480</option>
-             <option value="*">*</option>
-             </select>
-            </td>
-            <td>
-                <input type="text" name="price" value="<?=$item['price']?>">
-            </td> 
-            <td>
-                <input type="text" name="image" value="<?=$item['view']?>" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-            <td width="40%">
-               <input type="submit" class="btn-green right"  value="რედაქტირება">
-            </td>
-        </tr>
-        </tbody>
-         <?endforeach?>
-    </table> 
- </form>
-<? }else{?>
+<? }
+if(isset($_GET['sec']) && $_GET['sec']==6){?>
 
 <h3>N6 რუბრიკები 100 000-დან 150 000-მდე  ჩვენებით</h3>	
 <form action="/apanel/index.php" method="get">
@@ -1025,7 +692,7 @@ if(isset($_GET['edit_pie_10'])){
           </td>
           <td  align="center" width="20px">
        <span onclick="delete_row('diagrams_<?=$item['id']?>')"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=6&edit_pie_10=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_pie=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
       </tr> 
       <? $counter++; ?>
@@ -1061,7 +728,7 @@ if(isset($_GET['edit_pie_10'])){
         </tr>
      </thead>
       <tbody>
- <?foreach($registry['show_ban_10'] as $ite):?> 
+ <?foreach($registry['shows'] as $ite):?> 
       <tr>
       	<td align="center"><?=$ite['rubric']?></td>
         <td align="center"><?=$ite['position']?></td>
@@ -1070,127 +737,15 @@ if(isset($_GET['edit_pie_10'])){
         <td align="center"><img src="<?=$ite['view']?>" width="50" /></td> 
         <td  align="center" width="20px">
        <span onclick="delete_row(<?=$ite['ID']?>)"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=6&edit_ban_10=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_ban=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
       </tr>
    <?endforeach;?> 
   	 </thead>
 </table>
-<?
-}}
+<? }
 if(isset($_GET['sec']) && $_GET['sec']==5)
-{
-	if(isset($_GET['edit_pie_15'])){
-?>
-<h3>N5 რუბრიკები 150 000-დან 200 000-მდე  ჩვენებით</h3>
-<form action="/apanel/index.php" method="get">
-<input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="update_pie_15"  value="<?=$_GET['edit_pie_15']?>" /> 
-  <table class="formadd">
-        <thead>
-        <tr> 
-            <th align="left">რუბრიკა</th> 
-            <th align="left">მამრობითი</th>  
-            <th align="left">25-მდე</th>
-            <th align="left">25-44</th> 
-             <th align="left">ლოგო</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>   
-           		 <td><select name="rubrica">
-                  <?foreach($registry['select'] as $item):?> 
-                 <option value="<?=$item['rubric']?>">მონიშნულია:<?=$item['rubric']?></option>
-                 <?endforeach;?> 
-                  <?foreach($registry['rubric'] as $item):?> 
-                   <option value="<?=$item['name']?>"><?=$item['name']?></option>
-   					<?endforeach;?> 
-                 <option></option>
-                 </select></td> 
-                    <?foreach($registry['select'] as $item):?> 
-                <td><input type="text" name="male" value="<?=$item['male']?>" />  </td> 
-                <td><input type="text" name="to25" value="<?=$item['to25']?>" /> </td>
-                <td><input type="text" name="bet2544" value="<?=$item['bet2544']?>" /> </td>
-                <td>
-                <input type="text" name="image" value="<?=$item['logo_url']?>" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            	</td> 
-                  <?endforeach;?>
-                <td><input type="submit" class="btn-green right"  value="დარედაქტირება"></td>
-            </tr>
-            
-        </tbody>
-        </table>
-</form>
-<? }elseif(isset($_GET['edit_ban_15'])){?>
-<form action="/apanel/index.php" method="get">
-   <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="edit_rub"  value="1" />  
-    <input type="hidden"  name="update_ban_15" value="<?=$_GET['edit_ban_15']?>"/>
-  <table class="formadd" width="50%">
-        <thead>
-        <tr> 
-            <th align="left">პოზიცია</th> 
-            <th align="left">ზომა</th>
-            <th align="left">ფასი</th>
-            <th align="left">ვიზუალი</th>
-        </tr>
-        </thead>
-       <?foreach($registry['select_rub'] as $item):?>
-        <tbody>
-        <tr>           
-         <td>
-            <select name="position">
-              <option value="<?=$item['position']?>">მონიშნულია:<?=$item['position']?></option> 
-               <option value="F1">F1</option> 
-                <option value="F2">F2</option> 
-                 <option value="F3">F3</option> 
-                  <option value="F4">F4</option> 
-                   <option value="F5">F5</option> 
-                    <option value="F6">F6</option> 
-                     <option value="F7">F7</option> 
-                      <option value="F8">F8</option> 
-                       <option value="F9">F9</option> 
-                        <option value="F10">F10</option> 
-                         <option value="F11">F11</option> 
-                          <option value="F12">F12</option> 
-                           <option value="F13">F13</option>
-                           	 <option value="F14">F14</option>
-                              <option value="SL">SL</option>
-                          		<option value="ბრენდირება">ბრენდირება</option> 
-                           		 <option value="FM">FM</option> 
-            </select>
-            </td>
-            <td>
-             <select name="size">
-             <option value="<?=$item['size']?>">მონიშნულია:<?=$item['size']?></option> 
-             <option value="800x100">800x100</option>
-             <option value="230x600">230x600</option>
-             <option value="200x700">200x700</option>
-             <option value="600x700">600x700</option>
-             <option value="200x500">200x500</option>
-             <option value="320x200">320x200</option>
-             <option value="205x355">205x355</option>
-             <option value="165x480">165x480</option>
-             <option value="*">*</option>
-             </select>
-            </td>
-            <td>
-                <input type="text" name="price" value="<?=$item['price']?>">
-            </td> 
-            <td>
-                <input type="text" name="image" value="<?=$item['view']?>" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-            <td width="40%">
-               <input type="submit" class="btn-green right"  value="რედაქტირება">
-            </td>
-        </tr>
-        </tbody>
-         <?endforeach?>
-    </table> 
- </form>
-<? }else{?>
+{?>
 <h3>N5 რუბრიკები 150 000-დან 200 000-მდე  ჩვენებით</h3>
 <form action="/apanel/index.php" method="get">
 <input type="hidden" value="presentation" name="component"/> 
@@ -1311,7 +866,7 @@ if(isset($_GET['sec']) && $_GET['sec']==5)
           </td>
           <td  align="center" width="20px">
        <span onclick="delete_row('diagrams_<?=$item['id']?>')"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=5&edit_pie_15=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_pie=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
       </tr> 
       
@@ -1348,7 +903,7 @@ if(isset($_GET['sec']) && $_GET['sec']==5)
         </tr>
      </thead>
       <tbody>
- <?foreach($registry['show_ban_15'] as $ite):?> 
+ <?foreach($registry['shows'] as $ite):?> 
       <tr>
         <td align="center"><?=$ite['rubric']?></td>
         <td align="center"><?=$ite['position']?></td>
@@ -1357,210 +912,66 @@ if(isset($_GET['sec']) && $_GET['sec']==5)
         <td align="center"><img src="<?=$ite['view']?>" width="50" /></td> 
         <td  align="center" width="20px">
        <span onclick="delete_row(<?=$ite['ID']?>)"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=5&edit_ban_15=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_ban=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
       </tr>
    <?endforeach;?> 
   	 </thead>
 </table>
-<?
-}}
+<? }
 if(isset($_GET['sec']) && $_GET['sec']==4)
-{
-	if(isset($_GET['edit_pie4'])){
-		?>
-<h3>N4 რუბრიკა "საკნატუნო ამბები"</h3>
-<form action="/apanel/index.php" method="get">
-    <input type="hidden" value="presentation" name="component"/>
-    <input type="hidden" name="edit_pie4"  value="1" />   
-          <input type="hidden" name="update_pie4"  value="<?=$_GET['edit_pie4']?>" />  
-            <table class="formadd">
-                <thead>
-                <tr> 
-                 <?foreach($registry['select_pie4'] as $item):?>
-                    <th align="center">მამრობითი: <input type="text" name="male" value="<?=$item['male']?>" />  </th>  
-                    <th align="center">25-მდე: <input type="text" name="to25" value="<?=$item['to25']?>" /></th>
-                    <th align="center">25-44: <input type="text" name="bet2544" value="<?=$item['bet2544']?>" /> </th> 
-           		  <?endforeach?>
-                    <th align="center"> <input type="submit" class="btn-green right"  value="დიაგრამის რედაქტირება"></th>
-                </tr>
-                </thead> 
-            </table> 
-</form>
-
-<?
-}
-elseif(isset($_GET['edit_rub'])){
-	?>
-<form action="/apanel/index.php" method="get">
-   <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="edit_rub"  value="1" />  
-    <input type="hidden"  name="update_rub4" value="<?=$_GET['edit_rub']?>"/>
-  <table class="formadd" width="50%">
-        <thead>
-        <tr> 
-            <th align="left">პოზიცია</th> 
-            <th align="left">ზომა</th>
-            <th align="left">ფასი</th>
-            <th align="left">ვიზუალი</th>
-        </tr>
-        </thead>
-       <?foreach($registry['select_rub'] as $item):?>
-        <tbody>
-        <tr>           
-         <td>
-            <select name="position">
-              <option value="<?=$item['position']?>">მონიშნულია:<?=$item['position']?></option> 
-               <option value="F1">F1</option> 
-                <option value="F2">F2</option> 
-                 <option value="F3">F3</option> 
-                  <option value="F4">F4</option> 
-                   <option value="F5">F5</option> 
-                    <option value="F6">F6</option> 
-                     <option value="F7">F7</option> 
-                      <option value="F8">F8</option> 
-                       <option value="F9">F9</option> 
-                        <option value="F10">F10</option> 
-                         <option value="F11">F11</option> 
-                          <option value="F12">F12</option> 
-                           <option value="F13">F13</option>
-                           	 <option value="F14">F14</option>
-                              <option value="SL">SL</option>
-                          		<option value="ბრენდირება">ბრენდირება</option> 
-                           		 <option value="FM">FM</option> 
-            </select>
-            </td>
-            <td>
-             <select name="size">
-             <option value="<?=$item['size']?>">მონიშნულია:<?=$item['size']?></option> 
-             <option value="800x100">800x100</option>
-             <option value="230x600">230x600</option>
-             <option value="200x700">200x700</option>
-             <option value="600x700">600x700</option>
-             <option value="200x500">200x500</option>
-             <option value="320x200">320x200</option>
-             <option value="205x355">205x355</option>
-             <option value="165x480">165x480</option>
-
-             <option value="*">*</option>
-             </select>
-            </td>
-            <td>
-                <input type="text" name="price" value="<?=$item['price']?>">
-            </td> 
-            <td>
-                <input type="text" name="image" value="<?=$item['view']?>" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-            <td width="40%">
-               <input type="submit" class="btn-green right"  value="რედაქტირება">
-            </td>
-        </tr>
-        </tbody>
-         <?endforeach?>
-    </table> 
- </form>
-			<? 
-			}
-		else{
-			?>
+{?>
             
 <h3>N4 რუბრიკა "საკნატუნო ამბები"</h3>
- <form action="/apanel/index.php" method="get">
+
+<form action="/apanel/index.php" method="get">
 <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden" name="add_pie"  value="1" />  
+    <input type="hidden" name="add_pie"  value="1" /> 
   <table class="formadd">
         <thead>
         <tr> 
-          <?foreach($registry['showpie'] as $item):?>
-             	<? $count=1; ?>
-             <?endforeach?>
-             <? if($count<1){ ?> 
-            <th align="center">მამრობითი: <input type="text" name="male" value="" />  </th>  
-            <th align="center">25-მდე: <input type="text" name="to25" value="" /></th>
-            <th align="center">25-44: <input type="text" name="bet2544" value="" /> </th> 
-            <th align="center"> <input type="submit" class="btn-green right"  value="დიაგრამის დამატება"></th>
-            <? } ?>
-        </tr>
-        </thead> 
-   </table> 
-    </form>
- <form action="/apanel/index.php" method="get">
-   <input type="hidden" value="presentation" name="component"/> 
-    <input type="hidden"  name="add_rub" value="1"/>
-  <table class="formadd" width="50%">
-        <thead>
-        <tr> 
-            <th align="left">პოზიცია</th> 
-            <th align="left">ზომა</th>
-            <th align="left">ფასი</th>
-            <th align="left">ვიზუალი</th>
+            <th align="left">რუბრიკა</th> 
+            <th align="left">მამრობითი</th>  
+            <th align="left">25-მდე</th>
+            <th align="left">25-44</th> 
+             <th align="left">ლოგო</th>
         </tr>
         </thead>
         <tbody>
-        <tr>           
-         <td>
-            <select name="position">
-                <option value="">აირჩიეთ პოზიცია</option> 
-               <option value="F1">F1</option> 
-                <option value="F2">F2</option> 
-                 <option value="F3">F3</option> 
-                  <option value="F4">F4</option> 
-                   <option value="F5">F5</option> 
-                    <option value="F6">F6</option> 
-                     <option value="F7">F7</option> 
-                      <option value="F8">F8</option> 
-                       <option value="F9">F9</option> 
-                        <option value="F10">F10</option> 
-                         <option value="F11">F11</option> 
-                          <option value="F12">F12</option>
-                          	<option value="F13">F13</option>
-                           	 <option value="F14">F14</option>
-                              <option value="SL">SL</option>
-                          		<option value="ბრენდირება">ბრენდირება</option> 
-                           		 <option value="FM">FM</option> 
-            </select>
-            </td>
-            <td>
-             <select name="size">
-             <option value="">აირჩიეთ ზომა</option>
-             <option value="800x100">800x100</option>
-             <option value="230x600">230x600</option>
-             <option value="200x700">200x700</option>
-             <option value="600x700">600x700</option>
-             <option value="200x500">200x500</option>
-             <option value="320x200">320x200</option>
-             <option value="205x355">205x355</option>
-             <option value="165x480">165x480</option>
-              <option value="*">*</option>
-             </select>
-            </td>
-            <td>
-                <input type="text" name="price" value="">
-            </td> 
-            <td>
-                <input type="text" name="image" value="" id="image_id" />
-                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
-            </td> 
-            <td width="40%">
-               <input type="submit" class="btn-green right"  value="დამატება">
-            </td>
-        </tr>
+            <tr>   
+           		 <td><select name="rubrica">
+                 <option>აირჩიეთ რუბრიკა</option>
+                  <?foreach($registry['rubric'] as $item):?> 
+                   <option value="<?=$item['name']?>"><?=$item['name']?></option>
+   					<?endforeach;?> 
+                 <option></option>
+                 </select></td> 
+                <td><input type="text" name="male" value="" />  </td> 
+                <td><input type="text" name="to25" value="" /> </td>
+                <td><input type="text" name="bet2544" value="" /> </td>
+                <td>
+                <input type="text" name="image" value="" id="imagee_id" />
+                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=imagee_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
+            	</td>  
+                <td><input type="submit" class="btn-green right"  value="დამატება"></td>
+            </tr> 
         </tbody>
-    </table> 
+        </table>
  </form>
-<table  class="formadd" id="chrt" width="100%">  
+<table class="formadd" id="tab" width="100%">
     <thead>
     <tr>
-    	<td colspan="5" align="center" style="background-color:#4690BB; color:#FFF; padding: 10px;">რუბრიკა  „საკნატუნო ამბები“</td>
+    	<td colspan="5" align="center" style="background-color:#4690BB; color:#FFF;  padding: 10px;">რუბრიკები 150 000-დან 200 000-მდე ჩვენებით</td>
     </tr>
-    <tr>
-    	<td colspan="5" align="center" style="color:#F60;" >ვიზიტორი: 1 500 000-დან   2 000 000-მდე</td>
-    </tr>
-    <tr>
-    	<td colspan="5" align="center" style="color:#F60;" ><strong>სტატისტიკა</strong></td>
-    </tr>
-    <?  $counter = 0; ?>
+        <tr> 
+           <th align="center" style="color:#F60;">ლოგო</th>
+            <th align="center" style="color:#F60;">რუბრიკა</th>
+            <th align="center" style="color:#F60;">მომხმარებელთა სქესი</th>
+            <th align="center" style="color:#F60;">ასაკობრივი ზღვარი</th> 
+        </tr>
+     </thead> 
+      <tbody>
+      <?  $counter = 0; ?>
       <?foreach($registry['showpie'] as $item):?>
     <?
       $male=$item['male'];
@@ -1612,28 +1023,55 @@ elseif(isset($_GET['edit_rub'])){
 			});
 			 
 		</script>
-    <tr>
-    <td align="center"><div id="canvas-holder"><canvas id="chart-area_<?=$counter?>" width="150" height="150"/></div>
-    	<table>
-          <tr>
-            <td>&nbsp;<img src="<?=$theme_admin?>images/blue.png" /></td><td>მამრობითი</td>
-          </tr>
-          <tr>
-            <td>&nbsp;<img src="<?=$theme_admin?>images/orange.png" /></td><td>მდედრობითი</td>
-          </tr>
-        </table> 
-    </td>
-    <td align="center"><div style="width: 20%"><canvas id="canvas_<?=$counter?>" height="850" width="1000"></canvas></div></td>
-      <td  align="center">
+      <tr>
+       <td align="center" width="20"><img src="<?=$item['logo_url']?>" width="50" /></td>
+        <td align="center" width="200"><?=$item['rubric']?></td>
+        <td align="center">
+          <div id="canvas-holder"><canvas id="chart-area_<?=$counter?>" width="150" height="150"/></div>
+        
+                <table width="200">
+                  <tr>
+                    <td align="center" style="font-size:18px;"><img src="<?=$theme_admin?>images/blue.png" /></td><td>მამრობითი</td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="font-size:18px;"><img src="<?=$theme_admin?>images/orange.png" /></td><td>მდედრობითი</td>
+                  </tr>
+                </table> 
+            </td> 
+         <td align="center">
+          <div style="width: 20%"><canvas id="canvas_<?=$counter?>" height="850" width="1000"></canvas></div>
+          </td>
+          <td  align="center" width="20px">
        <span onclick="delete_row('diagrams_<?=$item['id']?>')"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=4&edit_pie4=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_pie=<?=$item['id']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
-    </tr>
-    <? $counter++;?>
-<?endforeach?>
-</table>
-    <table  class="formadd" id="tab" width="100%">
+      </tr> 
+      
+      <? $counter++; ?>
+      <?endforeach?>
+      <tr>
+      <td colspan="4" align="center">
+      <?foreach($registry['show_comment'] as $item):?> 
+      <div id="hide_P" style="display:none;">
+      <form action="/apanel/index.php" method="get">
+	<input type="hidden" value="presentation" name="component"/> 
+      <textarea class="commenta" id="commenta" name="comment" style="width:80%; height:70px;"><?=$item['comment']?></textarea>
+       </form>
+      </div>
+      <div id="hide_P"><?=$item['comment']?></p>
+         <?endforeach;?> 
+      </td>
+      </div>
+      <td> 
+      <button class="btn-green right" id="show">რედაქტირება</button>
+      <button class="btn-green right" id="hide" style="display:none;">რედაქტირება</button>
+        </td>
+      </tr>
+  	 </thead>
+   </table>
+<table  class="formadd" id="tab" width="100%">
         <tr> 
+        	 <th align="center">რუბრიკა</th>
             <th align="center">პოზიცია</th>
             <th align="center">ზომა</th>
             <th align="center">ფასი</th>
@@ -1642,23 +1080,21 @@ elseif(isset($_GET['edit_rub'])){
         </tr>
      </thead>
       <tbody>
- <?foreach($registry['showsaknatuno'] as $ite):?> 
+ <?foreach($registry['shows'] as $ite):?> 
       <tr>
+        <td align="center"><?=$ite['rubric']?></td>
         <td align="center"><?=$ite['position']?></td>
         <td align="center"><?=$ite['size']?></td>
         <td align="center"><?=$ite['price']?></td>
         <td align="center"><img src="<?=$ite['view']?>" width="50" /></td> 
         <td  align="center" width="20px">
        <span onclick="delete_row(<?=$ite['ID']?>)"> <img src="theme/images/trash_p.png" /></span>
-       <a href="/apanel/index.php?component=presentation&sec=4&edit_rub=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
+       <a href="/apanel/index.php?component=presentation&sec=<?=$_GET['sec']?>&edit_ban=<?=$ite['ID']?>"> <img src="theme/images/edit.png" /> </a>
         </td>
       </tr>
    <?endforeach;?> 
   	 </thead>
-</table>
-			
-<?	
-}}
+</table><?	}
 if(isset($_GET['sec']) && $_GET['sec']==2)
 {
 if(isset($_GET['edit'])) {
@@ -1906,3 +1342,122 @@ if(isset($_GET['sec']) && $_GET['sec']==3)
 <? }
 
 endif;
+
+
+
+
+
+
+if(isset($_GET['edit_pie'])){
+?>
+<h3>რედაქტირება</h3>
+<form action="/apanel/index.php" method="get">
+<input type="hidden" value="presentation" name="component"/> 
+    <input type="hidden" name="update_pie"  value="<?=$_GET['edit_pie']?>" /> 
+    <input type="hidden"  name="sec" value="<?=$_GET['sec']?>"/>
+  <table class="formadd">
+        <thead>
+        <tr> 
+            <th align="left">რუბრიკა</th> 
+            <th align="left">მამრობითი</th>  
+            <th align="left">25-მდე</th>
+            <th align="left">25-44</th> 
+             <th align="left">ლოგო</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>   
+           		 <td><select name="rubrica">
+                  <?foreach($registry['select'] as $item):?> 
+                 <option value="<?=$item['rubric']?>">მონიშნულია:<?=$item['rubric']?></option>
+                 <?endforeach;?> 
+                  <?foreach($registry['rubric'] as $item):?> 
+                   <option value="<?=$item['name']?>"><?=$item['name']?></option>
+   					<?endforeach;?> 
+                 <option></option>
+                 </select></td> 
+                    <?foreach($registry['select'] as $item):?> 
+                <td><input type="text" name="male" value="<?=$item['male']?>" />  </td> 
+                <td><input type="text" name="to25" value="<?=$item['to25']?>" /> </td>
+                <td><input type="text" name="bet2544" value="<?=$item['bet2544']?>" /> </td>
+                <td>
+                <input type="text" name="image" value="<?=$item['logo_url']?>" id="image_id" />
+                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
+            	</td> 
+                  <?endforeach;?>
+                <td><input type="submit" class="btn-green right"  value="დარედაქტირება"></td>
+            </tr>
+            
+        </tbody>
+        </table>
+</form>
+<? }elseif(isset($_GET['edit_ban'])){?>
+<form action="/apanel/index.php" method="get">
+   <input type="hidden" value="presentation" name="component"/> 
+    <input type="hidden" name="edit_rub"  value="1" />  
+    <input type="hidden"  name="update_ban" value="<?=$_GET['edit_ban']?>"/>
+    <input type="hidden"  name="sec" value="<?=$_GET['sec']?>"/>
+  <table class="formadd" width="50%">
+        <thead>
+        <tr> 
+            <th align="left">პოზიცია</th> 
+            <th align="left">ზომა</th>
+            <th align="left">ფასი</th>
+            <th align="left">ვიზუალი</th>
+        </tr>
+        </thead>
+       <?foreach($registry['select_rub'] as $item):?>
+        <tbody>
+        <tr>           
+         <td>
+            <select name="position">
+              <option value="<?=$item['position']?>">მონიშნულია:<?=$item['position']?></option> 
+               <option value="F1">F1</option> 
+                <option value="F2">F2</option> 
+                 <option value="F3">F3</option> 
+                  <option value="F4">F4</option> 
+                   <option value="F5">F5</option> 
+                    <option value="F6">F6</option> 
+                     <option value="F7">F7</option> 
+                      <option value="F8">F8</option> 
+                       <option value="F9">F9</option> 
+                        <option value="F10">F10</option> 
+                         <option value="F11">F11</option> 
+                          <option value="F12">F12</option> 
+                           <option value="F13">F13</option>
+                           	 <option value="F14">F14</option>
+                              <option value="SL">SL</option>
+                          		<option value="ბრენდირება">ბრენდირება</option> 
+                           		 <option value="FM">FM</option> 
+            </select>
+            </td>
+            <td>
+             <select name="size">
+             <option value="<?=$item['size']?>">მონიშნულია:<?=$item['size']?></option> 
+             <option value="800x100">800x100</option>
+             <option value="230x600">230x600</option>
+             <option value="200x700">200x700</option>
+             <option value="600x700">600x700</option>
+             <option value="200x500">200x500</option>
+             <option value="320x200">320x200</option>
+             <option value="205x355">205x355</option>
+             <option value="165x480">165x480</option>
+             <option value="*">*</option>
+             </select>
+            </td>
+            <td>
+                <input type="text" name="price" value="<?=$item['price']?>">
+            </td> 
+            <td>
+                <input type="text" name="image" value="<?=$item['view']?>" id="image_id" />
+                <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=image_id" class="btn-blue iframe-btn" type="button">ვიზუალი</a>
+            </td> 
+            <td width="40%">
+               <input type="submit" class="btn-green right"  value="რედაქტირება">
+            </td>
+        </tr>
+        </tbody>
+         <?endforeach?>
+    </table> 
+ </form>
+<? }

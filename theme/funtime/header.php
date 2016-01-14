@@ -94,7 +94,7 @@ var nicesx = $(".rubrics").niceScroll({touchbehavior:false,cursorcolor:"#ff5704"
                         <input type="text" onkeypress="return makeGeo(this,event);" name="text" value="<?=$_GET['s'];?>" id="search"/> <a onclick="if(document.getElementById('search').value == ''){$('#search_ex,.close-search').slideDown(200); return false;}else{document.src.submit();}" class="search-btn"></a>
                     </form>
                 </li>
-                <li class="header-contact" style="padding-right:0;"><a href="/com/contacts">კონტაქტი</a></li>
+                <li class="header-contact" style="padding-right:0;"><a href="#">რეკლამა</a></li>
                 <li><div style="<?if($registry['deviceType'] == 'computer'):?>padding:25px 0 15px 0;position:relative;<?else:?>position:relative;top:20px;<?endif;?>" class="fb-like" data-href="https://www.facebook.com/funtime.ge" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></li>
                 <li><a href="https://www.facebook.com/funtime.ge" target="_blank" class="fb-btn"></a></li>
             </ul>

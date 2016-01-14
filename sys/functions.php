@@ -350,18 +350,17 @@ function filter_html($string){
 function title_filter($title,$num){
     $output = '';
     $title_length = mb_strlen($title,"utf-8");
-    $title = mb_substr(filter_html($title),0,$num,"utf-8");
-
+    $title = mb_substr(filter_html(strip_tags($title)),0,$num,"utf-8");
     if($title_length >= $num):
         $title = explode(' ',$title);
         $last_word = count($title) - 1;
         for($i=0;$i<$last_word;$i++):
             $output .= $title[$i].' ';
         endfor;
-        $output .= '...';
-    else:
-        $output .= $title;
-    endif;
+        	$output .= '...';
+		else:
+			$output .= $title;
+		endif; 
     return strip_tags($output);
 }
 
@@ -559,7 +558,7 @@ function clear_cache(){
 function get_banners_f(){ global $registry;?>
 <?if(function_exists('get_banner')):?>
     <?if(get_banner('F6',$registry['post'][0]['cat_id']) == true):?>
-        <div style="float:right;position:relative;width:200px;<?if(get_banner('F9',$registry['post'][0]['cat_id']) == false):?>position:fixed;right:10px;top:25%;z-index:999;<?endif;?>">
+        <div style="z-index:9;right:0;position:absolute;width:200px;<?if(get_banner('F7',$registry['post'][0]['cat_id']) == false):?>position:fixed;right:10px;top:25%;z-index:999;<?endif;?>">
             <div class="saknatuno-banner-place">
                 <?=get_banner('F6',$registry['post'][0]['cat_id']);?>
             </div>

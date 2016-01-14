@@ -1,7 +1,7 @@
 <?defined('_JEXEC') or die('Restricted access');?>
 <?//get_module('popular-articles');?>
 
-<div id="content">
+<div id="content" style="position:relative;">
 
     <? if($registry['post'][0]['id'] > 0){ ?>
     <?if($registry['deviceType'] == 'computer' or $registry['deviceType'] == 'tablet'):?>
@@ -15,11 +15,10 @@
         <?endif;?>
     <?endif;?>
     <div class="content">
-
         <!-- დამატებითი ინფორმაცია (skype,facebook,email,phone) -->
         <?php @include('.informer.php'); ?>
-        <!-- // -->
-
+        <!-- // --> 
+        
         <!-- YOUTUBE ფლეიერი -->
             <?php @include('.youtube.php'); ?>
         <!-- // -->
@@ -37,11 +36,10 @@
             <? get_module('vic');?>
         <?endif;?>
         <!-- // -->
-
+        
         <!-- სოციალური ქსელი -->
         <?php @include('.socials.php'); ?>
         <!-- // -->
-
         <?get_module('popular-articles');?> <!-- პოპულარული სიახლეები -->
     </div>
 </div>
@@ -50,9 +48,9 @@
 
 <div class="fix"></div>
 <?else:?>
-    <?if($registry['post'][0]['type'] == 1):?>
+    <?if($registry['post'][0]['type'] == 1):?> 
         <!--ფოტოკონკურსი მობილურ ვერსიაზე დროებით გამორთულია.-->
-        <?get_module('photocontest');?>
+        <?get_module('photocontest');?> 
     <?else:?>
         <?get_module('rm');?> <!-- წაკითხვის გვერდზე - მობილური ვერსიის დიზაინი -->
     <?endif;?>
@@ -69,8 +67,7 @@ echo '<div class="content"><div class="warning_box ">სტატია არ �
             displayList: true,
             maxHeight : 500
         }
-        $('.pgwSlideshow').pgwSlideshow(options);
-
+        $('.pgwSlideshow').pgwSlideshow(options); 
     });
 </script>
 <?endif;?>
@@ -171,6 +168,7 @@ echo '<div class="content"><div class="warning_box ">სტატია არ �
         <?include('new_slider.php');?> <!-- ახალი სლაიდერის სტილები და ჯავასკრიპტი -->
     <?endif;?>
 <?endif;?>
+
 
 <!-- end pretty Photo -->
 <?if($registry['deviceType'] == 'computer' or $registry['deviceType'] == 'tablet'):?>
