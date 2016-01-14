@@ -52,10 +52,10 @@ class ajax{
         if($last == $last_id):
             $output = "".$last_id."";
         else:
-            $registry['posts'] = $this->DB->getAll('SELECT '.$this->p.'news.*,'.$this->p.'category.name,'.$this->p.'category.cat_chpu,'.$this->p.'category.id as cat_id,'.$this->p.'users.realname FROM '.$this->p.'news
-                                         LEFT JOIN '.$this->p.'category ON '.$this->p.'category.id = '.$this->p.'news.cat
-                                         LEFT JOIN '.$this->p.'users ON '.$this->p.'users.id = '.$this->p.'news.user
-                                         WHERE '.$this->p.'category.id = "'.$id.'" and '.$this->p.'news.moderate=1 and '.$this->p.'news.date <= '.$time.' order by '.$this->p.'news.date DESC LIMIT '.$num.',12');
+            $registry['posts'] = $this->DB->getAll('SELECT osr_news.*,osr_category.name,osr_category.cat_chpu,osr_category.id as cat_id,osr_users.realname FROM osr_news
+                                         LEFT JOIN osr_category ON osr_category.id = osr_news.cat
+                                         LEFT JOIN osr_users ON osr_users.id = osr_news.user
+                                         WHERE osr_category.id = "'.$id.'" and osr_news.moderate=1 and osr_news.date <= '.$time.' order by osr_news.date DESC LIMIT '.$num.',12');
             if($registry['posts'][0]['id'] > 0){
                 foreach($registry['posts'] as $item):
                     $title_length = string_length($item['title']);
@@ -110,9 +110,9 @@ endif;
         if($last == $last_id):
             $output = "".$last_id."";
         else:
-            $registry['posts'] = $this->DB->getAll('SELECT '.$this->p.'news.*,'.$this->p.'category.name,'.$this->p.'category.cat_chpu,'.$this->p.'category.id as cat_id FROM '.$this->p.'news
-                                         LEFT JOIN '.$this->p.'category ON '.$this->p.'category.id = '.$this->p.'news.cat
-                                         WHERE '.$this->p.'category.id = "'.$id.'" and '.$this->p.'news.moderate=1 and '.$this->p.'news.date <= '.$time.' order by '.$this->p.'news.date DESC LIMIT '.$num.',14');
+            $registry['posts'] = $this->DB->getAll('SELECT osr_news.*,osr_category.name,osr_category.cat_chpu,osr_category.id as cat_id FROM osr_news
+                                         LEFT JOIN osr_category ON osr_category.id = osr_news.cat
+                                         WHERE osr_category.id = "'.$id.'" and osr_news.moderate=1 and osr_news.date <= '.$time.' order by osr_news.date DESC LIMIT '.$num.',14');
             if($registry['posts'][0]['id'] > 0){
 
         foreach($registry['posts'] as $item):
@@ -142,17 +142,17 @@ endif;
             $sql_search = "";
             $sql_count = "";
         }else{
-            $sql_search = '('.$this->p.'news.title LIKE "%'.$value.'%" or '.$this->p.'news.text LIKE "%'.$value.'%") and ';
+            $sql_search = '(osr_news.title LIKE "%'.$value.'%" or osr_news.text LIKE "%'.$value.'%") and ';
             $sql_count = "({$this->p}news.title LIKE '%{$value}%' or {$this->p}news.text LIKE '%{$value}%') and";
         }
         $last = $this->DB->getOne("SELECT {$this->p}news.id FROM {$this->p}news WHERE {$sql_count} {$this->p}news.moderate=1 and {$this->p}news.date <= {$time} order by {$this->p}news.date ASC");
         if($last == $last_id):
             $output .= "".$last_id."";
         else:
-            $registry['search'] = $this->DB->getAll('SELECT '.$this->p.'news.*,'.$this->p.'users.realname,'.$this->p.'category.name,'.$this->p.'category.cat_chpu,'.$this->p.'category.id as cat_id FROM '.$this->p.'news
-                                         LEFT JOIN '.$this->p.'category ON '.$this->p.'category.id = '.$this->p.'news.cat
-                                         LEFT JOIN '.$this->p.'users ON '.$this->p.'users.id = '.$this->p.'news.user
-                                         WHERE '.$sql_search .' '.$this->p.'news.moderate=1 and '.$this->p.'news.date <= '.$time.' order by '.$this->p.'news.date DESC LIMIT '.$num.',21');
+            $registry['search'] = $this->DB->getAll('SELECT osr_news.*,osr_users.realname,osr_category.name,osr_category.cat_chpu,osr_category.id as cat_id FROM osr_news
+                                         LEFT JOIN osr_category ON osr_category.id = osr_news.cat
+                                         LEFT JOIN osr_users ON osr_users.id = osr_news.user
+                                         WHERE '.$sql_search .' osr_news.moderate=1 and osr_news.date <= '.$time.' order by osr_news.date DESC LIMIT '.$num.',21');
             if($registry['search'][0]['id'] > 0){
             foreach($registry['search'] as $item):
                 $reg['slide'] = get_serialize($item['slide']);
@@ -202,7 +202,7 @@ endif;
     function sendMessage($args){
          $author = PHP_slashes(htmlspecialchars(strip_tags($args['author'])));
          $text = PHP_slashes(htmlspecialchars(strip_tags($args['text'])));
-         $mailsup = $this->DB->getOne('SELECT value FROM '.$this->p.'setting WHERE name="emailsup"');
+         $mailsup = $this->DB->getOne('SELECT value FROM osr_setting WHERE name="emailsup"');
          if(!empty($author) && !empty($text)){
              $headers = '';
              $text = "ავტორი: ".$author."\r\n" .  "ტექსტი: " . $text;
@@ -230,9 +230,9 @@ endif;
         if($last == $last_id):
             $output = "".$last_id."";
         else:
-            $registry['posts'] = $this->DB->getAll('SELECT osr_news.*,'.$this->p.'category.cat_chpu FROM osr_news
+            $registry['posts'] = $this->DB->getAll('SELECT osr_news.*,osr_category.cat_chpu FROM osr_news
                                          LEFT JOIN osr_category ON osr_category.id = osr_news.cat
-                                         WHERE osr_news.cat!=116 and '.$this->p.'news.moderate=1 and osr_news.date <= '.$time.' order by osr_news.date DESC LIMIT '.$num.',4');
+                                         WHERE osr_news.cat!=116 and osr_news.moderate=1 and osr_news.date <= '.$time.' order by osr_news.date DESC LIMIT '.$num.',4');
             if($registry['posts'][0]['id'] > 0){
                     foreach($registry['posts'] as $item):
                         $output .= '<li class="mob"  data-last_id="'.$item['id'].'">
@@ -255,13 +255,13 @@ endif;
         $num = intval($args['num']);
         $last_id = intval($args['last_id']);
         $time = time();
-        $last = $this->DB->getOne("SELECT {$this->p}news.id FROM {$this->p}news WHERE id > 0 and '.$this->p.'news.cat={$cat} and {$this->p}news.moderate=1 and {$this->p}news.date <= {$time} order by {$this->p}news.date ASC");
+        $last = $this->DB->getOne("SELECT {$this->p}news.id FROM {$this->p}news WHERE id > 0 and osr_news.cat={$cat} and {$this->p}news.moderate=1 and {$this->p}news.date <= {$time} order by {$this->p}news.date ASC");
         if($last == $last_id):
             $output = "".$last_id."";
         else:
-            $registry['posts'] = $this->DB->getAll('SELECT '.$this->p.'news.*,'.$this->p.'category.cat_chpu FROM '.$this->p.'news
-                                         LEFT JOIN '.$this->p.'category ON '.$this->p.'category.id = '.$this->p.'news.cat
-                                         WHERE '.$this->p.'news.cat='.$cat.' and '.$this->p.'news.moderate=1 and '.$this->p.'news.date <= '.$time.' order by '.$this->p.'news.date DESC LIMIT '.$num.',4');
+            $registry['posts'] = $this->DB->getAll('SELECT osr_news.*,osr_category.cat_chpu FROM osr_news
+                                         LEFT JOIN osr_category ON osr_category.id = osr_news.cat
+                                         WHERE osr_news.cat='.$cat.' and osr_news.moderate=1 and osr_news.date <= '.$time.' order by osr_news.date DESC LIMIT '.$num.',4');
             if($registry['posts'][0]['id'] > 0){
                 foreach($registry['posts'] as $item):
                     $output .= '<li data-last_id="'.$item['id'].'">
@@ -284,15 +284,15 @@ endif;
         $num = intval($args['num']);
         $last_id = intval($args['last_id']);
         $time = time();
-        $sql_search = '('.$this->p.'news.title LIKE "%'.$value.'%" or '.$this->p.'news.text LIKE "%'.$value.'%") and ';
+        $sql_search = '(osr_news.title LIKE "%'.$value.'%" or osr_news.text LIKE "%'.$value.'%") and ';
         $sql_count = "({$this->p}news.title LIKE '%{$value}%' or {$this->p}news.text LIKE '%{$value}%') and";
         $last = $this->DB->getOne("SELECT {$this->p}news.id FROM {$this->p}news WHERE {$sql_count} {$this->p}news.moderate=1 and {$this->p}news.date <= {$time} order by {$this->p}news.date ASC");
         if($last == $last_id):
             $output = "".$last_id."";
         else:
-            $registry['posts'] = $this->DB->getAll('SELECT '.$this->p.'news.*,'.$this->p.'category.cat_chpu FROM '.$this->p.'news
-                                                    LEFT JOIN '.$this->p.'category ON '.$this->p.'category.id = '.$this->p.'news.cat
-                                                    WHERE '.$sql_search .' '.$this->p.'news.moderate=1 and '.$this->p.'news.date <= '.$time.' order by '.$this->p.'news.date DESC LIMIT '.$num.',4');
+            $registry['posts'] = $this->DB->getAll('SELECT osr_news.*,osr_category.cat_chpu FROM osr_news
+                                                    LEFT JOIN osr_category ON osr_category.id = osr_news.cat
+                                                    WHERE '.$sql_search .' osr_news.moderate=1 and osr_news.date <= '.$time.' order by osr_news.date DESC LIMIT '.$num.',4');
             if($registry['posts'][0]['id'] > 0){
                 foreach($registry['posts'] as $item):
                     $output .= '<li data-last_id="'.$item['id'].'">
