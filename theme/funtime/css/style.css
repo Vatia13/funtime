@@ -162,14 +162,14 @@ img{outline:none;border:none;}
 }
 
 .logo{
-    background-image:url('../images/christmas_logo.png');
+    background-image:url('../images/logo.png');
     /* background-image:url('../images/logo_black1.png');*/
     background-repeat:no-repeat;
     background-position:center;
     width:200px;
     /*width:236px;*/
     height:64px;
-    display:inherit;
+    display:inherit; 
     margin-left:35px;
 }
 
@@ -321,6 +321,7 @@ img{outline:none;border:none;}
     font-weight:500;
     opacity:0.8;
 }
+ 
 .main-image img{
     width:100%;
     max-width:654px;
@@ -2896,17 +2897,16 @@ table.time-like-short tr td:last-child span{
 
 #toTop {
     background-image:url('../images/up.png');
-    background-repeat:no-repeat;
+    background-repeat:no-repeat; 
     bottom:5px;
     display:none;
     height:64px;
     opacity:0.7;
     position:fixed;
-    right:5px;
-    width:64px;
+    right:5px; 
+    width:64px;  
     z-index:500;
 }
-
 .post-avatar{
     margin-bottom:10px !important;
 }

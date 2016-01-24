@@ -161,8 +161,8 @@
                      <tr id="photoSlide1">
                             <td>ფოტოსლაიდი</td>
                             <td>
-                                <?include('.slide_html.php');?>
-                            </td>
+                                <?include('.slide_html.php');?> 
+                            </td> 
                         </tr>
     <tr>
         <td class="td1">ლიდი</td>

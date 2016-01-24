@@ -18,7 +18,12 @@
 					<?=$item['title'];?>
                 
                 </a><br>
-                <br><?=mb_substr(strip_tags($item['text_short']),0,160,"utf-8")." <strong>...</strong>";?>
+                <br>
+                <? 
+				if(strlen($item['text_short'])>160){ echo mb_substr(strip_tags($item['text_short']),0,160,"utf-8")." ..."; }
+				else{ echo strip_tags($item['text_short']); } 
+                 ?>
+				
                 <div class="fix"></div>
 
             </div>

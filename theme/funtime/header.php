@@ -71,7 +71,7 @@ var nicesx = $(".rubrics").niceScroll({touchbehavior:false,cursorcolor:"#ff5704"
     }(document, 'script', 'facebook-jssdk'));
 
 </script>
-
+ 
 <a href="#top" id="toTop"></a>
 <div id="container" <?if($registry['deviceType'] == 'tablet'):?>style="margin-top:-50px;"<?endif;?>>
 <?if($registry['deviceType'] == 'computer'):?>
@@ -86,12 +86,13 @@ var nicesx = $(".rubrics").niceScroll({touchbehavior:false,cursorcolor:"#ff5704"
             <ul class="header-left">
                 <li><a onclick="showRubrics();" class="menu-btn"></a></li>
                 <li><a href="/" class="logo"></a></li>
-            </ul>
+            </ul> 
             <ul class="header-right">
                 <li>
                     <form action="/com/search/" method="get" name="src">
                         <input type="checkbox" name="kbd" id="geoKeys" value="0" checked="checked" style="display:none;"/>
-                        <input type="text" onkeypress="return makeGeo(this,event);" name="text" value="<?=$_GET['s'];?>" id="search"/> <a onclick="if(document.getElementById('search').value == ''){$('#search_ex,.close-search').slideDown(200); return false;}else{document.src.submit();}" class="search-btn"></a>
+                        <input type="text" onkeypress="return makeGeo(this,event);" name="text" value="<?=$_GET['s'];?>" id="search"/> 
+                        <a onclick="if(document.getElementById('search').value == ''){$('#search_ex,.close-search').slideDown(200); return false;} else{document.src.submit();}" class="search-btn"></a>
                     </form>
                 </li>
                 <li class="header-contact" style="padding-right:0;"><a href="#">რეკლამა</a></li>
@@ -100,3 +101,12 @@ var nicesx = $(".rubrics").niceScroll({touchbehavior:false,cursorcolor:"#ff5704"
             </ul>
         </div>
     </div>
+    
+    <script>
+   document.onkeydown=function(){
+    if(window.event.keyCode=='13'){
+       document.src.submit();
+        }
+    }
+    </script>
+    

@@ -59,7 +59,11 @@
                     content_css : "<?=$theme_admin?>css/custom.css",
                     <?endif;?>
                     plugins: ["advlist autolink lists","code","Convert"],
-                    toolbar1: "Convert LastNews | undo redo | bold italic underline | print preview code "
+                    toolbar1: "Convert LastNews | undo redo | bold italic underline | print preview code | fontselect",
+					font_formats: "Nino Mtavruli = BPGNinoMtavruliRegular;"+
+                    "Ingiri = BPGIngiri2008Regular;" +
+                    "Open Sans = Open Sans;"+
+                    "Bebas = bebasregular;"
                 });
             </script>
             <script>

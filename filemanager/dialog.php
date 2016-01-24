@@ -767,7 +767,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				    
 			<?php }else{ ?>
 				    </a>
-				    <div class="box">
+				    <div class="box"> 
 					<h4 class="<?php if($ellipsis_title_after_first_row){ echo "ellipsis"; } ?>"><a class="folder-link" data-file="<?php echo $file ?>" href="dialog.php?<?php echo $get_params.rawurlencode($src)."&".uniqid() ?>"><?php echo $file; ?></a></h4>
 				    </div>
 				    <input type="hidden" class="name" value=""/>
@@ -778,7 +778,10 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				    <?php if($show_folder_size){ ?><div class="file-size"><?php echo makeSize($file_array['size'])?></div><?php } ?>
 				    <div class='file-extension'><?php echo lang_Type_dir; ?></div>
 				    <figcaption>
-				    <?php if($user->get_property('gid') == 25 or $user->get_property('gid') == 24 or $user->get_property('gid') == 21):?>
+				    <?php if($user->get_property('gid') == 25 or $user->get_property('gid') == 24 or $user->get_property('gid') == 21):?> 
+                    
+                    	<a href="#"  style="cursor:pointer;"><i class="icon-file" ></i></a> 
+                        
 					    <a href="javascript:void('')" class="tip-left edit-button rename-file-paths <?php if($rename_folders && !$file_prevent_rename) echo "rename-folder"; ?>" title="<?php echo lang_Rename?>" data-path="<?php echo $rfm_subfolder.$subdir.$file; ?>" data-thumb="<?php echo $thumbs_path.$subdir.$file; ?>">
 					    <i class="icon-pencil <?php if(!$rename_folders || $file_prevent_rename) echo 'icon-white'; ?>"></i></a>
 

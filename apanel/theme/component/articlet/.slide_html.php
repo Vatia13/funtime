@@ -77,7 +77,7 @@
                                                 <div class="sitems">
                                                     <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=slide<?=$i;?>" class="btn-blue iframe-btn" type="button">ფოტო <?=$a;?></a>
                                                     <label class="slide<?=$a;?>"><?if(!empty($slider['img'][$i])): echo last_par_url($slider['img'][$i]); else: echo "---"; endif;?></label>
-                                                    <a onclick="return deleteFielda(this)" href="#" data-id="<?=$i;?>" alt="<?=$i;?>" class="razdel-bodys-aa">[X]</a>
+                  <a onclick="return deleteFielda(this)" href="#" data-id="<?=$i;?>" alt="<?=$i;?>" class="razdel-bodys-aa">[X]</a>
                                                 </div>
                                             </td>
                                             <td valign="top" width="40%" id="ajax_slide_images">

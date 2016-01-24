@@ -466,7 +466,7 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'){
                 $dates = $DB->getRow("SELECT published_at,finished_at FROM #__banner_list WHERE id <> '".intval($_GET['edit'])."' and status<>'1' AND type<>'2' and cat_id='$cat' AND title='$title' AND (published_at BETWEEN '$published_at' AND '$finished_at' or finished_at BETWEEN '$published_at' AND '$finished_at')");
                 if(!$dates) {
                     if ($DB->execute("UPDATE #__banner_list SET cat_id='$cat',title='$title',company='$company',size_x='$size_x',size_y='$size_y',info='$info',status='$status',published_at='$published_at',finished_at='$finished_at' WHERE id='" . intval($_GET['edit']) . "'")) {
-                        header('location:/apanel/index.php?component=banner&message[0]=valid&message[1]=ოპერაცია წარმატებით დასრულდა');
+                header("location:/apanel/index.php?component=banner&ban=all&cat=".$_GET['cat']."&message[0]=valid&message[1]=ოპერაცია წარმატებით დასრულდა");
                     } else {
                         echo 'nono';
                     }

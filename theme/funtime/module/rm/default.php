@@ -71,17 +71,9 @@
 
     <?if($registry['post'][0]['test'] > 0):?>
         <? get_module('vic');?>
-    <?endif;?>
+    <?endif;?> 
     <div style="clear:both"></div>
-    <div class="fb-comments" data-href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['post'][0]['cat_chpu'];?>/<?=$registry['post'][0]['chpu'];?>/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
-
-</div>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
+    <?php /*?><div class="fb-comments" data-href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['post'][0]['cat_chpu'];?>/<?=$registry['post'][0]['chpu'];?>/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+</div><?php */?>
+<br> 
+ 

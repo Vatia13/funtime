@@ -509,7 +509,7 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
                         }else{
                             $message[0] = 'error';
                             $message[1] = 'ტექსტი ცარიელია';
-                        }
+                        } 
                     }else{
                         $message[0] = 'error';
                         $message[1] = 'ლიდი ცარიელია';

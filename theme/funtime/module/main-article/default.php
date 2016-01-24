@@ -8,8 +8,12 @@ $slide = get_serialize($registry['main-article'][0]['slide']);
     <ul>
         <li  style="border:17px solid <?=$color['frame']?>">
             <div class="main-image">
-                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['main-article'][0]['cat_chpu'];?>/"><h3 style="background-color:<?=$color['rubric']?>;<?if(count($slide['img']) > 1):?>background-image:url('<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-position:right 10px center;padding:18px 60px 15px 10px;<?elseif($registry['main-article'][0]['style'] == 12):?>background-image:url('<?=$theme?>images/vcam.png');background-repeat:no-repeat;background-position:right 10px center;background-size:35px 30px;padding:18px 60px 15px 10px;<?else:?>padding:18px 10px 15px 10px;<?endif;?>"><?=$registry['main-article'][0]['name']?></h3></a>
-                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['main-article'][0]['cat_chpu'];?>/<?=$registry['main-article'][0]['chpu'];?>/"> <img src="<?=$registry['main-article'][0]['thumbs'];?>" width="654px" alt="<?=$registry['main-article'][0]['title']?>" title="<?=$registry['main-article'][0]['title']?>"></a>
+                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['main-article'][0]['cat_chpu'];?>/">
+                <h3  style="background-color:<?=$color['rubric']?>;<?if(count($slide['img']) > 1):?>background-image:url('<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-position:right 10px center;padding:18px 60px 15px 10px;<?elseif($registry['main-article'][0]['style'] == 12):?>background-image:url('<?=$theme?>images/vcam.png');background-repeat:no-repeat;background-position:right 10px center;background-size:35px 30px;padding:18px 60px 15px 10px;<?else:?>padding:18px 10px 15px 10px;<?endif;?>"><?=$registry['main-article'][0]['name']?>
+                </h3> 
+                </a> 
+                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['main-article'][0]['cat_chpu'];?>/<?=$registry['main-article'][0]['chpu'];?>/"> <img src="<?=$registry['main-article'][0]['thumbs'];?>" width="654px" alt="<?=$registry['main-article'][0]['title']?>" title="<?=$registry['main-article'][0]['title']?>">
+                </a>
             </div>
         </li>
         <li>

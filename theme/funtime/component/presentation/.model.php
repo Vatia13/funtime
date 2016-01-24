@@ -2,17 +2,15 @@
 if(isset($_POST['action']) == 'get_stat'){
     if($_POST['stat'] > 0){
 		
-		$co = 'SELECT COUNT(ID) as counta FROM osr_presentation WHERE stat ='.intval($_POST['stat']).' and rubric_id = '.intval($_POST['rub']);
+		  $co = 'SELECT COUNT(ID) as counta FROM osr_presentation WHERE stat ='.intval($_POST['stat']).' and rubric_id = '.intval($_POST['rub']);
 		$counta = getAllcache($co,3600,'presentation'); 
-		 $count = $counta[0]['counta'];
-		if($count<=9){
-			$size = 'height: 150px; font-size: 20px; color: #F60; background-color:<?=$color?>; font-weight:700;';
+		  $count = $counta[0]['counta']; 
+		  if($count<=9){
+			$size = 'height: 50px; font-size: 20px; color: #F60; font-weight:700;';
 			}
-		if($count<=9){
-			$size = 'height: 100px; font-size: 20px; color: #F60; background-color:<?=$color?>; font-weight:700;';
+		if($count<7){
+			$size = 'height: 100px; font-size: 20px; color: #F60; font-weight:700;';
 			}
-				
-						
      $test ='SELECT a.size,a.price,a.rubric_id,a.stat,a.scroll_position,a.position FROM
                #__presentation as a
                WHERE a.stat='.intval($_POST['stat']).' AND a.rubric_id='.intval($_POST['rub']).'  AND a.scroll_position>0';
@@ -57,13 +55,14 @@ if(isset($_POST['action']) == 'get_stat'){
 		}else{
 			$saled ="თავისუფალია";
 			}
+		  	
 		 ?> 
          
             <tr onclick="scrollWin(<?=$item['scroll_position']?>, '<?=$item['position']?>')" style="background-color:<?=$color?>; <?=$size?> "> 
             	<td colspan="4">
                 	<table width="100%">
                         <tr>
-                            <td align="center"><?=$item['position']?></td>
+                            <td align="center"><?=$item['position']?> </td>
                             <td align="center"><?=$item['size']?></td>
                             <td align="center"><?=$item['price']?></td>
                             <td align="center"><?=$saled?></td>
@@ -71,6 +70,7 @@ if(isset($_POST['action']) == 'get_stat'){
                     </table>
                 </td> 
             </tr> 
+            
 		   <?endforeach;?> 
 	 <?	 
         die();

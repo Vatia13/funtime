@@ -3,40 +3,33 @@
 
 <div id="content" style="position:relative;">
 
-    <? if($registry['post'][0]['id'] > 0){ ?>
+    <? if($registry['post'][0]['id'] > 0){ ?>  
     <?if($registry['deviceType'] == 'computer' or $registry['deviceType'] == 'tablet'):?>
-
-
-    <?if($registry['post'][0]['type'] == 1):?>
-        <?get_module('photocontest');?> <!-- ფოტოკონკურსის მოდული -->
-    <?else:?>
+        <?if($registry['post'][0]['type'] == 1):?>
+            <?get_module('photocontest');?> <!-- ფოტოკონკურსის მოდული -->
+        <?else:?>
         <?if($registry['post'][0]['style'] > 0):?>
             <?get_module('r'.$registry['post'][0]['style']);?> <!-- რუბრიკები დიზაინის მიხედვით -->
         <?endif;?>
-    <?endif;?>
+    <?endif;?> 
     <div class="content">
         <!-- დამატებითი ინფორმაცია (skype,facebook,email,phone) -->
         <?php @include('.informer.php'); ?>
-        <!-- // --> 
-        
-        <!-- YOUTUBE ფლეიერი -->
-            <?php @include('.youtube.php'); ?>
-        <!-- // -->
-
+        <!-- // -->  
         <!-- სლაიდერი (ძველი და ახალი) -->
         <?php @include('.slide.php'); ?>
         <!-- // -->
-
+		<!-- YOUTUBE ფლეიერი -->
+         <?php @include('.youtube.php'); ?>
+        <!-- // -->
         <!-- წყარო -->
         <?php @include('.wyaro.php'); ?>
-        <!-- // -->
-
+        <!-- // --> 
         <!-- ვიქტორინის მოდული -->
         <?if($registry['post'][0]['test'] > 0):?>
             <? get_module('vic');?>
         <?endif;?>
-        <!-- // -->
-        
+        <!-- // --> 
         <!-- სოციალური ქსელი -->
         <?php @include('.socials.php'); ?>
         <!-- // -->
@@ -51,8 +44,28 @@
     <?if($registry['post'][0]['type'] == 1):?> 
         <!--ფოტოკონკურსი მობილურ ვერსიაზე დროებით გამორთულია.-->
         <?get_module('photocontest');?> 
+        <?if($registry['deviceType'] == 'phone'):?>
+         <div class="content"> 
+        	<!-- სოციალური ქსელი -->
+			<?php @include('.socials.php'); ?>
+            <!-- // -->
+            </div>
+        <?endif;?>
     <?else:?>
-        <?get_module('rm');?> <!-- წაკითხვის გვერდზე - მობილური ვერსიის დიზაინი -->
+        <?get_module('rm');?> <!-- წაკითხვის გვერდზე - მობილური ვერსიის დიზაინი --> 
+         <?if($registry['deviceType'] == 'phone'):?>
+         <div class="content">
+         <style>
+		 .mobilees{ width:10% !important;}
+		 </style> 
+             <!-- დამატებითი ინფორმაცია (skype,facebook,email,phone) -->
+            <?php @include('.informer.php'); ?>
+            <!-- // -->  
+        	<!-- სოციალური ქსელი -->
+			<?php @include('.socials.php'); ?>
+            <!-- // -->
+            </div>
+        <?endif;?>
     <?endif;?>
 <?endif;?>
 <?}else{

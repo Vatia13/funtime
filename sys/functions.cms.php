@@ -310,7 +310,7 @@ function get_module( $name, $section = null ) {
 
 function get_component() {
 	global $contents_view,$theme,$user,$DB,$registry,$message,$all_comments,$news,$othernews,$settings;	
-	//echo $contents_view;
+	//echo $contents_view;  
 	require_once($contents_view);
 }
 

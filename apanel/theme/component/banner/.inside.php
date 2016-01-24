@@ -53,7 +53,7 @@
         </tr>
         </tbody>
     </table>
-</form>
+</form> 
 <table id="rounded-corner">
     <thead>
     <tr>
@@ -81,7 +81,7 @@
                     <td align="center" class="option_icons">
                         <?if($item['status'] > 0):?>
                             <?if(get_access('admin','banners','edit')):?>
-                                <a href="/apanel/index.php?component=banner&section=edit&edit=<?=$item['id'];?>"><img src="<?=$theme_admin?>images/user_edit.png" alt="რედაქტირება" title="რედაქტირება" border="0" /></a>
+                                <a href="/apanel/index.php?component=banner&cat=<?=$_GET['cat']?>&section=edit&edit=<?=$item['id'];?>"><img src="<?=$theme_admin?>images/user_edit.png" alt="რედაქტირება" title="რედაქტირება" border="0" /></a>
 
                                 <a onclick="confirmDelete(<?=$item['id'];?>)"><img src="<?=$theme_admin?>images/trash.png" alt="წაშლა" title="წაშლა" border="0" /></a>
                             <?endif;?>

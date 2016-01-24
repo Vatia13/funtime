@@ -105,12 +105,12 @@
 <?else:?>
     <div class="content">
    <h2>ძიების შედეგები</h2>
-    <ul class="mobile-cat">
+    <ul class="mobile-cat" style="margin-top:50px;">
         <?foreach($registry['search'] as $item):?>
             <li data-last_id="<?=$item['id'];?>">
                 <ul>
                     <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><?=$item['title'];?></a><br><div class="sak-time"><span><?=gedate('l H:i',$item['date']);?> </span>  <span> <?=gedate('d.m.Y',$item['date']);?></span></div></li>
-                    <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=get_thumb($item['thumbs'],'/images/news/prev','250');?>" width="100%" alt="<?=$item['title'];?>" title="<?=$item['title'];?>"></a></li>
+                    <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="100%" alt="<?=$item['title'];?>" title="<?=$item['title'];?>"></a></li>
                 </ul>
             </li>
         <?endforeach;?>

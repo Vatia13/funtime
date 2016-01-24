@@ -25,7 +25,7 @@
     url('fonts/ingiri2008/bpg_ingiri_2008.svg#BPGIngiri2008Regular') format('svg');
 }
 body, td, pre {
-    font-size:19px;
+    font-size:25px;
     line-height:1.5em;
     font-family: 'BPGIngiri2008Regular';
     padding:0px;
