@@ -242,7 +242,7 @@ $get_params = http_build_query(array(
     'crossdomain' => $crossdomain,
     'field_id'  => $field_id,
     'akey' 		=> (isset($_GET['akey']) && $_GET['akey'] != '' ? $_GET['akey'] : 'key'),
-	'no_wm'     => (isset($_GET['no_wm'])) ? 1 : 0,
+	'no_wm'     => (isset($_GET['no_wm']) > 0) ? 1 : 0,
     'fldr'      => '',
 ));
 ?>
