@@ -58,8 +58,8 @@ if($_POST['from'] or $_GET['from']){
 
 
 }else{
-    $from_extra = date('Y-m').'-01';
-    $to_extra = date('Y-m-d');
+     $from_extra = date('Y-m').'-01';
+     $to_extra = date('Y-m-d');
 }
 $sql_filter_view = 'and (#__news_view.date >= "'.$from_extra.'" and #__news_view.date <= "'.$to_extra.'")';
 $sql_filter_unique = 'and (#__unique_visitors.date >= "'.$from_extra.'" and #__unique_visitors.date <= "'.$to_extra.'")';

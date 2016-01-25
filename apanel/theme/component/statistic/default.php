@@ -34,7 +34,9 @@
         </tr>
         </thead>
         <tbody>
-        <?php if(count($registry['counts']) > 0): $i=0; foreach($registry['counts'] as $item): $i++;?>
+        <?php  
+		
+		if(count($registry['counts']) > 0): $i=0; foreach($registry['counts'] as $item): $i++;?>
             <tr>
                 <td><?php echo $i;?></td>
                 <td><a href="/apanel/index.php?component=statistic&section=post&cat=<?php echo $item['cat'];?>"><?php echo $item['name']?></a></td>

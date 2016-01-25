@@ -14,7 +14,7 @@ class ajax{
         $this->DB = $DB;
         $this->p = $prefix;
         $this->registry = $registry;
-   }
+   } 
 
    public function block_article($args = array()){
        if($args['user'] > 0){
@@ -113,7 +113,7 @@ endif;
             $registry['posts'] = $this->DB->getAll('SELECT osr_news.*,osr_category.name,osr_category.cat_chpu,osr_category.id as cat_id FROM osr_news
                                          LEFT JOIN osr_category ON osr_category.id = osr_news.cat
                                          WHERE osr_category.id = "'.$id.'" and osr_news.moderate=1 and osr_news.date <= '.$time.' order by osr_news.date DESC LIMIT '.$num.',14');
-            if($registry['posts'][0]['id'] > 0){
+            if($registry['posts'][0]['id'] > 0){ 
 
         foreach($registry['posts'] as $item):
             $output .= '<li data-last_id="'.$item['id'].'">
@@ -353,7 +353,9 @@ endif;
                         $out .= '<a href="http://'.$_SERVER['SERVER_NAME'].'/'.$item['cat_chpu'].'/">'.$item['name'].'</a><br>';
                         $out .= '<div class="five-time">'.gedate('d.m.Y',$item['date']).'</div><br><br>';
                         $out .= '<div class="fb-like" data-href="http://'.$_SERVER['SERVER_NAME'].'/'.$item['cat_chpu'].'/'.$item['chpu'].'/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div></div>';
-                        $out .= '<div class="five-title"><a href="http://'.$_SERVER['SERVER_NAME'].'/'.$item['cat_chpu'].'/'.$item['chpu'].'/">'.$item['title'].'</a><br><br>'.strip_tags($item['text_short']);
+                        $out .= '<div class="five-title"><a href="http://'.$_SERVER['SERVER_NAME'].'/'.$item['cat_chpu'].'/'.$item['chpu'].'/">'.$item['title'].'</a><br><br>';
+						if(strlen($item['text_short'])>160){ $out.=mb_substr(strip_tags($item['text_short']),0,160,"utf-8")." ..."; }
+						else{ $out.= strip_tags($item['text_short']); }  
                         $out .= '<div class="fix"></div></div>';
                         $out .= '<div class="five-image">';
                         $out .= '<a href="http://'.$_SERVER['SERVER_NAME'].'/'.$item['cat_chpu'].'/"><h3 style="';
