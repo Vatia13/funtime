@@ -109,10 +109,15 @@
     <!-- END BANNER PLACE-->
 
     <div class="post-content">
+        <?if(!empty($registry['post'][0]['slide'])): $registry['slider'] = (unserialize($registry['post'][0]['slide']) <> "") ? unserialize($registry['post'][0]['slide']) : unserialize(base64_decode($registry['post'][0]['slide']));?>
+            <? $slider_num = count($registry['slider']['img']);?>
+        <?else:?>
+            <? $slider_num = 0;?>
+        <?endif;?>
         <? $ex_text_img = explode('<img',$registry['post'][0]['text']); $imgnum = count($ex_text_img) - 1;?>
-        <div <?if($imgnum > 6):?>style="float:left;max-width:940px;min-height:3668px;margin-right:30px;"<?endif;?>><?=$registry['post'][0]['text'];?><div class="fix"></div></div>
-        <?if($imgnum > 6):?>
-        <div>
+        <div <?if($imgnum > 6 or $slider_num > 8):?>style="float:left;max-width:940px;margin-right:30px;"<?endif;?>><?=$registry['post'][0]['text'];?><div class="fix"></div></div>
+        <?if($imgnum > 6 or $slider_num > 8):?>
+        <div style="z-index:9;right:0;position:absolute;width:200px;">
                 <div class="saknatuno-banner-place">
                     <?if(function_exists('get_banner')):?>
                         <?if(get_banner('F6',$registry['post'][0]['cat_id']) == true):?>

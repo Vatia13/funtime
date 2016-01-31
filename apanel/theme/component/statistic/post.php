@@ -21,6 +21,15 @@
         </form>
     </div>
     <table id="rounded-corner">
+    <div align="right"> 
+		<div style="width:94px; border:1px solid #E1DFDF;" align="left">სულ</div>
+		<?php  
+		 
+		foreach($registry['show_all_uniq'] as $item):
+		$sum_uniq= $item['show_uniq'];
+		endforeach;?>
+        <div style="width:94px; border:1px solid #E1DFDF;" align="left"><?=$sum_uniq?></div>
+    </div>
         <thead>
         <tr>
             <th scope="col" class="rounded">№</th>
@@ -36,7 +45,7 @@
             <tr>
                 <td><?php echo $i;?></td>
                 <td><?php echo $item['realname']?></td>
-                <td><?php echo $item['title']?></td>
+                <td><?php echo $item['title']?></td> 
                 <td><?php echo $item['name']?></td>
                 <td><?php if(empty($item['views'])): echo "---"; else: echo $item['views']; endif;?></td>
                 <td><?php if(empty($item['uniquev'])): echo "---"; else: echo $item['uniquev']; endif;?></td>

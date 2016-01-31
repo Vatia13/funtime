@@ -58,8 +58,8 @@ if($_POST['from'] or $_GET['from']){
 
 
 }else{
-     $from_extra = date('Y-m').'-01';
-     $to_extra = date('Y-m-d');
+    $from_extra = date('Y-m').'-01';
+    $to_extra = date('Y-m-d');
 }
 $sql_filter_view = 'and (#__news_view.date >= "'.$from_extra.'" and #__news_view.date <= "'.$to_extra.'")';
 $sql_filter_unique = 'and (#__unique_visitors.date >= "'.$from_extra.'" and #__unique_visitors.date <= "'.$to_extra.'")';
@@ -84,7 +84,7 @@ if($_GET['component'] == 'statistic' && !$_GET['section']){
     /* PLAYGROUND */
     //print_r($sql_sort);
 
-    $registry['count_views'] = $DB->getAll('SELECT b.name,#__news_view.cat,SUM(#__news_view.view) as views,(SELECT count(#__news.id) FROM #__news WHERE #__news.cat = #__news_view.cat and moderate=1) as news FROM #__news_view LEFT JOIN #__category as b ON b.id=#__news_view.cat WHERE b.section="post" and b.stat="'.$stat.'" '.$sql_filter_view.' GROUP BY #__news_view.cat ORDER BY views '.$sql_sort.'');
+    $registry['count_views'] = $DB->getAll('SELECT b.name,#__news_view.cat,SUM(#__news_view.view) as views,(SELECT count(#__news.id) FROM #__news WHERE #__news.cat = #__news_view.cat and moderate=1 '.$sql_filter_news.') as news FROM #__news_view LEFT JOIN #__category as b ON b.id=#__news_view.cat WHERE b.section="post" and b.stat="'.$stat.'" '.$sql_filter_view.' GROUP BY #__news_view.cat ORDER BY views '.$sql_sort.'');
     if(count($registry['count_views']) > 0){
         foreach($registry['count_views'] as $v){
             $registry['view_cats'][] = $v['cat'];
@@ -329,7 +329,7 @@ if($_GET['component'] == 'statistic' && $_GET['section'] == 'post'){
 			WHERE #__news.id>0 and moderate=1 and #__category.stat='".$stat."' $redaqtor2 $sql_author and #__news.cat=#__category.id ".$sql_filter_news."
 			ORDER BY $sql_order $sql_sort LIMIT $start,$num");
     }else{
-        $registry['post'] = array();
+       $registry['post'] = array();
     }
     //$registry['cat'] = $DB->getAll("SELECT #__news.* FROM #__news WHERE cat='".intval($_GET['cat'])."'");
 }
@@ -351,3 +351,5 @@ function statistic_directory(){
     $out .= '</div>';
     print $out;
 }
+
+$registry['show_all_uniq'] = $DB->getAll("SELECT DISTINCT COUNT(ip) as show_uniq FROM #__unique_visitors");

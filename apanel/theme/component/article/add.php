@@ -295,4 +295,4 @@
     });
 </script>
 <input type="hidden" name="image_dirs" id="image_dirs" value="" />
-<script src="<?=$theme_admin;?>js/test.js?ver=1.3"></script>
+<script src="<?=$theme_admin;?>js/test.js?ver=<?=rand(2,9999999)?>"></script>

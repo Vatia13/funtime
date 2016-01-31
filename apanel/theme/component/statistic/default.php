@@ -23,7 +23,7 @@
         <input type="submit" name="filter" value="ფილტრი" class="btn-green" style="border:none;position:relative;top:-2px;" >
     </form>
     </div>
-    <table id="rounded-corner">
+    <table id="rounded-corner"> 
         <thead>
         <tr>
             <th scope="col" class="rounded">№</th>

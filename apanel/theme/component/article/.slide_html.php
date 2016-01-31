@@ -11,6 +11,14 @@
          display:none;
      } 
     <?php endif;?>
+    #parentId td{
+        position:relative;
+    }
+    #parentId td b{
+        position:absolute;
+        right:-20px;
+        top:0px;
+    }
 </style>
 <script>
     $(document).ready(function(){
@@ -79,7 +87,7 @@
                                         <tr  class="str<?=$i;?>" data-num="<?=$i;?>"> 
                                             <td>
                                                 <input type="hidden" name="slide[img][]" class="slide_img" id="slide<?=$i;?>" value="<?=$slider['img'][$i];?>" >
-  <textarea name="slide[name][]" class="slide_name tinymce2" id="editor_<?=$i;?>" placeholder="ტექსტი" style="align:left;"><?=$slider['name'][$i];?></textarea> 
+  <textarea name="slide[name][]" class="slide_name tinymce2" id="editor_<?=$i;?>" placeholder="ტექსტი" style="align:left;"><?=$slider['name'][$i];?></textarea> <b><?=$i;?></b>
                                                 <div class="sitems">
                                                     <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/filemanager/dialog.php?type=1&akey=a651481913d2fedc5c880b5f14cb9859&field_id=slide<?=$i;?>" class="btn-blue iframe-btn" type="button">ფოტო <?=$a;?></a>
        <label class="slide<?=$i;?>"><?if(!empty($slider['img'][$i])): echo last_par_url($slider['img'][$i]); else: echo "---"; endif;?></label>
