@@ -30,7 +30,7 @@ if($_GET['section']=='ajax'){
             if(intval($_POST['date']) > 0 && intval($_POST['cat']) > 0){
                 $success = 'success';
                 $user_id = intval($_POST['user']);
-                if($user->get_property('gid') == 30 or $user->get_property('gid') == 21 or $user->get_property('gid') == 22){
+                if($user->get_property('gid') == 30 or $user->get_property('gid') == 22){
                     $check = $DB->getOne('SELECT count(id) FROM #__bade WHERE date="'.intval($_POST['date']).'" and user_id="'.$user_id.'" and user_gid <= 0');
                     $check2 = $DB->getOne('SELECT count(id) FROM #__bade WHERE date="'.intval($_POST['date']).'" and user_id="'.$user_id.'" and user_gid > 0');
                     if($check > 0){
@@ -164,7 +164,7 @@ if($_GET['parse']=='json'){
                 $fb_checked = ($item['fb'] > 0) ? 'checked' : '';
                 if(!$news[$item['date']]['id']){
 
-                    if($user->get_property('gid') == 18){
+                    if($user->get_property('gid') == 18 or $user->get_property('gid') == 21){
                         if(in_array($user->get_property('userID'),$users)){
                             $result[$i]['color'] = 'red';
                             $result[$i]['title'] = '<div onClick="window.open(\'/apanel/index.php?component=article&section=add&cat='.$item['id'].'&Y='.date('Y',$item['date']).'&M='.date('m',$item['date']).'&D='.date('d',$item['date']).'&H='.date('H',$item['date']).'&I='.date('i',$item['date']).'\');">'.$item['name'].'</div>';
@@ -199,7 +199,7 @@ if($_GET['parse']=='json'){
                     }
 
 
-                    if($user->get_property('gid') == 21 or $user->get_property('gid') == 22) {
+                    if($user->get_property('gid') == 22) {
                         if($checked == 'checked'){
                             if($item['user_id'] > 0){
                                 $result[$i]['title'] .= '<input onClick="checkImage(' . $user->get_property('userID') . ',' . $item['date'] . ',' . $item['id'] . ',jQuery(this),\'image\',' . $user->get_property('gid') . ')" type="checkbox" name="img" value="' . $value . '" '.$checked.'/>';
