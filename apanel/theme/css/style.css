@@ -65,6 +65,7 @@ a{
 /* FORMS */
 input[type='text']{
     padding:6px;
+	line-height:17px;
 }
 input[type='password']{
     padding:6px;
@@ -125,7 +126,7 @@ div.instruments ul li a{
     font-family: 'BPGMrgvlovani';
     color:#666666;
 }
-.home,.rubrics,.cache,.users,.settings,.presentation,.logoff,.statistic,.security,.pictures,.banners,.myrubrics,.itests,.winners,.contacts,.bade,.organizer,.banner_admin{
+.home,.rubrics,.cache,.users,.settings,.presentation,.competition,.logoff,.statistic,.security,.pictures,.banners,.myrubrics,.itests,.winners,.contacts,.bade,.organizer,.banner_admin{
     background-repeat:no-repeat;
     background-size:100px 100px;
     background-position:center;
@@ -133,7 +134,7 @@ div.instruments ul li a{
     width:120px;
     height:90px;
 }
-.home:hover,.organizer:hover,.banner_admin:hover,.bade:hover,.rubrics:hover,.cache:hover,.users:hover,.settings:hover,.presentation:hover,.logoff:hover,.statistic:hover,.security:hover,.pictures:hover,.banners:hover,.myrubrics:hover,.itests:hover,.winners:hover,.contacts:hover{
+.home:hover,.organizer:hover,.banner_admin:hover,.bade:hover,.rubrics:hover,.cache:hover,.users:hover,.competition:hover,.settings:hover,.presentation:hover,.logoff:hover,.statistic:hover,.security:hover,.pictures:hover,.banners:hover,.myrubrics:hover,.itests:hover,.winners:hover,.contacts:hover{
     opacity:0.6;
     transition:all 0.5s ease;
     -moz-transition:all 0.5s ease;
@@ -166,6 +167,11 @@ div.instruments ul li a{
 }
 .presentation{
     background-image:url('icons/presentation.png');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.competition{
+    background-image:url('icons/competition.png');
     background-repeat:no-repeat;
     background-position:center;
 }

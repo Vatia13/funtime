@@ -39,7 +39,7 @@
                 ?>
             <li data-last_id="<?=$item['id'];?>">
                 <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/"><h3 style="<?if(count($this['slide']['img']) > 1):?>background-image:url('/<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-size:30px 30px;background-position:right 10px center;padding:10px 50px 7px 10px;<?elseif($item['style']==12):?>background-image:url('/<?=$theme?>images/vcam.png');background-repeat:no-repeat;background-size:30px 26px;background-position:right 10px center;padding:10px 50px 7px 10px;<?else:?>padding:10px 10px 7px 10px;<?endif;?>"><?=$item['name'];?></h3></a>
-                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="363" title="<?=$item['title'];?>" height="225"/></a>
+                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="363" alt="<?=$item['alt_search']?>" title="<?=$item['title'];?>" height="225"/></a>
                 <br><br>
                 <div class="search-post-title"><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><?=title_filter($item['title'],60);?></a></div>
                 <div class="search-post-short"><?=title_filter($short_text,$short_length);?></div>

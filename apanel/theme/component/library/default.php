@@ -1,5 +1,5 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
-<?if(get_access('admin','library','view')):
+<?if(get_access('admin','library','view')): 
     $key = ($user->get_property('userID') == 758) ? 'f511422113d2vedc5c426b7y14cby679' : 'a651481913d2fedc5c880b5f14cb9859';
 
     ?>

@@ -253,6 +253,14 @@
                     <tr><td class="td1">სათაური </td><td><a class="convert" onClick='convertText("#title")'>Convert AcadNusx to Sylfaen</a><input class="inputbox" style="margin-top:5px; <?if($user->get_property('gid')!=24 && $user->get_property('gid')!=25):?>color:#000 !important;font-size:22px !important;<?endif;?>" onkeypress="return makeGeo(this,event);" onkeyup="countSymbols('#title',200)" onpaste="setTimeout(function(){return countSymbols('#title',200);},100)" id="title"  type="text" name="title" value="<?=(PHP_slashes(htmlspecialchars(strip_tags($_POST['title'])))) ? stripslashes(PHP_slashes(htmlspecialchars(strip_tags($_POST['title'])))) : $num['title'];?>" maxlength="200" />
 
                             <br><i class="right">200</i></td></tr>
+                            
+                 <tr><td class="td1">სათაური მოსაძებნად </td><td><a class="convert" onClick='convertText("#alt_search")'>Convert AcadNusx to Sylfaen</a><input class="inputbox" style="margin-top:5px; <?if($user->get_property('gid')!=24 && $user->get_property('gid')!=25):?>color:#000 !important;font-size:22px !important;<?endif;?>" onkeypress="return makeGeo(this,event);" onkeyup="countSymbols('#alt_search',200)" onpaste="setTimeout(function(){return countSymbols('#alt_search',200);},100)" id="alt_search"  type="text" name="alt_search" value="<?=(PHP_slashes(htmlspecialchars(strip_tags($_POST['alt_search'])))) ? stripslashes(PHP_slashes(htmlspecialchars(strip_tags($_POST['alt_search'])))) : $num['alt_search'];?>" maxlength="200" />
+
+                            <br><i class="right">200</i></td></tr>
+                            
+                            
+                            
+                            
                     <tr><td class="td1">ქვესათაური </td><td><a class="convert" onClick='convertText("#title_short")'>Convert AcadNusx to Sylfaen</a><input class="inputbox" style="margin-top:5px; <?if($user->get_property('gid')!=24 && $user->get_property('gid')!=25):?>color:#000 !important;font-size:22px !important;<?endif;?>" onkeypress="return makeGeo(this,event);" onkeyup="countSymbols('#title_short',200)" onpaste="setTimeout(function(){return countSymbols('#title_short',200);},100)" type="text" id="title_short"  name="title_short" value="<?=(PHP_slashes(htmlspecialchars(strip_tags($_POST['title_short'])))) ? stripslashes(PHP_slashes(htmlspecialchars(strip_tags($_POST['title_short'])))) : $num['title_short'];?>" maxlength="200" /><br><i class="right">200</i></td></tr>
                     <?if($user->get_property('gid') == 24 or $user->get_property('gid') == 25):?>
                         <tr>
@@ -743,6 +751,10 @@ if($user->get_property('gid') == 24 or $user->get_property('gid') == 25):
             };
 
             jQuery(document).ready(function($){
+				
+				$.post('http://funtime.ge/apanel/index.php?news=1&cache=clear',{}, function(data){  });
+				
+				
                 <?php if($num['banner'] == '1'):?>
                 var news_id = '<?=$num['id'];?>';
                 if($('.banner_adds tr').length > 0){

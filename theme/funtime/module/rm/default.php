@@ -6,13 +6,13 @@
     <?if($registry['post'][0]['style'] == 12):?>
         <div class="author"><span>ავტორი:</span> <span><?=$registry['post'][0]['realname'];?></span></div><br>
         <br><br>
-        <iframe id="ytplayer" type="text/html" width="100%"  src="https://www.youtube.com/embed/<?=$registry['post'][0]['youtube'];?>?theme=light" frameborder="0" allowfullscreen></iframe>
+        <iframe id="ytplayer" type="text/html" width="100%"  src="https://www.youtube.com/embed/<?=$registry['post'][0]['youtube'];?>?theme=light" frameborder="0" allowfullscreen></iframe>  
     <?else:?>
-        <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="100%">
+        <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="100%" alt="<?=$registry['post'][0]['alt_search']?>">
     <?endif;?>
     <br><br>
     <div style="clear:both"></div>
-    <?if($registry['post'][0]['moderate'] == 1):?>
+    <?if($registry['post'][0]['moderate'] == 1):?> 
         <div class="post-socials">
             <ul>
                 <li>

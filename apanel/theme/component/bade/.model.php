@@ -8,8 +8,8 @@
  *
  */
 
-defined('_JEXEC') or die('Restricted access');
-
+defined('_JEXEC') or die('Restricted access'); 
+//echo $user->get_property('gid');
 if($_GET['section']=='ajax'){
     if($_POST['action'] == 'load_date'){
         if(isset($_POST['id'])){
@@ -131,8 +131,6 @@ if($_GET['parse']=='json'){
             }
         }
 
-
-
         if($user->get_property('gid') == 24 or $user->get_property('gid') == 25){
             if(count($registry['added_banners']) > 0){
                 $registry['banners'] = $DB->getAll("SELECT cat_id,published_at,finished_at FROM #__banner_list WHERE
@@ -184,6 +182,7 @@ if($_GET['parse']=='json'){
                             // $result[$i]['target'] = '_blank';
                         }
                     }
+					 
 
                     if($user->get_property('gid') == 30) {
                         if($checked == 'checked'){
@@ -264,6 +263,22 @@ if($_GET['parse']=='json'){
                         }
                     }
 
+					if($user->get_property('gid') == 20){
+						 if($news[$item['date']]['moderate'] == 1){
+                            $result[$i]['color'] = 'green';
+                        }
+					}
+					if($user->get_property('gid') == 20){
+						 if($news[$item['date']]['moderate'] == 3){
+                            $result[$i]['color'] = 'red';
+                        }
+					}
+					//add by tsikara
+					if($user->get_property('gid') == 25){
+						 if($news[$item['date']]['moderate'] == 2){
+                            $result[$i]['color'] = 'orange';
+                        }
+					}
                     if($user->get_property('gid') == 19){
                         if($news[$item['date']]['moderate'] == 1){
                             $result[$i]['color'] = 'green';
@@ -318,7 +333,7 @@ if($_GET['parse']=='json'){
                             $result[$i]['color'] = 'orange';
                         }
                     }
-
+					  
                     if($user->get_property('gid') == 18){
                         if($news[$item['date']]['moderate'] == 2  and !in_array(22,$group) and !in_array(21,$group) and !in_array(23,$group) and !in_array(24,$group) and !in_array(25,$group)){
                             $result[$i]['color'] = 'orange';
@@ -369,8 +384,12 @@ if($_GET['parse']=='json'){
                             $result[$i]['title'] .= $checkimg.' <br> <span onClick="window.open(\'/apanel/index.php?component=article&section=edit&edit='.$news[$item['date']]['id'].'\');"><img src="'.$theme_admin.'images/user_edit.png" width="16" alt="რედაქტირება" title="რედაქტირება"></span>';
                         }
                     }
+					//add by tsikara
+					if($user->get_property('gid') == 22){
+						$result[$i]['title'] .=' <br> <span onClick="window.open(\'/apanel/index.php?component=article&section=edit&edit='.$news[$item['date']]['id'].'\');"><img src="'.$theme_admin.'images/user_edit.png" width="16" alt="რედაქტირება" title="რედაქტირება"></span>';
+						}
                     if(time() < $item['date']){
-                        if($user->get_property('gid') == 22 or $user->get_property('gid') == 21){
+                        if($user->get_property('gid') == 21){
                             if(!in_array('23',$group)){
                                 $result[$i]['title'] .=' <br> <span onClick="window.open(\'/apanel/index.php?component=article&section=edit&edit='.$news[$item['date']]['id'].'\');"><img src="'.$theme_admin.'images/user_edit.png" width="16" alt="რედაქტირება" title="რედაქტირება"></span>';
                             }

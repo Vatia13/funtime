@@ -417,29 +417,35 @@ function get_banner($id,$cat_id=0,$class = ''){
     global $DB,$registry;
     if($cat_id > 0){
         $time = time();
-        $registry['banner'] = getAllcache("SELECT url,width,height,banner,script,date FROM #__banners WHERE name='{$id}' and cat_id='{$cat_id}' and published_at < {$time} and date > {$time} ORDER BY date DESC LIMIT 1",80000,'banners/'.$id.'_'.$cat_id);
+        $registry['banner'] = getAllcache("SELECT url,width,height,banner,script,date,position,name FROM #__banners WHERE name='{$id}' and cat_id='{$cat_id}' and published_at < {$time} and date > {$time} ORDER BY date DESC LIMIT 1",80000,'banners/'.$id.'_'.$cat_id);
     }else{
-        $registry['banner'] = $DB->getAll("SELECT url,width,height,banner,script,date FROM #__banners WHERE id='{$id}' LIMIT 1");
+        $registry['banner'] = $DB->getAll("SELECT url,width,height,banner,script,date,position,name FROM #__banners WHERE id='{$id}' LIMIT 1");
+    }
+    $burl = '';
+    if(!empty($registry['banner'][0]['url'])){
+        $burl = '<a href="'.$registry['banner'][0]['url'].'" class="'.$class.'" onClick="ga(\'send\', \'event\', \'banner\', \'click\',\''.$registry['banner'][0]['name'].' - '.$registry['banner'][0]['position'].'\',1.00, {\'nonInteraction\': 1});" target="_blank" style="position:absolute;display:block;width:'.$registry['banner'][0]['width'].'px;height:'.$registry['banner'][0]['height'].'px;"></a>';
     }
     $banner_ext = get_ext($registry['banner'][0]['banner'],'.');
+
     if($registry['banner'][0]['date'] >= time()){
         if(!empty($registry['banner'][0]['url']))
             if($banner_ext == 'gif' or $banner_ext == 'jpg' or $banner_ext == 'png'):
-                return '<a href="'.$registry['banner'][0]['url'].'" class="'.$class.'" target="_blank" style="position:absolute;display:block;width:'.$registry['banner'][0]['width'].'px;height:'.$registry['banner'][0]['height'].'px;"></a><img src="'.$registry['banner'][0]['banner'].'" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"/>';
+                return $burl.'<img src="'.$registry['banner'][0]['banner'].'" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"/>';
             elseif($banner_ext=='html'):
-                return '<iframe src="'.$registry['banner'][0]['banner'].'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'" frameBorder="0"></iframe>';
+
+                return $burl.'<iframe src="'.$registry['banner'][0]['banner'].'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'" frameBorder="0"></iframe>';
             else:
-                return '<a href="'.$registry['banner'][0]['url'].'" class="'.$class.'" target="_blank" style="position:absolute;display:block;width:'.$registry['banner'][0]['width'].'px;height:'.$registry['banner'][0]['height'].'px;"></a><object data="'.$registry['banner'][0]['banner'].'"  data-url="'.$banner_ext.'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"><param name="wmode" value="opaque" /></object>';
+                return $burl.'<object data="'.$registry['banner'][0]['banner'].'"  data-url="'.$banner_ext.'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"><param name="wmode" value="opaque" /></object>';
             endif;
         else
             if($banner_ext == 'gif' or $banner_ext == 'jpg' or $banner_ext == 'png'):
-                return '<img src="'.$registry['banner'][0]['banner'].'" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"/>';
+                return $burl.'<img src="'.$registry['banner'][0]['banner'].'" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"/>';
             elseif($banner_ext == 'js'):
-                return '<script src="'.$registry['banner'][0]['banner'].'"></script>'.base64_decode($registry['banner'][0]['script']);
+                return $burl.'<script src="'.$registry['banner'][0]['banner'].'"></script>'.base64_decode($registry['banner'][0]['script']);
             elseif($banner_ext=='html'):
-                return '<iframe src="'.$registry['banner'][0]['banner'].'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'" frameBorder="0"></iframe>';
+                return $burl.'<iframe src="'.$registry['banner'][0]['banner'].'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'" frameBorder="0"></iframe>';
             else:
-                return '<object data="'.$registry['banner'][0]['banner'].'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"><param name="wmode" value="opaque" /></object>';
+                return $burl.'<object data="'.$registry['banner'][0]['banner'].'" type="application/x-shockwave-flash" width="'.$registry['banner'][0]['width'].'" height="'.$registry['banner'][0]['height'].'"><param name="wmode" value="opaque" /></object>';
             endif;
     }else{
         return false;
@@ -544,7 +550,7 @@ function clear_cache(){
 function get_banners_f(){ global $registry;?>
 <?if(function_exists('get_banner')):?>
     <?if(get_banner('F6',$registry['post'][0]['cat_id']) == true):?>
-        <div style="z-index:9;right:0;position:absolute;width:200px;<?if(get_banner('F7',$registry['post'][0]['cat_id']) == false):?>position:fixed;right:10px;top:25%;z-index:999;<?endif;?>">
+        <div id="ba_n_er" style="z-index:9;right:0; position:absolute;width:200px;<?if(get_banner('F7',$registry['post'][0]['cat_id']) == false):?>position:fixed;right:10px;top:25%;z-index:999;<?endif;?>">
             <div class="saknatuno-banner-place">
                 <?=get_banner('F6',$registry['post'][0]['cat_id']);?>
             </div>
@@ -556,7 +562,7 @@ function get_banners_f(){ global $registry;?>
                 <br>
             <?endif;?>
             <?if(get_banner('F8',$registry['post'][0]['cat_id']) == true):?>
-                <div class="saknatuno-banner-place">
+                <div class="saknatuno-banner-place"> 
                     <?=get_banner('F8',$registry['post'][0]['cat_id']);?>
                 </div>
                 <br>

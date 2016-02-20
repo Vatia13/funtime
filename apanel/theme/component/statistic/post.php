@@ -17,19 +17,16 @@
                 <option value="active" <?if(($_COOKIE['stat'] == 'active' and empty($_POST['stat'])) or $_POST['stat']=='active'):?>selected<?endif;?>>აქტიური</option>
                 <option value="passive" <?if(($_COOKIE['stat'] == 'passive' and empty($_POST['stat'])) or $_POST['stat']=='passive'):?>selected<?endif;?>>პასიური</option>
             </select>
-            <input type="submit" name="filter" value="ფილტრი" class="btn-green" style="border:none;position:relative;top:-2px;" >
-        </form>
+            <input type="submit" name="filter" value="ფილტრი" class="btn-green" style="border:none;position:relative;top:-2px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <?php  
+		foreach($registry['post'] as $item):
+		$sum_uniq= $sum_uniq + $item['uniquev'];
+		endforeach;?> 
+            <input type="text" placeholder="სულ: <?=$sum_uniq?>" readonly>
+         </form> 
+        
     </div>
     <table id="rounded-corner">
-    <div align="right"> 
-		<div style="width:94px; border:1px solid #E1DFDF;" align="left">სულ</div>
-		<?php  
-		 
-		foreach($registry['show_all_uniq'] as $item):
-		$sum_uniq= $item['show_uniq'];
-		endforeach;?>
-        <div style="width:94px; border:1px solid #E1DFDF;" align="left"><?=$sum_uniq?></div>
-    </div>
         <thead>
         <tr>
             <th scope="col" class="rounded">№</th>

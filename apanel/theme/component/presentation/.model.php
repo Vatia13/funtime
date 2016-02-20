@@ -191,7 +191,7 @@ if (isset($_GET['add_pie']) && $_GET['add_pie']==1){
 
 /*N4 რუბრიკა  „საკნატუნო ამბები“ დასასრული*/
 /*N5 რუბრიკები 150 000-დან 200 000-მდე  ჩვენებით*/
-$rubric =   'SELECT * FROM `osr_category`';
+$rubric =   'SELECT * FROM `osr_category` WHERE stat = \'0\' ORDER BY name';
 $registry['rubric'] =  $DB->getAll($rubric);
 if (isset($_GET['add_pie_15']) && $_GET['add_pie_15']==1){
 	 	$rubrica=$_GET['rubrica'];

@@ -351,5 +351,4 @@ function statistic_directory(){
     $out .= '</div>';
     print $out;
 }
-
-$registry['show_all_uniq'] = $DB->getAll("SELECT DISTINCT COUNT(ip) as show_uniq FROM #__unique_visitors");
+ 

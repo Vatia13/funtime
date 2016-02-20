@@ -3,7 +3,7 @@
 if(strpos($registry['post'][0]['text'],'http://funtime.ge:80/img/lastnews.png')):
 $outp = '<div class="new-articles"><ul><li><h3>ახალი სტატიები</h3></li>';
      foreach($registry['new-articles'] as $item): if($registry['post'][0]['cat_chpu'] <> $item['cat_chpu']):
-         $outp .= '<li><a href="/'.$item['cat_chpu'].'/'.$item['chpu'].'/">'.$item['title'].' <img src="'.substr($item['thumbs'],2).'" width="220">';
+         $outp .= '<li><a href="/'.$item['cat_chpu'].'/'.$item['chpu'].'/">'.$item['title'].' <img alt="'.$registry['new-articles'][0]['alt_search'].'" src="'.substr($item['thumbs'],2).'" width="220" >';
          $outp .= '</a></li>';
     endif;endforeach;
     $outp .= '</ul></div>';

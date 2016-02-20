@@ -54,7 +54,7 @@ function get_powerstatus() {
 }
 
 function get_meta() {
-	global $registry, $news;
+	global $registry, $news; 
 	if(empty($_GET['component'])):
 		if(!empty($registry['site_metadesc'])) echo '<meta name="description" lang="ru" content="'.$registry['site_metadesc'].'" />';
 	        if(!empty($registry['site_metakey'])) echo '<meta name="keywords" lang="ru" content="'.$registry['site_metakey'].'" />';
@@ -62,7 +62,7 @@ function get_meta() {
 	if($_GET['component']=='doc' and !empty($_GET['ditem'])):
 		if(!empty($news[0]['meta_desc'])) echo '<meta name="description" lang="ru" content="'.$news[0]['meta_desc'].'" />';
 	        if(!empty($news[0]['meta_key'])) echo '<meta name="keywords" lang="ru" content="'.$news[0]['meta_key'].'" />';
-	endif;
+	endif; 
 }
 
 function get_onoff($admin=0) {
@@ -306,12 +306,12 @@ function get_module( $name, $section = null ) {
 
 
 
-
+ 
 
 function get_component() {
 	global $contents_view,$theme,$user,$DB,$registry,$message,$all_comments,$news,$othernews,$settings;	
-	//echo $contents_view;  
-	require_once($contents_view);
+	//echo $contents_view;
+	require_once($contents_view); 
 }
 
 function get_title() {
@@ -395,7 +395,17 @@ function youtube_url($youtube){
 }
 
 function fb_content(){
+	//edit by tsikara
     global $registry;
+	if($_SERVER['REQUEST_URI']=='/com/competition') {?>
+    <meta property="fb:app_id" content="966242223397117" />
+    <meta property="og:url" content="http://funtime.ge/fotokonkursi" /> 
+    <meta property="og:type" content="website" /> 
+    <meta property="og:title" content="ფოტოკონკურსი მოყვარული ფოტოგრაფებისათვის" /> 
+    <meta property="og:description" content="<p>ფოტოკონკურსი მოყვარული ფოტოგრაფებისათვის</p>" /> 
+    <meta property="og:image" content="http://funtime.ge/theme/funtime/images/competition_og.png" /> 
+    <?
+    }else{
     $out = '
          <meta property="fb:app_id" content="1391061841189461" />
          <meta property="og:title" content="'.$registry['title'].'" />
@@ -405,6 +415,7 @@ function fb_content(){
          <meta property="og:site_name" content="Funtime.ge"/>
          <meta property="og:description" content="'.PHP_slashes(htmlspecialchars(strip_tags($registry['desc']))).'"/>';
     return $out;
+	} 
 }
 
 

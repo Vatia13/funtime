@@ -43,7 +43,7 @@
 
                 <div class="post-image" style="border:25px solid <?=$registry['color']['frame'];?>">
                     <h3 style="background-color:<?=$registry['color']['rubric'];?>; opacity:0.8; <?if(count($registry['slide']['img']) > 1):?>background-image:url('/<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-position:right 10px center;padding:18px 60px 15px 10px;<?else:?>padding:18px 10px 15px 10px;<?endif;?>"><?=$registry['post'][0]['name'];?></h3>
-                    <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="695" height="445"/>
+                    <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="695" height="445" alt="<?=$registry['post'][0]['alt_search']?>"/>
                 </div>
                 <div class="fix"></div>
                 <br>
@@ -115,8 +115,8 @@
             <? $slider_num = 0;?>
         <?endif;?>
         <? $ex_text_img = explode('<img',$registry['post'][0]['text']); $imgnum = count($ex_text_img) - 1;?>
-        <div <?if($imgnum > 6 or $slider_num > 8):?>style="float:left;max-width:940px;margin-right:30px;"<?endif;?>><?=$registry['post'][0]['text'];?><div class="fix"></div></div>
-        <?if($imgnum > 6 or $slider_num > 8):?>
+        <div <?if($imgnum > 2 or $slider_num > 4):?>style="float:left;max-width:940px;margin-right:30px;"<?endif;?>><?=$registry['post'][0]['text'];?><div class="fix"></div></div>
+        <?if($imgnum > 2 or $slider_num > 4):?>
         <div style="z-index:9;right:0;position:absolute;width:200px;">
                 <div class="saknatuno-banner-place">
                     <?if(function_exists('get_banner')):?>

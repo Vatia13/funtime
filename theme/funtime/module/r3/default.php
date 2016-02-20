@@ -27,7 +27,7 @@
         </div>
     <?endif;?>
 
-    <div class="post-title">
+    <div class="post-title"> 
         <h1><?=$registry['post'][0]['title'];?></h1>
         <?if(count($registry['slide']['img']) > 1):?>
             <div class="post-slide-message">ფოტოსლაიდი <?=count($registry['slide']['img']);?> ფოტო</div>
@@ -37,10 +37,10 @@
 
     <div class="post-image" style="border:25px solid <?=$registry['color']['frame'];?>">
         <h3 style="background-color:<?=$registry['color']['rubric'];?>; opacity:0.8; <?if(count($registry['slide']['img']) > 1):?>background-image:url('/<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-position:right 10px center;padding:18px 60px 15px 10px;<?else:?>padding:18px 10px 15px 10px;<?endif;?>"><?=$registry['post'][0]['name'];?></h3>
-        <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="660" height="435"/>
+        <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="660" height="435" alt="<?=$registry['post'][0]['alt_search']?>"/>
     </div>
 
-    <div class="post-time">
+    <div class="post-time"><br>
         <span><?=gedate('l',$registry['post'][0]['date']);?></span> <span><?=gedate('H:i',$registry['post'][0]['date']);?></span> | <span><?=gedate('d.m.Y',$registry['post'][0]['date']);?></span>
     </div>
     <div class="post-author">
@@ -93,9 +93,8 @@
 
         <div class="post-content">
             <div style="float:left;">
-                <?=$registry['post'][0]['text'];?>
+                <?=$registry['post'][0]['text'];?> 
             </div>
-            <? get_banners_f();?>
         </div>
     </div>
     <div class="fix"></div>

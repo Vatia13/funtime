@@ -29,14 +29,14 @@
             </div>
             <div class="five-image">
             <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/"><h3 style="<?if(count($this['slide']['img']) > 1):?>background-image:url('/<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-size:30px 30px;background-position:right 10px center;padding:10px 50px 7px 10px;<?elseif($item['style']==12):?>background-image:url('/<?=$theme?>images/vcam.png');background-repeat:no-repeat;background-size:30px 26px;background-position:right 10px center;padding:10px 50px 7px 10px;<?else:?>padding:10px 10px 7px 10px;<?endif;?>"><?=$item['name'];?></h3></a>
-            <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2)?>" width="400"></a>
+ <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2)?>" width="400" alt="<?=$registry['five-article'][0]['alt_search']?>"></a>
             </div>
         </li>
         <?else:?>
         <li class="mob"  data-last_id="<?=$item['id'];?>">
             <ul>
                 <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><?=$item['title'];?></a><div class="five-time"><span><?=gedate('l H:i',$item['date']);?> </span> <span> <?=gedate('d.m.Y',$item['date']);?></span></div></li>
-                <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2)?>" width="100%"></a></li>
+                <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2)?>" width="100%" alt="<?=$registry['five-article'][0]['alt_search']?>"></a></li>
             </ul>
         </li>
         <?endif;?>

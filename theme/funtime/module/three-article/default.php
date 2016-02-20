@@ -16,7 +16,7 @@ $short_length = 300 - $title_length;
         <li>
             <div class="three-big-img">
                 <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['three-big-article'][0]['cat_chpu'];?>/"><h3><?=$registry['three-big-article'][0]['name']?></h3></a>
-                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['three-big-article'][0]['cat_chpu'];?>/<?=$registry['three-big-article'][0]['chpu'];?>/"><img src="<?=substr($registry['three-big-article'][0]['thumbs'],2);?>" width="698" alt="<?=$registry['three-big-article'][0]['title']?>" title="<?=$registry['three-big-article'][0]['title']?>"></a>
+                <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['three-big-article'][0]['cat_chpu'];?>/<?=$registry['three-big-article'][0]['chpu'];?>/"><img src="<?=substr($registry['three-big-article'][0]['thumbs'],2);?>" width="698" alt="<?=$registry['three-big-article'][0]['alt_search']?>" title="<?=$registry['three-big-article'][0]['title']?>"></a>
             </div>
             <div class="three-big-desc">
                 <div class="three-big-title"><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$registry['three-big-article'][0]['cat_chpu'];?>/<?=$registry['three-big-article'][0]['chpu'];?>/"><?=title_filter($registry['three-big-article'][0]['title'],100);?></a></div>

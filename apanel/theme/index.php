@@ -6,7 +6,7 @@
     <?php if($_GET['close'] == true):?>
         <script type="text/javascript">
             window.onload = function(){
-                window.open('','_self').close();
+				$.post('http://funtime.ge/apanel/index.php?news=1&cache=clear',{}, function(data){ window.open('','_self').close(); });
             }
         </script>
     <?php endif;?>
@@ -115,6 +115,8 @@
 <script type="text/javascript" src="<?=$theme_admin;?>js/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($){
+		$.post('http://funtime.ge/apanel/index.php?news=1&cache=clear',{}, function(data){ });
+		
         $('.calendar').simpleDatepicker();
     });
 </script>

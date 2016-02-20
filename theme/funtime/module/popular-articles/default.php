@@ -6,7 +6,7 @@
         <?foreach($registry['popular'] as $item):?>
             <li>
                 <div class="popular-articles-img">
-                    <a href="/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2)?>" width="269"></a>
+<a href="/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2)?>" width="269" alt="<?=$registry['popular'][0]['alt_search']?>"></a>
                 </div>
                 <div class="popular-articles-title">
                     <a href="/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><?=$item['title'];?></a>

@@ -23,6 +23,7 @@
         <?endfor;?>
     <?endif;?>
 <?endif;?>
+<?endif;?>
 <?if(!empty($message[0])):?>
     <div class="<?=$message[0]?>_box">
         <?for($i=1;$i<=count($message);$i++):?>
@@ -64,5 +65,4 @@
 
         });
     });
-</script>
-<?endif;?>
+</script> 

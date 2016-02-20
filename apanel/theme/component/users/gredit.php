@@ -70,6 +70,13 @@
 	<td align="center"><input class="" type="checkbox" name="accessA[presentation][del]" value="1" <?if(intval($registry['groupitem'][0]['accessA']['presentation']['del'])==1):?>checked<?endif?>></td>
 	<td align="center"></td>
 </tr>
+<tr>
+	<td class="td1 w150">ფოტო-კონკურსი</td>
+	<td align="center"><input class="" type="checkbox" name="accessA[competition][view]" value="1" <?if(intval($registry['groupitem'][0]['accessA']['competition']['view'])==1):?>checked<?endif?>></td>
+	<td align="center"><input class="" type="checkbox" name="accessA[competition][edit]" value="1" <?if(intval($registry['groupitem'][0]['accessA']['competition']['edit'])==1):?>checked<?endif?>></td>
+	<td align="center"><input class="" type="checkbox" name="accessA[competition][del]" value="1" <?if(intval($registry['groupitem'][0]['accessA']['competition']['del'])==1):?>checked<?endif?>></td>
+	<td align="center"></td>
+</tr>
 <!--
 <tr>
 	<td class="td1 w150">Опросы</td>

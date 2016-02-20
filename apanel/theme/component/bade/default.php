@@ -9,8 +9,9 @@
  */
 
 defined('_JEXEC') or die('Restricted access');
-if(get_access('admin','article','view')):
+if(get_access('admin','user','view') or get_access('admin','article','view')):
 ?>
+
 <h3 class="left">ბადე</h3>
 
 

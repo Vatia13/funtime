@@ -20,7 +20,12 @@
             <option value="active" <?if(($_COOKIE['stat'] == 'active' and empty($_POST['stat'])) or $_POST['stat']=='active'):?>selected<?endif;?>>აქტიური</option>
             <option value="passive" <?if(($_COOKIE['stat'] == 'passive' and empty($_POST['stat'])) or $_POST['stat']=='passive'):?>selected<?endif;?>>პასიური</option>
         </select>
-        <input type="submit" name="filter" value="ფილტრი" class="btn-green" style="border:none;position:relative;top:-2px;" >
+        <input type="submit" name="filter" value="ფილტრი" class="btn-green" style="border:none;position:relative;top:-2px;" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <?php  
+		foreach($registry['counts'] as $item):
+		$sum_uniq= $sum_uniq + $item['unique'];
+		endforeach;?> 
+            <input style="width: 100px;" type="text" placeholder="სულ: <?=$sum_uniq?>" readonly>
     </form>
     </div>
     <table id="rounded-corner"> 

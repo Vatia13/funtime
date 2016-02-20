@@ -26,7 +26,7 @@
 
     <div class="post-image" style="border:25px solid <?=$registry['color']['frame'];?>">
         <h3 style="background-color:<?=$registry['color']['rubric'];?>; opacity:0.8; <?if(count($registry['slide']['img']) > 1):?>background-image:url('/<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-position:right 10px center;padding:18px 60px 15px 10px;<?else:?>padding:18px 10px 15px 10px;<?endif;?>"><?=$registry['post'][0]['name'];?></h3>
-        <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="780" height="440"/>
+        <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="780" height="440" alt="<?=$registry['post'][0]['alt_search']?>"/>
     </div>
 
 
@@ -82,7 +82,7 @@
         <div style="float:left;">
             <?=$registry['post'][0]['text'];?>
         </div>
-        <? get_banners_f();?>
+        <? //get_banners_f();?>
     </div>
 
     <div class="fix"></div>

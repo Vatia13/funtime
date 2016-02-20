@@ -36,7 +36,7 @@
                     ?>
 
                     <li data-last_id="<?=$item['id'];?>">
-                        <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="558"/>
+                        <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="558" alt="<?=$registry['posts'][0]['alt_search']?>"/>
                             <?if(count($this['slide']['img']) > 1):?><h3 style="background-image:url('/<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-position:right 10px center;padding:30px 50px 27px 10px;"></h3><?endif;?>
                             <?if($item['style'] == 12):?><h3 style="background-image:url('/<?=$theme?>images/vcam.png');background-repeat:no-repeat;background-position:right 10px center;padding:30px 50px 27px 10px;"></h3><?endif;?>
                         </a>
@@ -111,7 +111,7 @@
             <li data-last_id="<?=$item['id'];?>">
                 <ul>
                     <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><?=$item['title'];?></a><br><div class="sak-time"><span><?=gedate('l H:i',$item['date']);?> </span>  <span> <?=gedate('d.m.Y',$item['date']);?></span></div></li>
-                    <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="100%" alt="<?=$item['title'];?>" title="<?=$item['title'];?>"></a></li>
+                    <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="100%" alt="<?=$item['alt_search'];?>" title="<?=$item['title'];?>"></a></li>
                 </ul>
             </li>
         <?endforeach;?>
@@ -165,7 +165,7 @@
             <ul>
                 <?foreach($registry['posts'] as $item):?>
                     <li data-last_id="<?=$item['id'];?>">
-                        <div class="saknatuno-image"><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="215" align="left"/></a></div>
+                        <div class="saknatuno-image"><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="215" align="left" alt="<?=$registry['posts'][0]['alt_search']?>"/></a></div>
                         <a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><?=$item['title'];?></a>
                         <br>
                         <div class="saknatuno-time"><span><?=gedate('H:i',$item['date']);?> </span> / <span> <?=gedate('d.m.Y',$item['date']);?></span></div>
@@ -183,7 +183,7 @@
                 <li data-last_id="<?=$item['id'];?>">
                     <ul>
                         <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><?=$item['title'];?></a><br><div class="sak-time"><span><?=gedate('l H:i',$item['date']);?> </span>  <span> <?=gedate('d.m.Y',$item['date']);?></span></div></li>
-                        <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="100%" alt="<?=$item['title'];?>" title="<?=$item['title'];?>"></a></li>
+                        <li><a href="http://<?=$_SERVER['SERVER_NAME'];?>/<?=$item['cat_chpu'];?>/<?=$item['chpu'];?>/"><img src="<?=substr($item['thumbs'],2);?>" width="100%" alt="<?=$item['alt_search'];?>" title="<?=$item['title'];?>"></a></li>
                     </ul>
                 </li>
             <?endforeach;?>

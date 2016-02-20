@@ -60,6 +60,15 @@
                             ძველი სლაიდი <input type="checkbox" name="slide_type" value="1" <?if($num['slide_type']=='1'):?>checked<?endif;?>/>
                         </td>
                         <td valign="middle" width="30%">
+                           <label> ყველას გაბოლდება <input type="checkbox" id="bold" name="bold_all" value="1"  onclick="valid_bold()" 
+							<?=(strpos($slider['name'][0],'<strong>') === false)?'':'checked'?>/>
+                            </label>
+                            <script>
+                                function valid_bold(){  
+                                }
+                            </script> 
+                        </td>
+                        <td valign="middle" width="30%">
                             ფოტოების რაოდენობა
                             <select onChange="addSlideFields(this)">
                                 <option value="0">---</option>

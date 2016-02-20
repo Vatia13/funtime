@@ -80,6 +80,7 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
 
 
         $title=PHP_slashes(htmlspecialchars(strip_tags($_POST['title'])));
+		$alt_search=PHP_slashes(htmlspecialchars(strip_tags($_POST['alt_search'])));
         $youtube=PHP_slashes(htmlspecialchars(strip_tags($_POST['youtube'])));
         $youtube = parse_url($youtube);
         parse_str($youtube['query'],$youtube);
@@ -125,6 +126,12 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
         if(count($_POST['slide']['name']) > 0){
             foreach($_POST['slide']['name'] as $item):
                 //if(!empty($item)):
+				if(isset($_POST['bold_all']))
+					$item = '<strong>'.$item.'</strong>';
+				else{
+					$item = str_replace('<strong>', '', $item);
+					$item = str_replace('</strong>', '', $item);
+				}
                     $slider_images['name'][] = stripslashes($item);
                // endif;
             endforeach;
@@ -484,6 +491,7 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
 				`copy` = '$copy',
 				`sponsored` = '$sponsored',
 				`phg` = '$phg',
+				`alt_search` = '$alt_search',
 				`contest_rate` = '$contest_rate'
 
 				WHERE `#__news`.`id`='".intval($_POST['id'])."' LIMIT 1; ";
@@ -506,11 +514,13 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
                                 $message[0] = 'error';
                                 $message[1] = $error[0];
                             }
-                        }else{
-                            $message[0] = 'error';
-                            $message[1] = 'ტექსტი ცარიელია';
-                        } 
-                    }else{
+                        }
+						//else{
+//                            $message[0] = 'error';
+//                            $message[1] = 'ტექსტი ცარიელია';
+//                        } 
+                    }
+					else{
                         $message[0] = 'error';
                         $message[1] = 'ლიდი ცარიელია';
                     }
@@ -543,8 +553,8 @@ if($_GET['section'] == 'add' or $_GET['section'] == 'edit'):
                                 $test_chpu = $DB->getOne("SELECT count(#__news.id) FROM `#__news` WHERE `chpu`='$chpu'");
                                 if($test_chpu>0)$chpu=rand(100,9999).'_'.$chpu;
 
-                                $sql="INSERT INTO `osr_news`(`user`, `redactor`, `corrector`, `send_time`, `cat`, `test`, `title`, `title_short`, `text`, `text_short`, `rate`, `chpu`, `time`, `date`, `show_date`, `view`, `tags_ru`, `tags_en`, `original_url`, `thumbs`, `img`, `slide`, `youtube`, `comments`, `moderate`, `group`, `favorit`, `meta_desc`, `meta_key`, `user_block`, `op`, `style`, `color`,`info`,`copy`,`phg`) VALUES
-                                                                         ('$author',0,0,'$send_time','$cat',0,'$title','$title_short','$text','$text_short',0,'$chpu','$date_time','$date','$show_date',1,'$tags_ru','$tags_en','$original_url','$SQL_PHOTO','','$slide','$youtube','$comments','$moderate','$group','$favorit_news','$meta_desc','$meta_key',0,'$operation',0,0,'$info','$copy','$phg')";
+                                $sql="INSERT INTO `osr_news`(`user`, `redactor`, `corrector`, `send_time`, `cat`, `test`, `title`, `title_short`, `text`, `text_short`, `rate`, `chpu`, `time`, `date`, `show_date`, `view`, `tags_ru`, `tags_en`, `original_url`, `thumbs`, `img`, `slide`, `youtube`, `comments`, `moderate`, `group`, `favorit`, `meta_desc`, `meta_key`, `user_block`, `op`, `style`, `color`,`info`,`copy`,`phg`,`alt_search`) VALUES
+                                                                         ('$author',0,0,'$send_time','$cat',0,'$title','$title_short','$text','$text_short',0,'$chpu','$date_time','$date','$show_date',1,'$tags_ru','$tags_en','$original_url','$SQL_PHOTO','','$slide','$youtube','$comments','$moderate','$group','$favorit_news','$meta_desc','$meta_key',0,'$operation',0,0,'$info','$copy','$phg','$alt_search')";
 
                                 if($DB->execute($sql)){
                                     $t=1;
@@ -673,3 +683,4 @@ endif;
 if($_GET['section'] == 'ajax'){
     @include('.ajax_call.php');
 }
+

@@ -116,7 +116,10 @@
                             <th width="29%"valign="top" align="left">ტელეფონი:</th> <td><?=$registry['contact'][0]['phone1'];?><br><?=$registry['contact'][0]['phone2'];?></td>
                         </tr>
                         <tr>
-                            <th  width="29%" style="color:#ff5704;" align="left">რეკლამა ფანტაიმზე:</th> <td><?=$registry['contact'][0]['reclam'];?></td>
+                            <th  width="29%" align="left">მეილი:</th> <td>info@ft.ge</td>
+                        </tr>
+                        <tr>
+                            <th  width="29%" style="color:#ff5704;" align="left">რეკლამა ფანთაიმზე:</th> <td><?=$registry['contact'][0]['reclam'];?></td>
                         </tr>
                     </table>
                     <br>

@@ -75,7 +75,7 @@
     </div>
 </div></div>
 </div>
-<script language="JavaScript" type="text/javascript" src="/<?=$theme?>js/mobile.js"></script>
+<script language="JavaScript" type="text/javascript" src="/<?=$theme?>js/mobile.js?ver=<?=rand(0,9999999);?>"  async></script>
 <script>
     $(document).ready(function(){
         $('.bottom-footer').height($('.bottom-rubrics').height() + 50);
@@ -114,5 +114,13 @@
         <?endif;?>
     <?endif;?>
 <?endif;?>
+<script>
+    var trackOutboundLink = function(url) {
+        ga('send', 'event', 'outbound', 'click', url, {
+            'transport': 'beacon',
+            'hitCallback': function(){document.location = url;}
+        });
+    }
+</script>
 </body>
 </html>

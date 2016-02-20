@@ -352,7 +352,7 @@ $get_params = http_build_query(array(
 		    dictResponseError: "SERVER ERROR",
 		    paramName: "file", // The name that will be used to transfer the file
 		    maxFilesize: <?php echo $MaxSizeUpload; ?>, // MB
-		    url: "upload.php?akey=<?php echo $_GET['akey'];?><?php echo ($_GET['no_wm'] > 0) ? '&no_wm=1' : '&no_wm=0';?>",
+		    url: "upload.php?akey=<?php echo $_GET['akey'];?>",
 		    accept: function(file, done) {
 			    var extension=file.name.split('.').pop();
 			    extension=extension.toLowerCase();
@@ -471,7 +471,7 @@ $get_params = http_build_query(array(
 				    <div class="fallback">
 					<?php echo  lang_Upload_file?>:<br/>
 					<input name="file" type="file" />
-					<input type="hidden" name="no_wm" value="<?php (isset($_GET['no_wm']) ? 1 : 0); ?>"/>
+					<input type="hidden" name="no_wm" value="<?php echo (isset($_GET['no_wm']) ? 1 : 0); ?>"/>
 					<input type="hidden" name="fldr" value="<?php echo $subdir; ?>"/>
 					<input type="hidden" name="view" value="<?php echo $view; ?>"/>
 					<input type="hidden" name="type" value="<?php echo $type_param; ?>"/>
@@ -780,7 +780,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				    <figcaption>
 				    <?php if($user->get_property('gid') == 25 or $user->get_property('gid') == 24 or $user->get_property('gid') == 21):?> 
                     
-                    	<a href="#"  style="cursor:pointer;"><i class="icon-file" ></i></a> 
+                    	<a href="/filemanager/zipper.php?dir=<?php echo $rfm_subfolder.$subdir.$file; ?>"  style="cursor:pointer;"><i class="icon-download" ></i></a> 
                         
 					    <a href="javascript:void('')" class="tip-left edit-button rename-file-paths <?php if($rename_folders && !$file_prevent_rename) echo "rename-folder"; ?>" title="<?php echo lang_Rename?>" data-path="<?php echo $rfm_subfolder.$subdir.$file; ?>" data-thumb="<?php echo $thumbs_path.$subdir.$file; ?>">
 					    <i class="icon-pencil <?php if(!$rename_folders || $file_prevent_rename) echo 'icon-white'; ?>"></i></a>

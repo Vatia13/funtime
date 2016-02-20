@@ -1,8 +1,8 @@
 <?defined('_JEXEC') or die('Restricted access');?>
 <div class="instruments">
     <ul>
-        <li><a <?if($user->get_property('gid') == 20):?>href="/apanel/index.php?component=organizer"<?else:?>href="/apanel/index.php"<?endif;?>><span class="home"></span> <br> მთავარი</a></li>
-        <?if($user->get_property('gid') == 24 or $user->get_property('gid') == 25):?>
+        <li><a <?if($user->get_property('gid') == 20):?>href="/apanel/index.php?component=bade"<?else:?>href="/apanel/index.php"<?endif;?>><span class="home"></span> <br> მთავარი</a></li>
+        <?if($user->get_property('gid') == 24 or $user->get_property('gid') == 25 or $user->get_property('gid') == 20):?>
             <li><a href="/apanel/index.php?component=organizer"><span class="organizer"></span> <br> ორგანაიზერი</a></li>
         <?endif;?>
         <?if($user->get_property('gid') == 24 or $user->get_property('gid') == 25 or $user->get_property('gid') == 20):?>
@@ -49,6 +49,9 @@
         <?endif;?>
          <?if(@get_access('admin','presentation','view',false)):?>
         <li><a href="/apanel/index.php?component=presentation&sec=1"><span class="presentation"></span> <br> პრეზენტაცია</a></li>
+        <?endif;?>
+        <?if(@get_access('admin','competition','view',false)):?>
+        <li><a href="/apanel/index.php?component=competition"><span class="competition"></span> <br> ფოტოკონკურსი</a></li>
         <?endif;?>
         <li><a href="?logout=1"><span class="logoff"></span> <br> გასვლა</a></li>
     </ul>

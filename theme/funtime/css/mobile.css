@@ -246,7 +246,7 @@ img{outline:none;border:none;}
     background-color:#FFF;
     padding:10px 10px 0 10px;
     margin-bottom:20px;
-}
+} 
 .main-article ul{
     margin:0;
     padding:0;
@@ -254,8 +254,21 @@ img{outline:none;border:none;}
 }
 .main-image{
     margin-bottom:10px;
-}
+} 
 
+
+.main-image h3{
+	position: absolute ;
+	right: 26px ;
+	bottom: 66px;
+	color: #FFF ;
+	z-index: 1 ;
+	font-family: 'BPGNinoMtavruliRegular' ;
+	font-weight: 500 ;
+	opacity: 0.8 ;
+	
+}
+	
 .main-article ul li:last-child .main-title{
     display:none;
 }
@@ -294,6 +307,18 @@ img{outline:none;border:none;}
     padding:10px 10px 10px 10px;
     margin-bottom:20px;
 }
+.two-article h3 {
+    position: absolute;
+	right: 19px;
+	margin-top: 65%; 
+	background-color: #ed4321;
+	color: #FFF;
+	z-index: 1;
+	font-family: 'BPGNinoMtavruliRegular';
+	font-weight: 500;
+	opacity: 0.8;
+}
+
 .saknatuna ul{
     margin:0;
     padding:0;

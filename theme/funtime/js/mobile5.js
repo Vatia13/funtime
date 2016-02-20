@@ -8,7 +8,7 @@ $(function(){
             $('.main-article').attr('style','');
             $('.main-article ul li').attr('style','');
             $('object').remove();
-            $('.main-image h3').remove();
+           //$('.main-image h3').remove();
             $('.five-image h3').remove();
             $('.two-article-image h3').remove();
             $('#LastNews').remove();

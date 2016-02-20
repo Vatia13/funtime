@@ -94,6 +94,17 @@
         </tr>
     <?endif;?>
 <tr><td class="td1">სათაური </td><td><a class="convert" onClick='convertText("#title")'>Convert AcadNusx to Sylfaen</a><input class="inputbox" style="margin-top:5px; <?if($user->get_property('gid')==18):?>color:#000 !important;font-size:20px !important;<?endif;?>" onkeypress="return makeGeo(this,event);" onkeyup="countSymbols('#title',200)" onpaste="setTimeout(function(){return countSymbols('#title',200);},100)" id="title"  type="text" name="title" value="<?=$_POST['title'];?>" maxlength="200" /><br><i class="right">200</i></td></tr>
+
+<tr>
+    <td class="td1">სათაური მოსაძებნად</td>
+    <td>
+    <a class="convert" onClick='convertText("#alt_search")'>Convert AcadNusx to Sylfaen</a><input class="inputbox" style="margin-top:5px; <?if($user->get_property('gid')==18):?>color:#000 !important;font-size:20px !important;<?endif;?>" onkeypress="return makeGeo(this,event);" onkeyup="countSymbols('#alt_search',200)" onpaste="setTimeout(function(){return countSymbols('#alt_search',200);},100)" id="alt_search"  type="text" name="alt_search" value="<?=$_POST['alt_search'];?>" maxlength="200" /><br><i class="right">200</i>
+    </td>
+</tr>
+
+
+
+
 <tr><td class="td1">ქვესათაური </td><td><a class="convert" onClick='convertText("#title_short")'>Convert AcadNusx to Sylfaen</a><input class="inputbox" style="margin-top:5px; <?if($user->get_property('gid')==18):?>color:#000 !important;font-size:20px !important;<?endif;?>" onkeypress="return makeGeo(this,event);" onkeyup="countSymbols('#title_short',200)" onpaste="setTimeout(function(){return countSymbols('#title_short',200);},100)" type="text" id="title_short"  name="title_short" value="<?=$_POST['title_short'];?>" maxlength="200" /><br><i class="right">200</i></td></tr>
 
     <tr><td class="td1">გამოქვეყნების თარიღი </td><td class="td2">

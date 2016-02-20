@@ -1,4 +1,25 @@
 <?defined('_JEXEC') or die('Restricted access');?>
+<style>
+@media screen and (max-width: 1600px) {
+   .content {
+margin-left: 30px; width: 80%;
+    }
+#toTop{
+	     z-index: 9999999;
+	}
+#ba_n_er {
+		top:20% !important;
+	}
+.post-content{
+	width:98%;
+	}
+}
+@media (min-width: 1680px) and (max-width: 2600px) {
+#ba_n_er {
+		top:38% !important;
+	}	
+}
+</style>
 
 <div class="post-r4">
 <div class="content">
@@ -37,7 +58,7 @@
 
     <div class="post-image" style="border:25px solid <?=$registry['color']['frame'];?>">
         <h3 style="background-color:<?=$registry['color']['rubric'];?>; opacity:0.8; <?if(count($registry['slide']['img']) > 1):?>background-image:url('/<?=$theme?>images/main_icon.png');background-repeat:no-repeat;background-position:right 10px center;padding:18px 60px 15px 10px;<?else:?>padding:18px 10px 15px 10px;<?endif;?>"><?=$registry['post'][0]['name'];?></h3>
-        <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="660" height="435"/>
+        <img src="/img/uploads/news/read/<?=$registry['post'][0]['img'];?>" width="660" height="435" alt="<?=$registry['post'][0]['alt_search']?>"/>
     </div>
 
     <div class="post-time">
@@ -93,7 +114,7 @@
             <div style="float:left;">
                 <?=$registry['post'][0]['text'];?>
             </div>
-            <? get_banners_f();?>
+            <? //get_banners_f();?>
         </div>
 
 
